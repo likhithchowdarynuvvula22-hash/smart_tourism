@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register - Samastha Samanvayam</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Subtle animated background gradient to give life to the dark mode */
+        @keyframes subtle-drift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .bg-animated-mesh {
+            background: radial-gradient(circle at 15% 50%, rgba(73, 75, 214, 0.08), transparent 25%),
+                        radial-gradient(circle at 85% 30%, rgba(0, 165, 114, 0.05), transparent 25%);
+            background-size: 200% 200%;
+            animation: subtle-drift 20s ease infinite;
+        }
+
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+<!-- Tailwind Config & Setup -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#00a572",
+                        "on-secondary-fixed-variant": "#005236",
+                        "inverse-on-surface": "#303038",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "primary-fixed": "#e1e0ff",
+                        "surface-tint": "#c0c1ff",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#452000",
+                        "on-primary-fixed": "#07006c",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "surface-bright": "#393841",
+                        "on-primary-container": "#0d0096",
+                        "secondary": "#4edea3",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-tertiary": "#4f2500",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-dim": "#13131b",
+                        "on-secondary": "#003824",
+                        "inverse-primary": "#494bd6",
+                        "tertiary-container": "#d97721",
+                        "inverse-surface": "#e4e1ed",
+                        "surface-container": "#1f1f27",
+                        "on-error": "#690005",
+                        "outline-variant": "#464554",
+                        "secondary-fixed": "#6ffbbe",
+                        "background": "#13131b",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "surface-container-high": "#292932",
+                        "surface-container-highest": "#34343d",
+                        "on-secondary-container": "#00311f",
+                        "primary": "#c0c1ff",
+                        "on-surface": "#e4e1ed",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "on-primary": "#1000a9",
+                        "primary-container": "#8083ff",
+                        "tertiary": "#ffb783",
+                        "surface": "#13131b",
+                        "error": "#ffb4ab",
+                        "outline": "#908fa0",
+                        "on-background": "#e4e1ed",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-container-lowest": "#0d0d15",
+                        "surface-variant": "#34343d",
+                        "on-secondary-fixed": "#002113",
+                        "surface-container-low": "#1b1b23"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1.5rem" /* Added missing 2xl for modern cards */
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "2xl": "48px",
+                        "3xl": "64px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter", "sans-serif"],
+                        "display": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"],
+                        "headline-md": ["Inter", "sans-serif"],
+                        "label-md": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md bg-animated-mesh overflow-x-hidden antialiased">
+<!-- Mobile-optimized main container -->
+<main class="flex-grow flex flex-col items-center justify-center p-md md:p-xl w-full max-w-[500px] mx-auto">
+<!-- Header Section -->
+<div class="text-center mb-lg pt-xl">
+<div class="flex justify-center items-center gap-2 mb-sm">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">explore</span>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">Samastha Samanvayam</h1>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Join the Journey.</h2>
+<p class="font-label-md text-label-md text-on-surface-variant mt-xs">Create an account to unlock personalized AI itineraries.</p>
+</div>
+<!-- Registration Card (Glassmorphism) -->
+<div class="w-full bg-surface-container-low/80 backdrop-blur-xl rounded-[1.5rem] border border-outline-variant p-lg shadow-[0_20px_25px_-5px_rgba(0,0,0,0.5)]">
+<form action="#" class="flex flex-col gap-md" method="POST">
+<!-- Basic Info Fields -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="name">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline text-opacity-70">person</span>
+<input class="w-full bg-background border border-outline-variant rounded-lg py-sm pl-[36px] pr-sm font-body-md text-on-surface placeholder:text-outline/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" id="name" name="name" placeholder="Rahul Sharma" required="" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline text-opacity-70">mail</span>
+<input class="w-full bg-background border border-outline-variant rounded-lg py-sm pl-[36px] pr-sm font-body-md text-on-surface placeholder:text-outline/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" id="email" name="email" placeholder="name@example.com" required="" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-sm">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="password">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline text-opacity-70">lock</span>
+<input class="w-full bg-background border border-outline-variant rounded-lg py-sm pl-[36px] pr-sm font-body-md text-on-surface placeholder:text-outline/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="confirm_password">Confirm Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline text-opacity-70">lock_reset</span>
+<input class="w-full bg-background border border-outline-variant rounded-lg py-sm pl-[36px] pr-sm font-body-md text-on-surface placeholder:text-outline/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" id="confirm_password" name="confirm_password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="language">Preferred Language</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline text-opacity-70">language</span>
+<select class="w-full bg-background border border-outline-variant rounded-lg py-sm pl-[36px] pr-sm font-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all appearance-none" id="language" name="language">
+<option value="en">English</option>
+<option value="hi">Hindi (हिन्दी)</option>
+<option value="ta">Tamil (தமிழ்)</option>
+<option value="te">Telugu (తెలుగు)</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Onboarding Preferences Divider -->
+<div class="relative py-sm mt-sm">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant/50"></div>
+</div>
+<div class="relative flex justify-center">
+<span class="bg-surface-container-low px-2 font-label-sm text-label-sm text-primary">AI Preferences (Optional)</span>
+</div>
+</div>
+<!-- Preferences Section (Interactive Chips) -->
+<div class="flex flex-col gap-md">
+<!-- Interests -->
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-1">Interests</span>
+<div class="flex flex-wrap gap-2" id="interest-chips">
+<button class="pref-chip px-3 py-1.5 rounded-full border border-outline-variant bg-surface-container hover:border-primary/50 font-label-sm text-label-sm text-on-surface transition-all" type="button">Heritage</button>
+<button class="pref-chip px-3 py-1.5 rounded-full border border-outline-variant bg-surface-container hover:border-primary/50 font-label-sm text-label-sm text-on-surface transition-all" type="button">Nature</button>
+<button class="pref-chip px-3 py-1.5 rounded-full border border-outline-variant bg-surface-container hover:border-primary/50 font-label-sm text-label-sm text-on-surface transition-all" type="button">Food</button>
+<button class="pref-chip px-3 py-1.5 rounded-full border border-outline-variant bg-surface-container hover:border-primary/50 font-label-sm text-label-sm text-on-surface transition-all" type="button">Adventure</button>
+</div>
+</div>
+<!-- Budget -->
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-1">Budget</span>
+<div class="flex bg-surface-container rounded-lg border border-outline-variant overflow-hidden" id="budget-selector">
+<button class="flex-1 py-2 font-label-md text-label-md text-on-surface border-r border-outline-variant hover:bg-surface-container-high transition-colors" type="button">Budget</button>
+<button class="flex-1 py-2 font-label-md text-label-md text-on-surface border-r border-outline-variant hover:bg-surface-container-high transition-colors" type="button">Standard</button>
+<button class="flex-1 py-2 font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-colors" type="button">Luxury</button>
+</div>
+</div>
+</div>
+<!-- Primary Actions -->
+<div class="mt-md flex flex-col gap-sm">
+<button class="w-full py-sm px-md bg-inverse-primary text-on-primary-container font-label-md text-label-md font-bold rounded-full shadow-[0_0_15px_rgba(99,102,241,0.2)] hover:bg-primary transition-colors active:scale-[0.98]" type="submit">
+                        Create Account
+                    </button>
+<button class="w-full flex items-center justify-center gap-2 py-sm px-md bg-transparent border border-outline-variant text-on-surface font-label-md text-label-md rounded-full hover:bg-surface-container transition-colors active:scale-[0.98]" type="button">
+<svg class="w-4 h-4" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                        Continue with Google
+                    </button>
+</div>
+</form>
+<!-- Footer Link -->
+<div class="mt-lg text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+                    Already have an account? 
+                    <a class="text-primary hover:text-surface-tint font-semibold hover:underline transition-colors" href="#">Login</a>
+</p>
+</div>
+</div>
+<!-- Bottom spacing for mobile scroll -->
+<div class="h-xl w-full"></div>
+</main>
+<script>
+        // Micro-interactions for Preferences
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Multiple Selection for Chips
+            const chips = document.querySelectorAll('.pref-chip');
+            chips.forEach(chip => {
+                chip.addEventListener('click', function() {
+                    const isActive = this.classList.contains('border-primary');
+                    if (isActive) {
+                        this.classList.remove('border-primary', 'bg-primary-container/10', 'text-primary');
+                        this.classList.add('border-outline-variant', 'bg-surface-container', 'text-on-surface');
+                    } else {
+                        this.classList.add('border-primary', 'bg-primary-container/10', 'text-primary');
+                        this.classList.remove('border-outline-variant', 'bg-surface-container', 'text-on-surface');
+                    }
+                });
+            });
+
+            // Single Selection for Budget
+            const budgetBtns = document.querySelectorAll('#budget-selector button');
+            budgetBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Reset all
+                    budgetBtns.forEach(b => {
+                        b.classList.remove('bg-primary-container/20', 'text-primary', 'font-semibold');
+                        b.classList.add('text-on-surface');
+                    });
+                    // Set active
+                    this.classList.add('bg-primary-container/20', 'text-primary', 'font-semibold');
+                    this.classList.remove('text-on-surface');
+                });
+            });
+        });
+    </script>
+</body></html>

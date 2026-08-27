@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Samastha Samanvayam - Traveler Profile &amp; Preferences</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#4edea3",
+                      "surface-container-high": "#292932",
+                      "primary": "#c0c1ff",
+                      "on-error-container": "#ffdad6",
+                      "background": "#13131b",
+                      "primary-container": "#8083ff",
+                      "surface-dim": "#13131b",
+                      "on-tertiary": "#4f2500",
+                      "on-surface": "#e4e1ed",
+                      "on-primary": "#1000a9",
+                      "surface-variant": "#34343d",
+                      "on-error": "#690005",
+                      "secondary-fixed-dim": "#4edea3",
+                      "on-secondary-container": "#00311f",
+                      "tertiary-container": "#d97721",
+                      "inverse-on-surface": "#303038",
+                      "surface-container-highest": "#34343d",
+                      "on-background": "#e4e1ed",
+                      "outline": "#908fa0",
+                      "on-tertiary-container": "#452000",
+                      "surface": "#13131b",
+                      "primary-fixed": "#e1e0ff",
+                      "surface-container-lowest": "#0d0d15",
+                      "on-secondary-fixed-variant": "#005236",
+                      "on-secondary": "#003824",
+                      "on-secondary-fixed": "#002113",
+                      "on-primary-fixed": "#07006c",
+                      "inverse-primary": "#494bd6",
+                      "inverse-surface": "#e4e1ed",
+                      "error": "#ffb4ab",
+                      "surface-container-low": "#1b1b23",
+                      "secondary-fixed": "#6ffbbe",
+                      "outline-variant": "#464554",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "secondary-container": "#00a572",
+                      "on-primary-container": "#0d0096",
+                      "surface-bright": "#393841",
+                      "surface-container": "#1f1f27",
+                      "tertiary-fixed": "#ffdcc5",
+                      "on-surface-variant": "#c7c4d7",
+                      "surface-tint": "#c0c1ff",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "tertiary": "#ffb783",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "error-container": "#93000a",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "on-tertiary-fixed": "#301400"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "xl": "32px",
+                      "sm": "8px",
+                      "2xl": "48px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "gutter": "24px",
+                      "lg": "24px",
+                      "3xl": "64px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        /* Base styles handled by Tailwind config */
+        body {
+            background-color: #0A0A0B;
+            color: #e4e1ed;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(18, 18, 20, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #27272A;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .ai-glow {
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+        }
+        
+        .ai-glow-focus:focus-within {
+             box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+             border-color: #6366F1;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0B; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272A; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #34343d; 
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex flex-col md:flex-row font-body-md text-body-md text-on-surface">
+<!-- SideNavBar (Desktop) / Suppressed on Mobile per logic -->
+<nav class="hidden md:flex bg-surface-container-low border-r border-outline-variant shadow-lg docked left-0 h-full w-64 fixed top-0 flex-col z-40 transition-all duration-200 ease-in-out">
+<div class="p-lg flex items-center justify-center border-b border-outline-variant/50">
+<span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">Samastha Samanvayam</span>
+</div>
+<div class="flex-1 py-md overflow-y-auto">
+<ul class="space-y-sm px-sm">
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 hover:bg-surface-container-highest transition-colors font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">smart_toy</span>
+                        AI Planner
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 hover:bg-surface-container-highest transition-colors font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">emergency</span>
+                        Emergency
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 hover:bg-surface-container-highest transition-colors font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">security</span>
+                        Safety Guide
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 hover:bg-surface-container-highest transition-colors font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">eco</span>
+                        Sustainability
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 hover:bg-surface-container-highest transition-colors font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">payments</span>
+                        Currency
+                    </a>
+</li>
+</ul>
+</div>
+<div class="p-md border-t border-outline-variant/50">
+<div class="flex items-center gap-md mb-md p-sm bg-surface-container rounded-lg border border-outline-variant/30">
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A close-up, high-quality professional portrait of a modern traveler, soft studio lighting, dark premium background, subtle blue rim light, highly detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4M8j3XeQOVMWZwyy2o89uydV2a90bXrClbAts62J4aQxXjLSVgK3lnNADRVxhREOd3o8ED__7P2hjCW8ExY9HGj3WJYw7vezpIivVrJqEZbX-qEh8QpGuM76yZ_UQ4RvHs4WqL3RTY5BWvZubWHx6OxgzkXzsynlen7xsFqHG1eGKavLB0BzL5vWx_csVV1uF4R2fsecA2IORNTmz2I2b6Xyr2SCT2Le6Vv88F9nV2dS_DgoMHfJ5"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Traveler Profile</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Premium Member</p>
+</div>
+</div>
+<ul class="space-y-sm px-sm mb-md">
+<li>
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg mx-2 my-1 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                        Settings
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 hover:bg-surface-container-highest transition-colors font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">help</span>
+                        Support
+                    </a>
+</li>
+</ul>
+<button class="w-full py-sm px-md bg-[#6366f1] text-white rounded-full font-label-md text-label-md hover:bg-[#4f46e5] transition-colors shadow-sm flex items-center justify-center gap-sm">
+                Upgrade to Pro
+            </button>
+</div>
+</nav>
+<!-- TopNavBar (Mobile only per logic) -->
+<nav class="md:hidden bg-background/80 backdrop-blur-md flex justify-between items-center h-[72px] px-lg w-full fixed top-0 z-40 border-b border-outline-variant shadow-sm transition-transform cursor-pointer">
+<span class="font-headline-md text-headline-md font-bold text-primary">Samastha Samanvayam</span>
+<div class="flex items-center gap-md">
+<!-- Search implied by JSON, simplified for mobile -->
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="px-md py-sm bg-gradient-to-r from-[#6366f1] to-[#818cf8] text-white rounded-full font-label-sm text-label-sm shadow-sm ai-glow">
+                AI Concierge
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 pt-[72px] md:pt-0 p-md md:p-2xl max-w-container-max mx-auto w-full">
+<!-- Page Header -->
+<header class="mb-xl">
+<h1 class="font-display text-display text-on-surface mb-sm tracking-tight">Traveler Settings</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Manage your profile, travel preferences, and intelligent assistant settings.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Profile & Info (4 cols) -->
+<div class="lg:col-span-4 space-y-lg">
+<!-- Profile Header Card -->
+<div class="glass-panel rounded-2xl p-lg flex flex-col items-center text-center relative overflow-hidden group hover:border-[#6366f1] transition-colors duration-300">
+<!-- Decorative subtle glow -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-[#6366f1]/20 rounded-full blur-3xl"></div>
+<div class="relative w-24 h-24 mb-md">
+<img alt="Namaste, Traveler" class="w-full h-full rounded-full object-cover border-2 border-outline-variant group-hover:border-[#6366f1] transition-colors" data-alt="A close-up, high-quality professional portrait of a modern traveler, soft studio lighting, dark premium background, subtle blue rim light, highly detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_EKWuiqTsoaWZKFZh4i51XpOMtdSt-rDf8sETcByRNORrIbaXNHsSu1iY_gHq5DRQAywhE5fQpk8LHa0zMJTjUv4460bEu2WGNYKTSVkgLqoATfWnf6sq0EzQtbTHwCQP9T-2UtHZjtKC3yZZ3OXNI5bgNeJOcUXWNQRHjWMjboZlJyDf3gAYU7WuM_jrX_RhglNu1rV_Q2Fc3erU7hJR7oKctqUJPIb7f78EsEFefU6ybHwSL3uX"/>
+<button class="absolute bottom-0 right-0 p-sm bg-surface-container-high rounded-full border border-outline-variant text-on-surface hover:text-primary hover:border-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">Namaste, Traveler</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">traveler@bharatai.com</p>
+<div class="inline-flex items-center gap-xs px-sm py-xs bg-surface-container-high border border-outline-variant rounded-full">
+<span class="material-symbols-outlined text-secondary text-[14px]">verified</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Member since 2024</span>
+</div>
+</div>
+<!-- Personal Information -->
+<div class="glass-panel rounded-2xl p-lg space-y-md">
+<h3 class="font-headline-md text-headline-md text-on-surface border-b border-outline-variant pb-sm mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">person</span>
+                         Personal Info
+                     </h3>
+<div class="space-y-sm ai-glow-focus rounded-lg transition-shadow">
+<label class="font-label-sm text-label-sm text-on-surface-variant block">Full Name</label>
+<input class="w-full bg-[#0A0A0B] border border-[#27272A] rounded-lg px-md py-sm text-on-surface font-body-md text-body-md focus:outline-none focus:border-[#6366f1] transition-colors" type="text" value="Traveler Name"/>
+</div>
+<div class="space-y-sm ai-glow-focus rounded-lg transition-shadow">
+<label class="font-label-sm text-label-sm text-on-surface-variant block">Email Address</label>
+<input class="w-full bg-[#0A0A0B] border border-[#27272A] rounded-lg px-md py-sm text-on-surface font-body-md text-body-md focus:outline-none focus:border-[#6366f1] transition-colors" type="email" value="traveler@bharatai.com"/>
+</div>
+<div class="space-y-sm ai-glow-focus rounded-lg transition-shadow">
+<label class="font-label-sm text-label-sm text-on-surface-variant block">Preferred Language</label>
+<select class="w-full bg-[#0A0A0B] border border-[#27272A] rounded-lg px-md py-sm text-on-surface font-body-md text-body-md focus:outline-none focus:border-[#6366f1] transition-colors appearance-none">
+<option>English</option>
+<option>Hindi</option>
+<option>Tamil</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Right Column: Preferences & AI (8 cols) -->
+<div class="lg:col-span-8 space-y-lg">
+<!-- AI Influence Banner -->
+<div class="bg-gradient-to-r from-surface-container-high to-[#1a1a24] border border-[#27272A] rounded-2xl p-lg relative overflow-hidden ai-glow">
+<div class="absolute right-0 top-0 w-64 h-64 bg-[#6366f1]/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+<div class="flex items-start gap-md relative z-10">
+<div class="p-sm bg-[#6366f1]/20 rounded-lg shrink-0">
+<span class="material-symbols-outlined text-[#6366f1]">psychology</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs flex items-center gap-sm">
+                                 How your preferences influence AI
+                                 <span class="px-2 py-0.5 bg-[#6366f1]/20 text-[#c0c1ff] text-[10px] uppercase tracking-wider rounded-full font-bold border border-[#6366f1]/30">Active</span>
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                 These settings actively tune our AI's destination matching, safety routing, and accessibility logic to craft personalized, seamless itineraries for your journey across India.
+                             </p>
+</div>
+</div>
+</div>
+<!-- Traveler Preferences -->
+<div class="glass-panel rounded-2xl p-lg space-y-xl">
+<h3 class="font-headline-md text-headline-md text-on-surface border-b border-outline-variant pb-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">explore</span>
+                         Travel Preferences
+                     </h3>
+<!-- Travel Style -->
+<div>
+<label class="font-label-md text-label-md text-on-surface block mb-md">Travel Style <span class="text-on-surface-variant font-normal">(Select up to 3)</span></label>
+<div class="flex flex-wrap gap-sm">
+<button class="px-md py-sm bg-surface-container-high border border-[#6366f1] text-[#c0c1ff] rounded-full font-label-sm text-label-sm transition-all hover:bg-[#6366f1]/20 shadow-[0_0_10px_rgba(99,102,241,0.2)]">Heritage &amp; Culture</button>
+<button class="px-md py-sm bg-[#0A0A0B] border border-[#27272A] text-on-surface-variant rounded-full font-label-sm text-label-sm transition-all hover:border-outline hover:text-on-surface">Nature &amp; Wildlife</button>
+<button class="px-md py-sm bg-[#0A0A0B] border border-[#27272A] text-on-surface-variant rounded-full font-label-sm text-label-sm transition-all hover:border-outline hover:text-on-surface">Adventure</button>
+<button class="px-md py-sm bg-surface-container-high border border-[#6366f1] text-[#c0c1ff] rounded-full font-label-sm text-label-sm transition-all hover:bg-[#6366f1]/20 shadow-[0_0_10px_rgba(99,102,241,0.2)]">Spiritual</button>
+<button class="px-md py-sm bg-[#0A0A0B] border border-[#27272A] text-on-surface-variant rounded-full font-label-sm text-label-sm transition-all hover:border-outline hover:text-on-surface">Culinary</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Budget -->
+<div>
+<label class="font-label-md text-label-md text-on-surface block mb-md">Budget Preference</label>
+<div class="flex p-1 bg-[#0A0A0B] border border-[#27272A] rounded-lg">
+<button class="flex-1 py-xs text-center font-label-sm text-label-sm text-on-surface-variant rounded-md hover:text-on-surface transition-colors">Economy</button>
+<button class="flex-1 py-xs text-center font-label-sm text-label-sm bg-surface-container-high text-on-surface rounded-md shadow-sm border border-outline-variant/30">Moderate</button>
+<button class="flex-1 py-xs text-center font-label-sm text-label-sm text-on-surface-variant rounded-md hover:text-on-surface transition-colors">Premium</button>
+</div>
+</div>
+<!-- Transport -->
+<div>
+<label class="font-label-md text-label-md text-on-surface block mb-md">Preferred Transport</label>
+<div class="flex p-1 bg-[#0A0A0B] border border-[#27272A] rounded-lg">
+<button class="flex-1 py-xs text-center font-label-sm text-label-sm bg-surface-container-high text-on-surface rounded-md shadow-sm border border-outline-variant/30 flex items-center justify-center gap-xs"><span class="material-symbols-outlined text-[16px]">train</span> Train</button>
+<button class="flex-1 py-xs text-center font-label-sm text-label-sm text-on-surface-variant rounded-md hover:text-on-surface transition-colors flex items-center justify-center gap-xs"><span class="material-symbols-outlined text-[16px]">local_taxi</span> EV Cab</button>
+<button class="flex-1 py-xs text-center font-label-sm text-label-sm text-on-surface-variant rounded-md hover:text-on-surface transition-colors flex items-center justify-center gap-xs"><span class="material-symbols-outlined text-[16px]">flight</span> Flight</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Intelligent Needs -->
+<div class="glass-panel rounded-2xl p-lg space-y-md">
+<h3 class="font-headline-md text-headline-md text-on-surface border-b border-outline-variant pb-sm mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">health_and_safety</span>
+                         Intelligent Needs (Safety &amp; Accessibility)
+                     </h3>
+<div class="space-y-lg">
+<!-- Toggle Item 1 -->
+<div class="flex items-start justify-between gap-md p-md bg-[#0A0A0B] border border-[#27272A] rounded-lg hover:border-outline-variant transition-colors">
+<div class="flex gap-md">
+<div class="mt-1">
+<span class="material-symbols-outlined text-secondary">verified_user</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Women Safety Priority</h4>
+<p class="font-body-sm text-body-md text-on-surface-variant mt-xs">AI will prioritize verified safe zones, well-lit areas, and highly-rated secure accommodations.</p>
+</div>
+</div>
+<!-- Toggle Switch Active -->
+<button aria-checked="true" class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-[#6366f1] transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75" role="switch">
+<span class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<!-- Toggle Item 2 -->
+<div class="flex items-start justify-between gap-md p-md bg-[#0A0A0B] border border-[#27272A] rounded-lg hover:border-outline-variant transition-colors">
+<div class="flex gap-md">
+<div class="mt-1">
+<span class="material-symbols-outlined text-tertiary">elderly</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Elderly Assistance</h4>
+<p class="font-body-sm text-body-md text-on-surface-variant mt-xs">Focus on relaxed pacing, medical facility proximity, and comfortable transport options.</p>
+</div>
+</div>
+<!-- Toggle Switch Inactive -->
+<button aria-checked="false" class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-surface-variant transition-colors duration-200 ease-in-out focus:outline-none" role="switch">
+<span class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-[#908fa0] shadow-lg ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<!-- Toggle Item 3 -->
+<div class="flex items-start justify-between gap-md p-md bg-[#0A0A0B] border border-[#27272A] rounded-lg hover:border-outline-variant transition-colors">
+<div class="flex gap-md">
+<div class="mt-1">
+<span class="material-symbols-outlined text-primary">accessible</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Accessibility Requirements</h4>
+<p class="font-body-sm text-body-md text-on-surface-variant mt-xs">AI routes will filter for low-step paths, ramp availability, and accessible facilities.</p>
+</div>
+</div>
+<!-- Toggle Switch Active -->
+<button aria-checked="true" class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-[#6366f1] transition-colors duration-200 ease-in-out focus:outline-none" role="switch">
+<span class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row justify-end gap-md pt-md">
+<button class="px-lg py-sm bg-transparent border border-[#27272A] text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-container-high hover:text-on-surface transition-colors">
+                         Reset to AI Defaults
+                     </button>
+<button class="px-lg py-sm bg-[#6366f1] text-white rounded-full font-label-md text-label-md hover:bg-[#4f46e5] transition-colors shadow-lg ai-glow">
+                         Save Changes
+                     </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl px-lg mt-2xl flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto border-t border-outline-variant bg-surface-container-lowest md:ml-64">
+<span class="font-label-md text-label-md font-semibold text-primary mb-md md:mb-0">© 2024 Samastha Samanvayam. All rights reserved.</span>
+<div class="flex flex-wrap justify-center gap-md font-label-sm text-label-sm text-on-surface-variant">
+<a class="hover:text-secondary opacity-80 hover:opacity-100 transition-opacity" href="#">Safety Protocol</a>
+<a class="hover:text-secondary opacity-80 hover:opacity-100 transition-opacity" href="#">Sustainability Hub</a>
+<a class="hover:text-secondary opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="hover:text-secondary opacity-80 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+</div>
+</footer>
+</body></html>

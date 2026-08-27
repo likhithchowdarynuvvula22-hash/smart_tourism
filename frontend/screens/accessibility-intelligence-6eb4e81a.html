@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Samastha Samanvayam - Accessibility Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#494bd6",
+                        "primary-fixed": "#e1e0ff",
+                        "on-secondary-fixed": "#002113",
+                        "inverse-on-surface": "#303038",
+                        "background": "#13131b",
+                        "outline": "#908fa0",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#e4e1ed",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#34343d",
+                        "primary": "#c0c1ff",
+                        "tertiary": "#ffb783",
+                        "surface": "#13131b",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "on-background": "#e4e1ed",
+                        "tertiary-container": "#d97721",
+                        "on-primary-fixed": "#07006c",
+                        "on-surface-variant": "#c7c4d7",
+                        "primary-container": "#8083ff",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "inverse-surface": "#e4e1ed",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "on-secondary-container": "#00311f",
+                        "surface-container-high": "#292932",
+                        "surface-bright": "#393841",
+                        "secondary-fixed": "#6ffbbe",
+                        "secondary-container": "#00a572",
+                        "outline-variant": "#464554",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-primary": "#1000a9",
+                        "surface-dim": "#13131b",
+                        "surface-container": "#1f1f27",
+                        "on-primary-container": "#0d0096",
+                        "surface-container-low": "#1b1b23",
+                        "secondary": "#4edea3",
+                        "on-secondary": "#003824",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-container-highest": "#34343d",
+                        "on-tertiary-fixed": "#301400",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "surface-container-lowest": "#0d0d15",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-tertiary-container": "#452000",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-tint": "#c0c1ff",
+                        "on-tertiary": "#4f2500"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "2xl": "48px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "md": "16px",
+                        "container-max": "1280px",
+                        "3xl": "64px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .ai-glow {
+            box-shadow: 0 0 15px rgba(192, 193, 255, 0.2);
+        }
+        .deep-shadow {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 dark:bg-surface/80 backdrop-blur-md text-primary dark:text-primary docked full-width top-0 sticky border-b border-outline-variant flat no shadows flex justify-between items-center h-[72px] px-lg max-w-container-max mx-auto w-full z-50">
+<div class="flex items-center gap-md">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary">Samastha Samanvayam</span>
+</div>
+<div class="hidden md:flex items-center gap-xl">
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Home</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Explore</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 scale-95 duration-150" href="#">Plan</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">My Trips</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Saved</a>
+</div>
+<div class="flex items-center gap-md">
+<button aria-label="language" class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined">language</span>
+</button>
+<button aria-label="smart_toy" class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined">smart_toy</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200 flex items-center gap-sm">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="hidden md:inline font-label-md">Profile</span>
+</button>
+</div>
+</nav>
+<div class="flex flex-1 overflow-hidden max-w-container-max w-full mx-auto">
+<!-- SideNavBar -->
+<aside class="bg-surface-container dark:bg-surface-container text-primary dark:text-primary docked left-0 h-full w-64 bg-surface-container border-r border-outline-variant shadow-md hidden lg:flex flex-col p-md gap-sm shrink-0 z-40 relative">
+<div class="mb-xl p-md">
+<div class="flex items-center gap-md mb-md">
+<img alt="User Profile" class="w-12 h-12 rounded-full object-cover border border-outline-variant" data-alt="A futuristic AI avatar profile picture. Corporate modern glassmorphism aesthetic, glowing indigo accents against dark grey, clean, tech-forward, high-end concierge vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANa4IAu52p85Gg6L4QZ94vhkmZs_tRIEL9E-i7m_WWo1TDvfaniWzDVN9brl3B2YPm2BiQOw_c-s41fni7v2Q-2leiJTIRQRXwSsyL8kFw4A-mS9mJIMW5xEhO8wnG62Pl-dfNWt56TeOG05CmrJT5l7FQvOyYN-tq4TLQI7cyQfx6iMSrI5LfA4jLwRLXgDwvKMYKJQRjDU-31GmmQC9lK7qmYRn1pBw6DGFC79NHnwWTut-B86i8"/>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Namaste, Traveler</div>
+<div class="font-label-md text-label-md text-on-surface-variant">AI Assistant Ready</div>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-md py-sm px-md rounded-full hover:bg-primary-container transition-colors font-bold">Start New AI Plan</button>
+</div>
+<nav class="flex flex-col gap-sm">
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant rounded-xl p-md hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md">Home</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant rounded-xl p-md hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-md">Explore</span>
+</a>
+<a class="flex items-center gap-md bg-primary-container text-on-primary-container rounded-xl p-md translate-x-1" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-md font-bold">AI Planner</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant rounded-xl p-md hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-md">My Trips</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant rounded-xl p-md hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-label-md">Saved</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant rounded-xl p-md hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">emergency</span>
+<span class="font-label-md">Emergency</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto p-md md:p-xl lg:p-2xl">
+<!-- Header Section -->
+<header class="mb-2xl">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-md mb-xl">
+<div>
+<h1 class="font-display text-display text-on-surface mb-sm">Accessibility Intelligence</h1>
+<p class="font-headline-md text-headline-md text-primary">Jaipur, Rajasthan</p>
+</div>
+<div class="bg-secondary-container/20 border border-secondary-container rounded-xl p-md flex items-center gap-md backdrop-blur-md">
+<span class="material-symbols-outlined text-secondary text-[32px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div>
+<div class="font-label-md text-label-md text-on-surface-variant">Overall Accessibility Score</div>
+<div class="font-headline-lg text-headline-lg text-secondary">4.2/5 <span class="font-body-md text-body-md text-on-surface-variant">- High Accessibility</span></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Inclusive Discovery Section -->
+<section class="mb-2xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">travel_explore</span>
+                    Inclusive Discovery
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Card 1 -->
+<div class="bg-[#121214] border border-[#27272A] rounded-2xl overflow-hidden hover:border-primary hover:scale-[1.02] transition-all duration-300 relative group">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover" data-alt="A grand view of Amer Fort in Jaipur, Rajasthan, bathed in golden hour light. The architecture is stunning. The image embodies a modern, premium tourism aesthetic with deep shadows and vibrant contrast, suitable for a dark-mode luxury travel dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRnzgtnJJFMMC8IEZ4V61EDowDd4fWYurzbsNj0CaQJZ358Yspw41byUTbE6GfghyijTGL7QP2QLYqgSXoBRZG9tG6KowODwoGXosyZ4BSXN_vYEABAw6rmgSAJg8WwgUk5JLZeru0ETIxYAN1LQ68fKndx0yAwak2cgUHvmGLSVhkrEQQf0IB_PIIXqrWC6OUu9S_QHn6Ut6Q_CSXLwoUJdmHVpmjQBAyXC-XNC8iB9szfY6er7e-"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#121214] to-transparent"></div>
+<div class="absolute top-md right-md bg-surface-container/80 backdrop-blur-md border border-outline-variant rounded-full px-sm py-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-sm">accessible_forward</span>
+<span class="font-label-sm text-label-sm text-on-surface">Verified</span>
+</div>
+</div>
+<div class="p-lg relative z-10 -mt-xl">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm drop-shadow-md">Amer Fort</h3>
+<div class="flex flex-wrap gap-sm mt-md">
+<span class="bg-[#1C1C1E] border border-[#27272A] text-on-surface font-label-sm text-label-sm px-sm py-xs rounded flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">accessible</span> Wheelchair Accessible
+                                </span>
+<span class="bg-[#1C1C1E] border border-[#27272A] text-on-surface font-label-sm text-label-sm px-sm py-xs rounded flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">hearing</span> Audio Guides
+                                </span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-[#121214] border border-[#27272A] rounded-2xl overflow-hidden hover:border-primary hover:scale-[1.02] transition-all duration-300 relative group">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover" data-alt="The intricate courtyards of City Palace, Jaipur, captured with a sense of royal elegance. High-contrast lighting highlights the sandstone textures against a deep twilight sky, fitting a premium dark-themed travel intelligence dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-XSMXlKjWsLK0hvZ6qlfQPElnoXwIFQjTqW-yI6Icm7DrOz3l8cAqTOdE67zFMmBsxd5g77QdPhNGedskjTyouQ4oWw4osi3_q9vCUXG-lndnIVbeCds9jPJONT8SWd_9OsJcoX1karAN203pcGxAy4mUtIDwmuXtwn4YcJT3ff4NwvgnZ0TQHf6shAIsLnN9o7ZEpF-Euu4UDjboTeVOqCSYm31RPebqG6FX4QTgXx2YYLY-X1K6"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#121214] to-transparent"></div>
+</div>
+<div class="p-lg relative z-10 -mt-xl">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm drop-shadow-md">City Palace</h3>
+<div class="flex flex-wrap gap-sm mt-md">
+<span class="bg-[#1C1C1E] border border-[#27272A] text-on-surface font-label-sm text-label-sm px-sm py-xs rounded flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">elevator</span> Step-Free Entrance
+                                </span>
+<span class="bg-[#1C1C1E] border border-[#27272A] text-on-surface font-label-sm text-label-sm px-sm py-xs rounded flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">blind</span> Tactile Paths
+                                </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest text-secondary dark:text-secondary full-width mt-2xl border-t border-outline-variant flat flex flex-col md:flex-row justify-between items-center px-lg py-xl max-w-container-max mx-auto w-full">
+<div class="text-lg font-bold text-on-surface mb-md md:mb-0">
+            © 2024 Samastha Samanvayam | Samastha Samanvayam | Smart India Hackathon
+        </div>
+<div class="flex flex-wrap justify-center gap-md">
+<a class="text-on-surface-variant hover:text-primary font-label-sm text-label-sm" href="#">Safety Resources</a>
+<a class="text-on-surface-variant hover:text-primary font-label-sm text-label-sm" href="#">Sustainability Manifesto</a>
+<a class="text-on-surface-variant hover:text-primary font-label-sm text-label-sm" href="#">Govt Credits</a>
+<a class="text-on-surface-variant hover:text-primary font-label-sm text-label-sm" href="#">Privacy Policy</a>
+</div>
+</footer>
+</body></html>

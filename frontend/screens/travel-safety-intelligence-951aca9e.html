@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Samastha Samanvayam - Safety Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#908fa0",
+                      "secondary": "#4edea3",
+                      "surface-dim": "#13131b",
+                      "secondary-fixed-dim": "#4edea3",
+                      "surface-bright": "#393841",
+                      "surface-container-low": "#1b1b23",
+                      "on-tertiary-container": "#452000",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "primary": "#c0c1ff",
+                      "error-container": "#93000a",
+                      "inverse-on-surface": "#303038",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "primary-container": "#8083ff",
+                      "secondary-fixed": "#6ffbbe",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-fixed": "#002113",
+                      "on-surface-variant": "#c7c4d7",
+                      "surface-container-high": "#292932",
+                      "on-tertiary": "#4f2500",
+                      "on-error": "#690005",
+                      "on-tertiary-fixed": "#301400",
+                      "surface-container-highest": "#34343d",
+                      "on-secondary-fixed-variant": "#005236",
+                      "tertiary-fixed": "#ffdcc5",
+                      "inverse-surface": "#e4e1ed",
+                      "secondary-container": "#00a572",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "on-primary": "#1000a9",
+                      "surface-tint": "#c0c1ff",
+                      "on-primary-container": "#0d0096",
+                      "on-secondary": "#003824",
+                      "tertiary-container": "#d97721",
+                      "background": "#13131b",
+                      "error": "#ffb4ab",
+                      "surface-container-lowest": "#0d0d15",
+                      "on-primary-fixed": "#07006c",
+                      "on-secondary-container": "#00311f",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "surface-variant": "#34343d",
+                      "on-background": "#e4e1ed",
+                      "on-surface": "#e4e1ed",
+                      "primary-fixed": "#e1e0ff",
+                      "outline-variant": "#464554",
+                      "surface-container": "#1f1f27",
+                      "tertiary": "#ffb783",
+                      "surface": "#13131b",
+                      "inverse-primary": "#494bd6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "base": "4px",
+                      "xs": "4px",
+                      "3xl": "64px",
+                      "gutter": "24px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "2xl": "48px",
+                      "sm": "8px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+          .glass-panel {
+              background: rgba(18, 18, 20, 0.7);
+              backdrop-filter: blur(12px);
+              -webkit-backdrop-filter: blur(12px);
+              border: 1px solid #27272A;
+          }
+          .glow-hover:hover {
+              box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+              border-color: #6366F1;
+          }
+      </style>
+</head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 dark:bg-surface/80 backdrop-blur-md text-primary dark:text-primary font-body-lg docked full-width top-0 sticky border-b border-outline-variant flat no shadows flex justify-between items-center h-[72px] px-lg max-w-container-max mx-auto w-full z-50">
+<div class="flex items-center gap-md">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary">Samastha Samanvayam</span>
+</div>
+<div class="hidden md:flex gap-lg items-center text-label-md font-label-md">
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Home</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Explore</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 active scale-95 duration-150" href="#">Plan</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">My Trips</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Saved</a>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined hover:text-primary transition-colors duration-200 cursor-pointer" data-icon="language">language</span>
+<span class="material-symbols-outlined hover:text-primary transition-colors duration-200 cursor-pointer" data-icon="smart_toy">smart_toy</span>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full font-label-md hover:bg-primary-container transition-colors">Profile</button>
+</div>
+</nav>
+<div class="flex flex-1 w-full max-w-container-max mx-auto relative">
+<!-- SideNavBar -->
+<aside class="bg-surface-container dark:bg-surface-container text-primary dark:text-primary docked left-0 h-full w-64 bg-surface-container border-r border-outline-variant shadow-md hidden lg:flex flex-col p-md gap-sm sticky top-[72px] h-[calc(100vh-72px)] overflow-y-auto">
+<div class="mb-lg px-2">
+<h2 class="text-headline-sm font-headline-md text-primary">Namaste, Traveler</h2>
+<p class="text-label-md font-label-md text-on-surface-variant mt-1">AI Assistant Ready</p>
+</div>
+<nav class="flex flex-col gap-xs flex-1 text-label-md font-label-md">
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant rounded-xl p-md hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span> Home
+                </a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant rounded-xl p-md hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span> Explore
+                </a>
+<a class="flex items-center gap-md bg-primary-container text-on-primary-container rounded-xl p-md active translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span> AI Planner
+                </a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant rounded-xl p-md hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span> My Trips
+                </a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant rounded-xl p-md hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span> Saved
+                </a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant rounded-xl p-md hover:bg-surface-variant transition-all mt-auto text-error" href="#">
+<span class="material-symbols-outlined" data-icon="emergency">emergency</span> Emergency
+                </a>
+</nav>
+<button class="w-full bg-primary-container text-on-primary-container py-3 rounded-xl font-label-md mt-4 hover:opacity-90 transition-opacity">
+                Start New AI Plan
+            </button>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-lg md:p-2xl flex flex-col gap-2xl overflow-y-auto">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-md">
+<div>
+<h1 class="text-display font-display font-bold text-on-surface mb-2">Jaipur, Rajasthan</h1>
+<p class="text-headline-md font-headline-md text-on-surface-variant">Safety Intelligence Report</p>
+</div>
+<div class="glass-panel px-6 py-4 rounded-full flex items-center gap-md">
+<div class="w-4 h-4 rounded-full bg-secondary shadow-[0_0_10px_rgba(78,222,163,0.5)]"></div>
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Overall Safety Rating</p>
+<p class="text-headline-sm font-headline-md font-semibold text-secondary">4.8 / 5.0 - High Safety</p>
+</div>
+</div>
+</header>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Women's Safety (Large Card) -->
+<section class="md:col-span-8 glass-panel rounded-2xl p-lg glow-hover transition-all duration-300 relative overflow-hidden flex flex-col">
+<div class="absolute inset-0 z-0 opacity-10">
+<div class="bg-cover bg-center w-full h-full" data-alt="A subtle, abstract deep charcoal background pattern with gentle geometric curves reminiscent of modern safe travel maps. The mood is calm, professional, and secure, utilizing a highly structured and pristine dark mode aesthetic with soft gradient shifts." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKWjNeqpTzREfcimgCEAaiG3P1sOj2oo-0VVZGblCz8jbG4zSYiXQykitWixWlZnfxz6Ihgi2yonpdB7YZI9bJyePr_x435h-lIvZSs75-CijGt_e100HzniQn2KjXHpem2wMpdCETIojzXtDLX1D5QWyI_d0tmWyELOfGIMNm5Fu_k279dhpHtcnL2vmCcy3ahNr_n5GRPer7dOW6zOB99EwPawr-VDlncKzlXNtmBKflvZ4MM5Lv')"></div>
+</div>
+<div class="relative z-10 flex flex-col h-full">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" data-icon="shield_person">shield_person</span>
+<h2 class="text-headline-md font-headline-md text-on-surface">Women's Safety &amp; Solo Travel</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg flex-1">
+<div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-md">Jaipur is generally safe for solo female travelers, especially in tourist zones. Our AI constantly monitors verified safe zones.</p>
+<div class="bg-surface-container-high p-md rounded-xl border border-outline-variant mb-md">
+<h3 class="text-label-md font-label-md text-on-surface mb-2 flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" data-icon="verified">verified</span> Verified Safe Zones
+                                    </h3>
+<ul class="text-body-md font-body-md text-on-surface-variant space-y-1">
+<li>• C-Scheme &amp; Civil Lines</li>
+<li>• Raja Park (Evening)</li>
+<li>• Major Tourist Monuments (Day)</li>
+</ul>
+</div>
+</div>
+<div class="flex flex-col gap-md justify-center">
+<button class="w-full bg-[#1C1C1E] border border-tertiary-fixed-dim text-tertiary-fixed-dim py-3 px-4 rounded-xl flex items-center justify-between hover:bg-tertiary-fixed-dim hover:text-on-tertiary transition-colors">
+<span class="font-label-md text-label-md">Women's Helpline (1091)</span>
+<span class="material-symbols-outlined" data-icon="call">call</span>
+</button>
+<button class="w-full bg-[#1C1C1E] border border-outline-variant text-on-surface py-3 px-4 rounded-xl flex items-center justify-between hover:border-primary transition-colors">
+<span class="font-label-md text-label-md">Locate Safe Havens</span>
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Recommendations -->
+<section class="md:col-span-4 glass-panel rounded-2xl p-lg glow-hover transition-all duration-300 flex flex-col">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary" data-icon="tips_and_updates">tips_and_updates</span>
+<h2 class="text-headline-md font-headline-md text-on-surface">AI Safety Tips</h2>
+</div>
+<ul class="space-y-md flex-1 text-body-md font-body-md">
+<li class="flex items-start gap-md p-md bg-surface-container rounded-xl">
+<span class="material-symbols-outlined text-primary mt-1" data-icon="nightlight">nightlight</span>
+<span class="text-on-surface-variant">Stay in well-lit areas after 9 PM. Stick to major roads when walking.</span>
+</li>
+<li class="flex items-start gap-md p-md bg-surface-container rounded-xl">
+<span class="material-symbols-outlined text-primary mt-1" data-icon="local_taxi">local_taxi</span>
+<span class="text-on-surface-variant">Use verified app-based cabs (Uber/Ola) for late-night travel instead of street autos.</span>
+</li>
+<li class="flex items-start gap-md p-md bg-surface-container rounded-xl">
+<span class="material-symbols-outlined text-primary mt-1" data-icon="group">group</span>
+<span class="text-on-surface-variant">Maintain vigilance in crowded markets like Johari Bazaar to avoid pickpockets.</span>
+</li>
+</ul>
+</section>
+<!-- Emergency Services Grid -->
+<section class="md:col-span-12 glass-panel rounded-2xl p-lg glow-hover transition-all duration-300">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-error" data-icon="health_and_safety">health_and_safety</span>
+<h2 class="text-headline-md font-headline-md text-on-surface">Emergency Services</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Police -->
+<div class="bg-surface-container p-lg rounded-xl border border-outline-variant flex flex-col h-full">
+<div class="flex items-center justify-between mb-md">
+<h3 class="text-headline-sm font-headline-md text-on-surface">Tourist Police</h3>
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="local_police">local_police</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-sm">Jantar Mantar Station</p>
+<p class="text-label-sm font-label-sm text-outline mb-lg flex-1">2.4 km away • English speaking officers available</p>
+<button class="w-full bg-transparent border border-primary text-primary py-2 rounded-lg font-label-md hover:bg-primary/10 transition-colors flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" data-icon="navigation">navigation</span> Navigate
+                            </button>
+</div>
+<!-- Hospital -->
+<div class="bg-surface-container p-lg rounded-xl border border-outline-variant flex flex-col h-full">
+<div class="flex items-center justify-between mb-md">
+<h3 class="text-headline-sm font-headline-md text-on-surface">24/7 Hospital</h3>
+<span class="material-symbols-outlined text-error text-2xl" data-icon="local_hospital">local_hospital</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-sm">SMS Medical College</p>
+<p class="text-label-sm font-label-sm text-outline mb-lg flex-1">1.8 km away • Trauma Center Active</p>
+<button class="w-full bg-error-container text-on-error-container py-2 rounded-lg font-label-md hover:opacity-90 transition-colors flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" data-icon="call">call</span> Call Emergency
+                            </button>
+</div>
+<!-- Help Center -->
+<div class="bg-surface-container p-lg rounded-xl border border-outline-variant flex flex-col h-full">
+<div class="flex items-center justify-between mb-md">
+<h3 class="text-headline-sm font-headline-md text-on-surface">Govt. Help Kiosk</h3>
+<span class="material-symbols-outlined text-tertiary text-2xl" data-icon="support_agent">support_agent</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-sm">Hawa Mahal Plaza</p>
+<p class="text-label-sm font-label-sm text-outline mb-lg flex-1">0.5 km away • Official Guide verification</p>
+<button class="w-full bg-transparent border border-outline-variant text-on-surface py-2 rounded-lg font-label-md hover:border-primary transition-colors flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" data-icon="info">info</span> Details
+                            </button>
+</div>
+</div>
+</section>
+<!-- Areas of Caution -->
+<section class="md:col-span-12 glass-panel rounded-2xl p-lg glow-hover transition-all duration-300">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-tertiary-container" data-icon="warning">warning</span>
+<h2 class="text-headline-md font-headline-md text-on-surface">Areas of Caution</h2>
+</div>
+<div class="flex flex-col md:flex-row gap-lg">
+<div class="w-full md:w-1/2 h-64 rounded-xl overflow-hidden border border-outline-variant relative">
+<!-- Map Placeholder -->
+<img class="object-cover w-full h-full" data-alt="A stylized, dark mode digital map of Jaipur city center. The map uses deep indigo and charcoal tones with subtle amber highlights indicating areas of caution. The style is modern, sleek, and high-tech, resembling a premium intelligence dashboard rather than a standard consumer map. Roadways are thin, crisp white lines." data-location="Jaipur" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFgn-m85NbfGFXWiEprMcRhlk-VhP6gUF2cUhRnSGiHlfNeGLuv7b0ueY0_6wjJifNqXSc4grOA_EtoXeY_poAf5uMGXpXJ50b_XZpx9frhqaSz4zpGUP4ZJPnRGb_bHfJSlZ5XXEji-KLUP71Becs6etNUq5AExHaah6a146N8F0_BOoK-Hmt4_sjBrK3YAbdeRRYsfNMk2lVg2AD_R6jfqVZIUnb3_KdPavAu1vukNU-GFKbO8-X"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+</div>
+<div class="w-full md:w-1/2 flex flex-col gap-md">
+<div class="p-md bg-surface-container rounded-xl border-l-4 border-tertiary-container">
+<h4 class="text-label-md font-label-md text-on-surface mb-1">Bapu Bazaar (Evening)</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">High density crowd. Exercise vigilance with personal belongings and avoid unverified touts offering exclusive deals.</p>
+</div>
+<div class="p-md bg-surface-container rounded-xl border-l-4 border-tertiary-container">
+<h4 class="text-label-md font-label-md text-on-surface mb-1">Outskirts near Nahargarh (Night)</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">Low visibility and sparse traffic after dusk. Recommended to visit only during daylight hours or with authorized tour groups.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest text-secondary dark:text-secondary Labels: text-label-sm font-label-sm. Body: text-body-md font-body-md full-width mt-2xl border-t border-outline-variant flat flex flex-col md:flex-row justify-between items-center px-lg py-xl max-w-container-max mx-auto w-full z-10 relative">
+<div class="text-lg font-bold text-on-surface mb-md md:mb-0">
+            © 2024 Samastha Samanvayam | Samastha Samanvayam | Smart India Hackathon
+        </div>
+<div class="flex flex-wrap gap-md justify-center md:justify-end">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Safety Resources</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Sustainability Manifesto</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Govt Credits</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</div>
+</footer>
+<!-- Fixed Emergency FAB for Mobile -->
+<div class="md:hidden fixed bottom-6 right-6 z-50">
+<button class="bg-error text-on-error w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="sos">sos</span>
+</button>
+</div>
+</body></html>

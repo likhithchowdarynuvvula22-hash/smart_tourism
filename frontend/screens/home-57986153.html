@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Samastha Samanvayam - Home</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#452000",
+                    "primary-fixed": "#e1e0ff",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffdcc5",
+                    "surface-bright": "#393841",
+                    "on-tertiary": "#4f2500",
+                    "primary": "#c0c1ff",
+                    "surface-container-high": "#292932",
+                    "surface-dim": "#13131b",
+                    "on-secondary": "#003824",
+                    "surface-container-highest": "#34343d",
+                    "on-primary": "#1000a9",
+                    "secondary-container": "#00a572",
+                    "surface-variant": "#34343d",
+                    "outline": "#908fa0",
+                    "surface-container-low": "#1b1b23",
+                    "surface": "#13131b",
+                    "secondary": "#4edea3",
+                    "on-primary-fixed": "#07006c",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface-container": "#1f1f27",
+                    "error": "#ffb4ab",
+                    "inverse-on-surface": "#303038",
+                    "on-surface-variant": "#c7c4d7",
+                    "outline-variant": "#464554",
+                    "primary-container": "#8083ff",
+                    "inverse-surface": "#e4e1ed",
+                    "background": "#13131b",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "inverse-primary": "#494bd6",
+                    "surface-tint": "#c0c1ff",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-container-lowest": "#0d0d15",
+                    "on-surface": "#e4e1ed",
+                    "tertiary": "#ffb783",
+                    "error-container": "#93000a",
+                    "secondary-fixed": "#6ffbbe",
+                    "on-background": "#e4e1ed",
+                    "on-primary-container": "#0d0096",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "on-secondary-container": "#00311f",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "on-secondary-fixed": "#002113",
+                    "on-error": "#690005",
+                    "tertiary-container": "#d97721",
+                    "secondary-fixed-dim": "#4edea3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "2xl": "48px",
+                    "base": "4px",
+                    "3xl": "64px",
+                    "xl": "32px",
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Base specific styling mentioned in prompt but not fully covered by raw tokens */
+        body {
+            background-color: #0A0A0B; /* Deep charcoal base */
+        }
+        .card-hover:hover {
+            border-color: theme('colors.primary');
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+        .ai-glow {
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+        }
+        .ai-input:focus {
+            border-color: theme('colors.primary');
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+            outline: none;
+        }
+    </style>
+</head>
+<body class="text-on-background min-h-screen flex flex-col font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 dark:bg-surface/80 backdrop-blur-md docked full-width top-0 sticky border-b border-outline-variant flat no shadows z-50">
+<div class="flex justify-between items-center h-[72px] px-lg max-w-container-max mx-auto w-full">
+<!-- Brand -->
+<a class="text-headline-md font-headline-md font-bold text-primary dark:text-primary flex items-center gap-sm" href="#">
+<img src="../assets/logo.png" alt="Logo" class="w-7 h-7 object-contain rounded-md bg-white/10 p-0.5 inline-block" /> Samastha Samanvayam
+            </a>
+<!-- Navigation Links -->
+<div class="hidden md:flex items-center gap-lg">
+<!-- Active Link: Home -->
+<a class="text-primary font-bold border-b-2 border-primary pb-1 text-label-md font-label-md hover:text-primary transition-colors duration-200 active:scale-95 duration-150" href="#">Home</a>
+<!-- Inactive Links -->
+<a class="text-on-surface-variant font-label-md hover:text-on-surface text-label-md hover:text-primary transition-colors duration-200" href="#">Explore</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface text-label-md hover:text-primary transition-colors duration-200" href="#">Plan</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface text-label-md hover:text-primary transition-colors duration-200" href="#">My Trips</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface text-label-md hover:text-primary transition-colors duration-200" href="#">Saved</a>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined">language</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined">smart_toy</span>
+</button>
+<button class="bg-primary text-on-primary px-md py-sm rounded-full text-label-md font-label-md hover:bg-primary-fixed transition-colors">
+                    Profile
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative h-[819px] min-h-[600px] flex items-center justify-center">
+<!-- Background Image -->
+<div class="absolute inset-0 w-full h-full">
+<div class="bg-cover bg-center w-full h-full opacity-60 mix-blend-luminosity" data-alt="A breathtaking, ultra-high-resolution photograph of the Taj Mahal or ancient Hampi ruins at dusk. The sky is a gradient of deep indigo and soft twilight purple, reflecting a premium, sophisticated dark-mode aesthetic. The lighting is cinematic, highlighting architectural details with a subtle, modern glowing aura, merging ancient heritage with a futuristic, digital-first travel concept. The mood is majestic, intelligent, and deeply atmospheric." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBiGlbK3K1aRuar9BrH1DVgHdhGQK3e7cR4PIyhr4YlFYFaUaxbgNiRY9Z0Apu-dB-PRpgnoCihUOfaN9tlIKjtfrFrKpfU0X5HFK0K5zARMJynFYno-E7EaL8AYKWxxTWmSBqUxtY6gHQZ2s8_TxhZ2cl0qCobkOFL4csLE3eHeUV2b2tJl93mk9sOdRcFg8cXCR8gEvKnQMeMkcX1VjJFDyICknlOgZAHc1Sg3sYLLKkajaCCcAjb')"></div>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-[#0A0A0B]"></div>
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 max-w-container-max mx-auto px-lg w-full flex flex-col items-center text-center gap-xl mt-[-5%]">
+<h1 class="text-display font-display text-on-surface drop-shadow-2xl">
+                    Discover India, <span class="text-primary-container ai-glow bg-clip-text text-transparent bg-gradient-to-r from-primary-container to-secondary-container">Intelligently.</span>
+</h1>
+<!-- AI Search Bar -->
+<div class="w-full max-w-3xl mt-md">
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary-container to-secondary opacity-30 rounded-[1.5rem] blur ai-glow group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+<div class="relative flex items-center bg-surface-container-low/90 backdrop-blur-xl border border-outline-variant rounded-[1.5rem] p-sm shadow-xl">
+<span class="material-symbols-outlined text-primary-container ml-md mr-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<input class="w-full bg-transparent border-none text-body-lg text-on-surface placeholder:text-on-surface-variant/70 focus:ring-0 ai-input py-md" placeholder="Where do you want to go? (e.g., Accessible Kerala for a family)" type="text"/>
+<button class="bg-primary text-on-primary px-lg py-md rounded-xl text-label-md font-label-md ml-sm flex items-center gap-xs hover:bg-primary-fixed transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">search</span>
+                                Explore
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="max-w-container-max mx-auto px-lg py-3xl w-full">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Feature 1 -->
+<div class="bg-[#121214] border border-[#27272A] rounded-2xl p-xl flex flex-col gap-md card-hover relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 rounded-full blur-3xl -mr-16 -mt-16 transition-opacity group-hover:opacity-100 opacity-0"></div>
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant text-primary-container">
+<span class="material-symbols-outlined text-[24px]">map</span>
+</div>
+<h3 class="text-headline-sm md:text-headline-md font-headline-md text-on-surface mt-sm">AI Itinerary</h3>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+                        Hyper-personalized travel plans crafted by advanced intelligence, adapting to your pace and preferences in real-time.
+                    </p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-[#121214] border border-[#27272A] rounded-2xl p-xl flex flex-col gap-md card-hover relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-3xl -mr-16 -mt-16 transition-opacity group-hover:opacity-100 opacity-0"></div>
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant text-secondary">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+</div>
+<h3 class="text-headline-sm md:text-headline-md font-headline-md text-on-surface mt-sm">Safety First</h3>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+                        Real-time safety intelligence and verified secure routes specifically tailored for women, solo travelers, and the elderly.
+                    </p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-[#121214] border border-[#27272A] rounded-2xl p-xl flex flex-col gap-md card-hover relative overflow-hidden group md:col-span-1 md:row-span-1">
+<div class="absolute top-0 right-0 w-32 h-32 bg-tertiary/10 rounded-full blur-3xl -mr-16 -mt-16 transition-opacity group-hover:opacity-100 opacity-0"></div>
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant text-tertiary">
+<span class="material-symbols-outlined text-[24px]">nature_people</span>
+</div>
+<h3 class="text-headline-sm md:text-headline-md font-headline-md text-on-surface mt-sm">Sustainable Discovery</h3>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+                        Empower local communities. We prioritize eco-friendly stays and authentic cultural experiences driven by local businesses.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Featured Destinations -->
+<section class="max-w-container-max mx-auto px-lg py-xl w-full mb-3xl">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container">travel_explore</span>
+                Curated Intelligence
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Destination: Varanasi -->
+<div class="bg-[#121214] border border-[#27272A] rounded-2xl overflow-hidden card-hover group flex flex-col">
+<div class="h-48 relative overflow-hidden">
+<div class="bg-cover bg-center w-full h-full transform group-hover:scale-105 transition-transform duration-700" data-alt="A highly atmospheric, professional night-time photograph of the Varanasi ghats along the Ganges river. The scene is illuminated by soft, warm golden lights from distant temples and floating diyas, contrasting beautifully against the deep, sophisticated dark-mode aesthetic of the night sky. The image feels deeply cultural yet pristine and safely curated, fitting a high-end AI travel platform." data-location="Varanasi" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC5-02sMadI4cGPKvUaRbp9K7v-hq9YcZ6AhjNZWpKDFu4q3UPJ88PU9BbjJt35qYn2fB8lMFrK_HjYSLm8RCPmaFNQ2jv1-RvPaw-Uy7gZ6IkkjV_2GuTlqhnC-ddnEE7X0dvpAg6EduYeG6Ryb0c0Z5Zc3Gnyw1gpxhsH7191akIqcDRH3nLssQBhRQkw1NFfisViTPr-t9TDxI0q15netQhCJ1i4ATR4L_cA3iIlKUUPd5cKrstS')"></div>
+<div class="absolute top-md right-md flex flex-col gap-xs items-end">
+<span class="bg-[#1C1C1E] border border-[#27272A] text-on-surface px-sm py-xs rounded text-label-sm font-label-sm flex items-center gap-xs backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px]">assured_workload</span> Culture
+                            </span>
+<span class="bg-secondary-container/20 text-secondary border border-secondary/30 px-sm py-xs rounded text-label-sm font-label-sm flex items-center gap-xs backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px]">female</span> Woman Safe
+                            </span>
+</div>
+</div>
+<div class="p-lg flex-grow flex flex-col justify-between">
+<div>
+<h3 class="text-headline-sm font-headline-md text-on-surface">Varanasi</h3>
+<p class="text-body-md text-on-surface-variant mt-sm line-clamp-2">Experience the ancient spiritual heart of India with guided, secure evening artifact walks.</p>
+</div>
+<button class="mt-lg w-full border border-[#27272A] text-on-surface py-sm rounded-lg text-label-md font-label-md hover:bg-surface-container transition-colors flex justify-center items-center gap-xs">
+                            Generate Itinerary <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Destination: Munnar -->
+<div class="bg-[#121214] border border-[#27272A] rounded-2xl overflow-hidden card-hover group flex flex-col">
+<div class="h-48 relative overflow-hidden">
+<div class="bg-cover bg-center w-full h-full transform group-hover:scale-105 transition-transform duration-700" data-alt="A sweeping, dramatic landscape view of the Munnar tea plantations at dawn. The rolling hills are bathed in a soft, ethereal mist with subtle touches of early morning light breaking through. The aesthetic adheres to a premium dark-mode theme, emphasizing deep greens and shadowy atmospheric tones. It conveys a sense of untouched nature, sustainability, and profound tranquility." data-location="Munnar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJ4IvCMZxYuZFeGoTFykWEXaJDJzH742AU0ci5zd9MrUqzYztPyRdyo5Kil5pl6foqi9N3bsCK7EKhfeMBWpF5MClTPeFlGr9Ie7sU9-fHXetY2Pes-ajVOyZ2ggZlqAxpzndOihMm-V6jUr0Ry8Bthhda6aqwSrCToXGoxsQWn-wYGG4qIs0xpg_PFsjlvqlYqmNoHRyV8nzQn7K4T_2zdp_w4-BFUzVePV25J7WJqptkxND3HoFU')"></div>
+<div class="absolute top-md right-md flex flex-col gap-xs items-end">
+<span class="bg-[#1C1C1E] border border-[#27272A] text-on-surface px-sm py-xs rounded text-label-sm font-label-sm flex items-center gap-xs backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px]">eco</span> Sustainability
+                            </span>
+<span class="bg-secondary-container/20 text-secondary border border-secondary/30 px-sm py-xs rounded text-label-sm font-label-sm flex items-center gap-xs backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px]">elderly</span> Elderly Friendly
+                            </span>
+</div>
+</div>
+<div class="p-lg flex-grow flex flex-col justify-between">
+<div>
+<h3 class="text-headline-sm font-headline-md text-on-surface">Munnar</h3>
+<p class="text-body-md text-on-surface-variant mt-sm line-clamp-2">Eco-certified boutique stays nestled in serene valleys, perfect for a slow-paced retreat.</p>
+</div>
+<button class="mt-lg w-full border border-[#27272A] text-on-surface py-sm rounded-lg text-label-md font-label-md hover:bg-surface-container transition-colors flex justify-center items-center gap-xs">
+                            Generate Itinerary <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Destination: Jaipur -->
+<div class="bg-[#121214] border border-[#27272A] rounded-2xl overflow-hidden card-hover group flex flex-col">
+<div class="h-48 relative overflow-hidden">
+<div class="bg-cover bg-center w-full h-full transform group-hover:scale-105 transition-transform duration-700" data-alt="A sophisticated, high-contrast image of the Hawa Mahal in Jaipur at dusk. The intricate red and pink sandstone architecture is highlighted against a deep, dark sky, maintaining the luxury dark-mode design system. The lighting is cinematic, casting elegant shadows while ensuring the grandeur of the structure is clearly visible. The mood is regal, safe, and highly accessible." data-location="Jaipur" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCs_SDzL-oh0mdHVkX3dWdgtR69wpmNYm3sGkAw10j6aQ7chpcMEmkOuVsJGo_uE9MTvaHgTDO_xKv2AjyfSwTI3wgsK3rjUOBFEm4lunaUZhvCy7IWb32rfPtk1uosOpKIyP6p7SQKD0Z2GT_lfrQKKhRC9EbEuF_o20VkV67kKH0G7TurvjOlKCytt9jsklaaP_LUCGwmDN9WE5F4RNnDbxN_nAlOirW_rhuzVIIWOkc7eZ6_whvg')"></div>
+<div class="absolute top-md right-md flex flex-col gap-xs items-end">
+<span class="bg-[#1C1C1E] border border-[#27272A] text-on-surface px-sm py-xs rounded text-label-sm font-label-sm flex items-center gap-xs backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px]">accessible</span> Accessibility
+                            </span>
+<span class="bg-secondary-container/20 text-secondary border border-secondary/30 px-sm py-xs rounded text-label-sm font-label-sm flex items-center gap-xs backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px]">elderly</span> Elderly Friendly
+                            </span>
+</div>
+</div>
+<div class="p-lg flex-grow flex flex-col justify-between">
+<div>
+<h3 class="text-headline-sm font-headline-md text-on-surface">Jaipur</h3>
+<p class="text-body-md text-on-surface-variant mt-sm line-clamp-2">Explore royal heritage with fully vetted accessible transport and smooth-path palace tours.</p>
+</div>
+<button class="mt-lg w-full border border-[#27272A] text-on-surface py-sm rounded-lg text-label-md font-label-md hover:bg-surface-container transition-colors flex justify-center items-center gap-xs">
+                            Generate Itinerary <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest full-width mt-2xl border-t border-outline-variant flat">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg py-xl max-w-container-max mx-auto w-full gap-lg">
+<div class="text-lg font-bold text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined">explore</span>
+                © 2024 Samastha Samanvayam | Samastha Samanvayam | Smart India Hackathon
+            </div>
+<div class="flex flex-wrap justify-center gap-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-sm font-label-sm" href="#">Safety Resources</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-sm font-label-sm" href="#">Sustainability Manifesto</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-sm font-label-sm" href="#">Govt Credits</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-sm font-label-sm" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+</body></html>

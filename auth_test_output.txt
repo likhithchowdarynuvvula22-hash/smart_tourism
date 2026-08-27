@@ -1,0 +1,48 @@
+
+[1m[46m RUN [49m[22m [36mv3.2.7 [39m[90mC:/SIH/Coding[39m
+
+ [31m❯[39m tests/authHardening.test.ts [2m([22m[2m23 tests[22m[2m | [22m[31m15 failed[39m[2m)[22m[32m 22[2mms[22m[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m1. extractBearerToken edge cases[2m > [22m1. returns null for missing Authorization header[39m[32m 9[2mms[22m[39m
+[31m     → Cannot read properties of undefined (reading 'authorization')[39m
+   [32m✓[39m Phase 10A: Authentication Hardening[2m > [22m1. extractBearerToken edge cases[2m > [22m2. returns null for empty Authorization header[32m 1[2mms[22m[39m
+   [32m✓[39m Phase 10A: Authentication Hardening[2m > [22m1. extractBearerToken edge cases[2m > [22m3. returns null for non-string Authorization header[32m 0[2mms[22m[39m
+   [32m✓[39m Phase 10A: Authentication Hardening[2m > [22m1. extractBearerToken edge cases[2m > [22m4. returns null for Authorization: Basic <credentials>[32m 0[2mms[22m[39m
+   [32m✓[39m Phase 10A: Authentication Hardening[2m > [22m1. extractBearerToken edge cases[2m > [22m5. returns null for Authorization: BearerBearer <token>[32m 0[2mms[22m[39m
+   [32m✓[39m Phase 10A: Authentication Hardening[2m > [22m1. extractBearerToken edge cases[2m > [22m6. returns null for malformed split (too few parts)[32m 0[2mms[22m[39m
+   [32m✓[39m Phase 10A: Authentication Hardening[2m > [22m1. extractBearerToken edge cases[2m > [22m7. returns null for malformed split (too many parts)[32m 0[2mms[22m[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m1. extractBearerToken edge cases[2m > [22m8. returns null for lowercase bearer[39m[32m 2[2mms[22m[39m
+[31m     → expected 'invalidtoken' to be null[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m2. authenticate middleware - token validation[2m > [22m9. valid token → authenticated user attached to req.user[39m[32m 1[2mms[22m[39m
+[31m     → authenticate is not defined[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m2. authenticate middleware - token validation[2m > [22m10. missing token → 401 Unauthorized[39m[32m 1[2mms[22m[39m
+[31m     → authenticate is not defined[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m2. authenticate middleware - token validation[2m > [22m11. invalid/expired token → 401 Unauthorized[39m[32m 0[2mms[22m[39m
+[31m     → authenticate is not defined[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m2. authenticate middleware - token validation[2m > [22m12. token validation failure → no crash, error forwarded to error handler[39m[32m 0[2mms[22m[39m
+[31m     → authenticate is not defined[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m3. optionalAuthenticate - graceful degradation[2m > [22m13. valid token → populates req.user and continues[39m[32m 1[2mms[22m[39m
+[31m     → optionalAuthenticate is not defined[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m3. optionalAuthenticate - graceful degradation[2m > [22m14. no token → continues as anonymous (no req.user)[39m[32m 0[2mms[22m[39m
+[31m     → optionalAuthenticate is not defined[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m3. optionalAuthenticate - graceful degradation[2m > [22m15. invalid token → continues as anonymous (no crash)[39m[32m 0[2mms[22m[39m
+[31m     → optionalAuthenticate is not defined[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m4. requireAuth enforcement[2m > [22m16. authenticated request → passes[39m[32m 0[2mms[22m[39m
+[31m     → requireAuth is not defined[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m4. requireAuth enforcement[2m > [22m17. unauthenticated request → 401[39m[32m 1[2mms[22m[39m
+[31m     → requireAuth is not defined[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m5. requireRole RBAC[2m > [22m18. user with tourist role → denied for admin-only route[39m[32m 1[2mms[22m[39m
+[31m     → requireRole is not defined[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m5. requireRole RBAC[2m > [22m19. user with admin role → passes admin-only route[39m[32m 0[2mms[22m[39m
+[31m     → requireRole is not defined[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m5. requireRole RBAC[2m > [22m20. user with business role → denied for admin-only route[39m[32m 0[2mms[22m[39m
+[31m     → requireRole is not defined[39m
+   [32m✓[39m Phase 10A: Authentication Hardening[2m > [22m6. auth bypass prevention[2m > [22m21. auth data not included in logs - redaction verified[32m 0[2mms[22m[39m
+   [32m✓[39m Phase 10A: Authentication Hardening[2m > [22m6. auth bypass prevention[2m > [22m22. no auth bypass through x-api-key header[32m 0[2mms[22m[39m
+[31m   [31m×[31m Phase 10A: Authentication Hardening[2m > [22m6. auth bypass prevention[2m > [22m23. user ID sourced from validated token, not request body[39m[32m 1[2mms[22m[39m
+[31m     → authenticate is not defined[39m
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m15 failed[39m[22m[2m | [22m[1m[32m8 passed[39m[22m[90m (23)[39m
+[2m   Start at [22m 09:52:18
+[2m   Duration [22m 4.34s[2m (transform 858ms, setup 0ms, collect 1.98s, tests 22ms, environment 0ms, prepare 158ms)[22m
+

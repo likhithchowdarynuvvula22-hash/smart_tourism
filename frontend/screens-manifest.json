@@ -1,0 +1,272 @@
+[
+  {
+    "id": "57986153d79445e8a30fcd5a6eba9263",
+    "title": "Samastha Samanvayam - Home",
+    "category": "Core",
+    "deviceType": "DESKTOP",
+    "filename": "home-57986153.html",
+    "screenshotFilename": "home-57986153.png",
+    "width": "2560",
+    "height": "3996"
+  },
+  {
+    "id": "4d0e1ec4ea614c9691a9dcae1c48722d",
+    "title": "Samastha Samanvayam - Home (Detailed)",
+    "category": "Core",
+    "deviceType": "DESKTOP",
+    "filename": "home-detailed-4d0e1ec4.html",
+    "screenshotFilename": "home-detailed-4d0e1ec4.png",
+    "width": "2560",
+    "height": "3550"
+  },
+  {
+    "id": "6499af45ca634ee6b50701a68dd88e3f",
+    "title": "Samastha Samanvayam - AI Trip Planner",
+    "category": "AI Planning",
+    "deviceType": "DESKTOP",
+    "filename": "ai-trip-planner-6499af45.html",
+    "screenshotFilename": "ai-trip-planner-6499af45.png",
+    "width": "2560",
+    "height": "2048"
+  },
+  {
+    "id": "4e60792739324e9f987a058da4bc892c",
+    "title": "Samastha Samanvayam - AI Planner Assistant",
+    "category": "AI Planning",
+    "deviceType": "DESKTOP",
+    "filename": "ai-planner-assistant-4e607927.html",
+    "screenshotFilename": "ai-planner-assistant-4e607927.png",
+    "width": "2560",
+    "height": "2048"
+  },
+  {
+    "id": "771481918d3c492182cbd268901f7339",
+    "title": "AI Trip Planner (Mobile)",
+    "category": "AI Planning",
+    "deviceType": "MOBILE",
+    "filename": "ai-trip-planner-mobile-77148191.html",
+    "screenshotFilename": "ai-trip-planner-mobile-77148191.png",
+    "width": "780",
+    "height": "1768"
+  },
+  {
+    "id": "63b379f734be41059d632c53a63a6ba5",
+    "title": "Samastha Samanvayam - Generated Itinerary",
+    "category": "AI Planning",
+    "deviceType": "DESKTOP",
+    "filename": "generated-itinerary-63b379f7.html",
+    "screenshotFilename": "generated-itinerary-63b379f7.png",
+    "width": "2560",
+    "height": "3136"
+  },
+  {
+    "id": "8d86a463364f441cb0329565bcb54e57",
+    "title": "Samastha Samanvayam - Explore Destinations",
+    "category": "Discovery",
+    "deviceType": "DESKTOP",
+    "filename": "explore-destinations-8d86a463.html",
+    "screenshotFilename": "explore-destinations-8d86a463.png",
+    "width": "2560",
+    "height": "2200"
+  },
+  {
+    "id": "ee0b8c18d5ad4286b69357180d017ffa",
+    "title": "Samastha Samanvayam - Explore India",
+    "category": "Discovery",
+    "deviceType": "DESKTOP",
+    "filename": "explore-india-ee0b8c18.html",
+    "screenshotFilename": "explore-india-ee0b8c18.png",
+    "width": "2560",
+    "height": "2048"
+  },
+  {
+    "id": "07f59b9ae87f481994284257d83efb4f",
+    "title": "Explore Destinations (Mobile)",
+    "category": "Discovery",
+    "deviceType": "MOBILE",
+    "filename": "explore-destinations-mobile-07f59b9a.html",
+    "screenshotFilename": "explore-destinations-mobile-07f59b9a.png",
+    "width": "780",
+    "height": "2260"
+  },
+  {
+    "id": "03d9a2a1dc7849d7a5e474bd338178db",
+    "title": "Samastha Samanvayam - Explore Searching State",
+    "category": "Discovery",
+    "deviceType": "DESKTOP",
+    "filename": "explore-searching-state-03d9a2a1.html",
+    "screenshotFilename": "explore-searching-state-03d9a2a1.png",
+    "width": "2560",
+    "height": "2524"
+  },
+  {
+    "id": "d379c6b9efc54d84a207dfe4a0ed1976",
+    "title": "Samastha Samanvayam - Explore No Results State",
+    "category": "Discovery",
+    "deviceType": "DESKTOP",
+    "filename": "explore-no-results-state-d379c6b9.html",
+    "screenshotFilename": "explore-no-results-state-d379c6b9.png",
+    "width": "2560",
+    "height": "2050"
+  },
+  {
+    "id": "e7cfbedd607840528c90db353afcaf18",
+    "title": "Samastha Samanvayam - Hampi Destination Guide",
+    "category": "Discovery",
+    "deviceType": "DESKTOP",
+    "filename": "hampi-destination-guide-e7cfbedd.html",
+    "screenshotFilename": "hampi-destination-guide-e7cfbedd.png",
+    "width": "2560",
+    "height": "2606"
+  },
+  {
+    "id": "7e3639d0da9e4fd3bd3c6634305f3259",
+    "title": "Samastha Samanvayam - Map Discovery",
+    "category": "Maps & Navigation",
+    "deviceType": "DESKTOP",
+    "filename": "map-discovery-7e3639d0.html",
+    "screenshotFilename": "map-discovery-7e3639d0.png",
+    "width": "2560",
+    "height": "2048"
+  },
+  {
+    "id": "7c6bbb807e5d40fca8ad30c94a8813f4",
+    "title": "Map Discovery (Mobile)",
+    "category": "Maps & Navigation",
+    "deviceType": "MOBILE",
+    "filename": "map-discovery-mobile-7c6bbb80.html",
+    "screenshotFilename": "map-discovery-mobile-7c6bbb80.png",
+    "width": "780",
+    "height": "1768"
+  },
+  {
+    "id": "5625e128460d44c18ff2a627face7480",
+    "title": "Samastha Samanvayam - Budget Intelligence",
+    "category": "Intelligence Suite",
+    "deviceType": "DESKTOP",
+    "filename": "budget-intelligence-5625e128.html",
+    "screenshotFilename": "budget-intelligence-5625e128.png",
+    "width": "2560",
+    "height": "2696"
+  },
+  {
+    "id": "951aca9e80ae4a97b722bddbf5ceeeb9",
+    "title": "Samastha Samanvayam - Travel Safety Intelligence",
+    "category": "Intelligence Suite",
+    "deviceType": "DESKTOP",
+    "filename": "travel-safety-intelligence-951aca9e.html",
+    "screenshotFilename": "travel-safety-intelligence-951aca9e.png",
+    "width": "2560",
+    "height": "3498"
+  },
+  {
+    "id": "6eb4e81a93b34b648fa0096a07f81fe0",
+    "title": "Samastha Samanvayam - Accessibility Intelligence",
+    "category": "Intelligence Suite",
+    "deviceType": "DESKTOP",
+    "filename": "accessibility-intelligence-6eb4e81a.html",
+    "screenshotFilename": "accessibility-intelligence-6eb4e81a.png",
+    "width": "2560",
+    "height": "2048"
+  },
+  {
+    "id": "039d3541b770434881750cd35f42d667",
+    "title": "Samastha Samanvayam - Local Experiences",
+    "category": "Discovery",
+    "deviceType": "DESKTOP",
+    "filename": "local-experiences-039d3541.html",
+    "screenshotFilename": "local-experiences-039d3541.png",
+    "width": "2560",
+    "height": "2772"
+  },
+  {
+    "id": "79067f3347744c44a3fbe0624755c53d",
+    "title": "Samastha Samanvayam - My Journeys",
+    "category": "User & Account",
+    "deviceType": "DESKTOP",
+    "filename": "my-journeys-79067f33.html",
+    "screenshotFilename": "my-journeys-79067f33.png",
+    "width": "2560",
+    "height": "2460"
+  },
+  {
+    "id": "9455299f51394a49b50be137a425bf14",
+    "title": "Samastha Samanvayam - My Journeys (Detailed)",
+    "category": "User & Account",
+    "deviceType": "DESKTOP",
+    "filename": "my-journeys-detailed-9455299f.html",
+    "screenshotFilename": "my-journeys-detailed-9455299f.png",
+    "width": "2560",
+    "height": "2426"
+  },
+  {
+    "id": "712fb92b10f94baba2218ee7671ae137",
+    "title": "Samastha Samanvayam - No Trips State",
+    "category": "User & Account",
+    "deviceType": "DESKTOP",
+    "filename": "no-trips-state-712fb92b.html",
+    "screenshotFilename": "no-trips-state-712fb92b.png",
+    "width": "2560",
+    "height": "2048"
+  },
+  {
+    "id": "52aa30cfbefb448eb886723baa2322fc",
+    "title": "Samastha Samanvayam - Saved Destinations",
+    "category": "User & Account",
+    "deviceType": "DESKTOP",
+    "filename": "saved-destinations-52aa30cf.html",
+    "screenshotFilename": "saved-destinations-52aa30cf.png",
+    "width": "2560",
+    "height": "2386"
+  },
+  {
+    "id": "f8706b0998a545c59d9cfc794452cddd",
+    "title": "Samastha Samanvayam - Traveler Profile & Preferences",
+    "category": "User & Account",
+    "deviceType": "DESKTOP",
+    "filename": "traveler-profile-preferences-f8706b09.html",
+    "screenshotFilename": "traveler-profile-preferences-f8706b09.png",
+    "width": "2560",
+    "height": "4762"
+  },
+  {
+    "id": "98001f9ed7f0462f9917c7bdcf9b8ea3",
+    "title": "Samastha Samanvayam - Login (Desktop)",
+    "category": "User & Account",
+    "deviceType": "DESKTOP",
+    "filename": "login-desktop-98001f9e.html",
+    "screenshotFilename": "login-desktop-98001f9e.png",
+    "width": "2560",
+    "height": "2048"
+  },
+  {
+    "id": "4fd7451e74c74bbeb657702bb109a368",
+    "title": "Samastha Samanvayam - Login (Mobile)",
+    "category": "User & Account",
+    "deviceType": "MOBILE",
+    "filename": "login-mobile-4fd7451e.html",
+    "screenshotFilename": "login-mobile-4fd7451e.png",
+    "width": "780",
+    "height": "1768"
+  },
+  {
+    "id": "b4714fccaee4435cb149409dc9236242",
+    "title": "Samastha Samanvayam - Registration (Desktop)",
+    "category": "User & Account",
+    "deviceType": "DESKTOP",
+    "filename": "registration-desktop-b4714fcc.html",
+    "screenshotFilename": "registration-desktop-b4714fcc.png",
+    "width": "2560",
+    "height": "2172"
+  },
+  {
+    "id": "2b27c1d2e4be4cde89c7aabee61789d6",
+    "title": "Samastha Samanvayam - Registration (Mobile)",
+    "category": "User & Account",
+    "deviceType": "MOBILE",
+    "filename": "registration-mobile-2b27c1d2.html",
+    "screenshotFilename": "registration-mobile-2b27c1d2.png",
+    "width": "780",
+    "height": "2002"
+  }
+]

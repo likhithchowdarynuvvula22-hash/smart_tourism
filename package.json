@@ -1,0 +1,64 @@
+{
+  "name": "sih-tourism-backend",
+  "version": "1.0.0",
+  "description": "SIH Smart Tourism Platform Backend API",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "rimraf dist && tsc",
+    "start": "node dist/server.js",
+    "lint": "eslint src/ tests/ --max-warnings=0",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "release:check": "tsx scripts/releaseCheck.ts",
+    "smoke:test": "tsx scripts/releaseSmokeTest.ts",
+    "candidate:check": "tsx scripts/releaseCandidateCheck.ts",
+    "staging:test": "tsx scripts/stagingSmokeTest.ts",
+    "import:stitch": "tsx scripts/import-stitch-frontend.ts",
+    "final:check": "tsx scripts/finalValidation.ts"
+  },
+
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "keywords": [
+
+    "sih",
+    "tourism",
+    "backend",
+    "express",
+    "typescript",
+    "supabase"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.112.4",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.2",
+    "helmet": "^8.3.0",
+    "pino": "^9.14.0",
+    "pino-http": "^10.5.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.5",
+    "@types/supertest": "^6.0.2",
+    "eslint": "^9.21.0",
+    "pino-pretty": "^13.0.0",
+    "prettier": "^3.5.1",
+    "rimraf": "^6.0.1",
+    "supertest": "^7.0.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.1",
+    "vitest": "^3.0.6"
+  }
+}

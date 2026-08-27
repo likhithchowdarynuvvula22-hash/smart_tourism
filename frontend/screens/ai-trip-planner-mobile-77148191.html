@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Samastha Samanvayam - Mobile Planner</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error": "#690005",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "surface-tint": "#c0c1ff",
+                      "on-background": "#e4e1ed",
+                      "on-tertiary-container": "#452000",
+                      "surface-container-lowest": "#0d0d15",
+                      "inverse-on-surface": "#303038",
+                      "tertiary-container": "#d97721",
+                      "surface-dim": "#13131b",
+                      "on-error-container": "#ffdad6",
+                      "error": "#ffb4ab",
+                      "tertiary-fixed": "#ffdcc5",
+                      "inverse-surface": "#e4e1ed",
+                      "on-surface": "#e4e1ed",
+                      "secondary-container": "#00a572",
+                      "surface-container": "#1f1f27",
+                      "outline-variant": "#464554",
+                      "secondary-fixed": "#6ffbbe",
+                      "surface-container-high": "#292932",
+                      "surface-container-highest": "#34343d",
+                      "primary": "#c0c1ff",
+                      "secondary-fixed-dim": "#4edea3",
+                      "surface-bright": "#393841",
+                      "primary-fixed": "#e1e0ff",
+                      "surface": "#13131b",
+                      "on-secondary": "#003824",
+                      "primary-container": "#8083ff",
+                      "secondary": "#4edea3",
+                      "on-surface-variant": "#c7c4d7",
+                      "on-primary": "#1000a9",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "on-tertiary": "#4f2500",
+                      "tertiary": "#ffb783",
+                      "inverse-primary": "#494bd6",
+                      "surface-variant": "#34343d",
+                      "surface-container-low": "#1b1b23",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "on-tertiary-fixed": "#301400",
+                      "on-primary-container": "#0d0096",
+                      "error-container": "#93000a",
+                      "on-primary-fixed": "#07006c",
+                      "on-secondary-fixed-variant": "#005236",
+                      "background": "#13131b",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "on-secondary-container": "#00311f",
+                      "outline": "#908fa0",
+                      "on-secondary-fixed": "#002113"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "sm": "8px",
+                      "3xl": "64px",
+                      "xl": "32px",
+                      "container-max": "1280px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "2xl": "48px",
+                      "xs": "4px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "display": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(18, 18, 20, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid #27272A;
+        }
+        .ai-glow {
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+        }
+        .ai-gradient-text {
+            background: linear-gradient(135deg, #c0c1ff, #8083ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .ai-button-gradient {
+            background: linear-gradient(135deg, #494bd6, #8083ff);
+        }
+        
+        /* Step Transitions */
+        .step-container { display: none; opacity: 0; transition: opacity 0.3s ease-in-out; }
+        .step-container.active { display: flex; opacity: 1; flex-direction: column; }
+        
+        /* Custom Checkbox/Radio */
+        .pref-card input[type="checkbox"], .pref-card input[type="radio"] { display: none; }
+        .pref-card { transition: all 0.2s ease; cursor: pointer; }
+        .pref-card.selected { border-color: #8083ff; background-color: rgba(128, 131, 255, 0.1); transform: scale(1.02); }
+        .pref-card.selected .icon-span { color: #8083ff; }
+        
+        /* Loading Animation */
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            80%, 100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col relative pb-[100px]">
+<!-- Top Navigation (Mobile Shell Alternative for transactional flow) -->
+<header class="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-outline-variant px-md py-md flex items-center justify-between">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors" id="closeBtn">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="text-center">
+<h1 class="font-label-md text-label-md font-bold text-primary">Samastha Samanvayam</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">AI Planner</p>
+</div>
+<button class="p-2 text-transparent pointer-events-none">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 w-full max-w-md mx-auto px-md py-lg flex flex-col relative">
+<!-- Progress Indicator -->
+<div class="w-full mb-xl">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant" id="step-label">Step 1 of 3</span>
+<span class="font-label-sm text-label-sm text-primary">Preferences</span>
+</div>
+<div class="h-2 bg-surface-container-high rounded-full overflow-hidden flex">
+<div class="h-full bg-primary-container transition-all duration-300 w-1/3" id="progress-bar"></div>
+</div>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile mb-2xl" id="main-heading">Plan a trip made for you</h2>
+<!-- Step 1: Preferences (What kind of trip?) -->
+<div class="step-container active" id="step-1">
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">What's your travel style?</p>
+<div class="grid grid-cols-2 gap-md mb-xl">
+<!-- Cards -->
+<label class="pref-card bg-surface-container-low border border-outline-variant rounded-xl p-md flex flex-col items-center justify-center text-center gap-sm">
+<input name="style" type="checkbox" value="heritage"/>
+<span class="material-symbols-outlined text-on-surface-variant text-3xl icon-span transition-colors">castle</span>
+<span class="font-label-md text-label-md">Heritage</span>
+</label>
+<label class="pref-card bg-surface-container-low border border-outline-variant rounded-xl p-md flex flex-col items-center justify-center text-center gap-sm">
+<input name="style" type="checkbox" value="nature"/>
+<span class="material-symbols-outlined text-on-surface-variant text-3xl icon-span transition-colors">forest</span>
+<span class="font-label-md text-label-md">Nature</span>
+</label>
+<label class="pref-card bg-surface-container-low border border-outline-variant rounded-xl p-md flex flex-col items-center justify-center text-center gap-sm">
+<input name="style" type="checkbox" value="spiritual"/>
+<span class="material-symbols-outlined text-on-surface-variant text-3xl icon-span transition-colors">temple_hindu</span>
+<span class="font-label-md text-label-md">Spiritual</span>
+</label>
+<label class="pref-card bg-surface-container-low border border-outline-variant rounded-xl p-md flex flex-col items-center justify-center text-center gap-sm">
+<input name="style" type="checkbox" value="adventure"/>
+<span class="material-symbols-outlined text-on-surface-variant text-3xl icon-span transition-colors">hiking</span>
+<span class="font-label-md text-label-md">Adventure</span>
+</label>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Any special considerations?</p>
+<div class="flex flex-wrap gap-sm">
+<label class="pref-card bg-surface-container-low border border-outline-variant rounded-full px-lg py-sm flex items-center gap-sm">
+<input name="needs" type="checkbox" value="family"/>
+<span class="material-symbols-outlined text-on-surface-variant text-sm icon-span">family_restroom</span>
+<span class="font-label-sm text-label-sm">Family Friendly</span>
+</label>
+<label class="pref-card bg-surface-container-low border border-outline-variant rounded-full px-lg py-sm flex items-center gap-sm">
+<input name="needs" type="checkbox" value="women"/>
+<span class="material-symbols-outlined text-on-surface-variant text-sm icon-span">female</span>
+<span class="font-label-sm text-label-sm">Women Traveler</span>
+</label>
+<label class="pref-card bg-surface-container-low border border-outline-variant rounded-full px-lg py-sm flex items-center gap-sm">
+<input name="needs" type="checkbox" value="accessible"/>
+<span class="material-symbols-outlined text-on-surface-variant text-sm icon-span">accessible</span>
+<span class="font-label-sm text-label-sm">Accessible</span>
+</label>
+</div>
+</div>
+<!-- Step 2: Logistics -->
+<div class="step-container" id="step-2">
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Where and when?</p>
+<div class="space-y-lg">
+<!-- Location Input -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant pl-sm">Destination</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">location_on</span>
+<input class="w-full bg-surface border border-outline-variant rounded-lg py-md pl-[48px] pr-md text-on-surface placeholder:text-on-surface-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="e.g. Rajasthan, Kerala..." type="text"/>
+</div>
+</div>
+<!-- Dates Input -->
+<div class="grid grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant pl-sm">Start Date</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">calendar_today</span>
+<input class="w-full bg-surface border border-outline-variant rounded-lg py-md pl-[40px] pr-sm text-on-surface placeholder:text-on-surface-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all text-sm" type="date"/>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant pl-sm">End Date</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">calendar_today</span>
+<input class="w-full bg-surface border border-outline-variant rounded-lg py-md pl-[40px] pr-sm text-on-surface placeholder:text-on-surface-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all text-sm" type="date"/>
+</div>
+</div>
+</div>
+<!-- Budget -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant pl-sm">Pace</label>
+<div class="flex bg-surface border border-outline-variant rounded-lg p-xs">
+<label class="flex-1 text-center py-sm rounded-md pref-card bg-transparent border-none">
+<input name="pace" type="radio" value="relaxed"/>
+<span class="font-label-sm text-label-sm">Relaxed</span>
+</label>
+<label class="flex-1 text-center py-sm rounded-md pref-card bg-transparent border-none">
+<input checked="" name="pace" type="radio" value="balanced"/>
+<span class="font-label-sm text-label-sm">Balanced</span>
+</label>
+<label class="flex-1 text-center py-sm rounded-md pref-card bg-transparent border-none">
+<input name="pace" type="radio" value="packed"/>
+<span class="font-label-sm text-label-sm">Packed</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 3: AI Generation Status Overlay (Hidden by default) -->
+<div class="fixed inset-0 z-[100] bg-background/95 backdrop-blur-xl flex flex-col items-center justify-center p-xl hidden opacity-0 transition-opacity duration-500" id="ai-loading">
+<div class="relative w-3xl h-3xl flex items-center justify-center mb-2xl">
+<!-- Animated glowing rings -->
+<div class="absolute inset-0 rounded-full border-2 border-primary-container pulse-ring"></div>
+<div class="absolute inset-0 rounded-full border-2 border-secondary pulse-ring" style="animation-delay: 1s;"></div>
+<span class="material-symbols-outlined text-display text-primary z-10 ai-glow bg-surface-container-low rounded-full p-md">smart_toy</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-center mb-md ai-gradient-text">Curating your perfect journey...</h3>
+<!-- Dynamic Status Messages -->
+<div class="h-[40px] overflow-hidden flex flex-col items-center justify-center">
+<p class="font-body-md text-body-md text-on-surface-variant text-center transition-transform duration-300" id="status-msg">Analyzing weather patterns...</p>
+</div>
+<div class="w-full max-w-[200px] h-1 bg-surface-container-high rounded-full mt-xl overflow-hidden">
+<div class="h-full bg-primary-container w-full animate-[progress_3s_ease-in-out_infinite]"></div>
+</div>
+<style>
+                @keyframes progress {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(100%); }
+                }
+            </style>
+</div>
+</main>
+<!-- Sticky Bottom Navigation Action Area -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest/90 backdrop-blur-md border-t border-outline-variant p-md z-40">
+<div class="max-w-md mx-auto flex gap-md">
+<button class="hidden flex-1 py-md px-lg rounded-full border border-outline-variant font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" id="btn-back">
+                Back
+            </button>
+<button class="flex-[2] py-md px-lg rounded-full ai-button-gradient font-label-md text-label-md text-white shadow-lg ai-glow hover:opacity-90 transition-all flex justify-center items-center gap-sm" id="btn-next">
+                Next <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Card Selection Logic
+            const prefCards = document.querySelectorAll('.pref-card');
+            prefCards.forEach(card => {
+                const input = card.querySelector('input');
+                
+                // Set initial state
+                if(input.checked) card.classList.add('selected');
+
+                input.addEventListener('change', (e) => {
+                    if (input.type === 'radio') {
+                        // Clear others in group
+                        const group = document.querySelectorAll(`input[name="${input.name}"]`);
+                        group.forEach(inp => {
+                            inp.closest('.pref-card').classList.remove('selected');
+                        });
+                        if (e.target.checked) card.classList.add('selected');
+                    } else if (input.type === 'checkbox') {
+                        card.classList.toggle('selected', e.target.checked);
+                    }
+                });
+            });
+
+            // Step Navigation Logic
+            let currentStep = 1;
+            const totalSteps = 2; // Focusing on 2 main input steps before gen
+            const step1 = document.getElementById('step-1');
+            const step2 = document.getElementById('step-2');
+            const btnNext = document.getElementById('btn-next');
+            const btnBack = document.getElementById('btn-back');
+            const progressBar = document.getElementById('progress-bar');
+            const stepLabel = document.getElementById('step-label');
+            const loadingOverlay = document.getElementById('ai-loading');
+            
+            const updateUI = () => {
+                // Steps visibility
+                if (currentStep === 1) {
+                    step1.classList.add('active');
+                    step2.classList.remove('active');
+                    btnBack.classList.add('hidden');
+                    btnNext.innerHTML = 'Next <span class="material-symbols-outlined text-sm">arrow_forward</span>';
+                    progressBar.style.width = '33%';
+                    stepLabel.textContent = 'Step 1 of 2';
+                    document.querySelector('.text-primary').textContent = 'Preferences';
+                } else if (currentStep === 2) {
+                    step1.classList.remove('active');
+                    step2.classList.add('active');
+                    btnBack.classList.remove('hidden');
+                    btnNext.innerHTML = '<span class="material-symbols-outlined text-sm">magic_button</span> Generate My Itinerary';
+                    btnNext.classList.add('ai-button-gradient', 'text-white');
+                    progressBar.style.width = '66%';
+                    stepLabel.textContent = 'Step 2 of 2';
+                    document.querySelector('.text-primary').textContent = 'Logistics';
+                }
+            };
+
+            btnNext.addEventListener('click', () => {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateUI();
+                } else {
+                    // Trigger Generation Overlay
+                    progressBar.style.width = '100%';
+                    loadingOverlay.classList.remove('hidden');
+                    // Small delay to allow display:block to apply before opacity transition
+                    setTimeout(() => {
+                        loadingOverlay.classList.remove('opacity-0');
+                    }, 10);
+                    simulateAILoading();
+                }
+            });
+
+            btnBack.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateUI();
+                }
+            });
+
+            // Simulate AI Loading Messages
+            const messages = [
+                "Analyzing local weather patterns...",
+                "Verifying safe zones...",
+                "Checking cultural event schedules...",
+                "Optimizing route for balanced pace...",
+                "Finalizing your itinerary..."
+            ];
+            
+            function simulateAILoading() {
+                const msgEl = document.getElementById('status-msg');
+                let idx = 0;
+                
+                const interval = setInterval(() => {
+                    msgEl.style.transform = 'translateY(100%)'; // slide out
+                    
+                    setTimeout(() => {
+                        msgEl.textContent = messages[idx];
+                        msgEl.style.transform = 'translateY(-100%)'; // move to top hidden
+                        
+                        // Force reflow
+                        void msgEl.offsetWidth;
+                        
+                        msgEl.style.transform = 'translateY(0)'; // slide in
+                        idx++;
+                        
+                        if (idx >= messages.length) {
+                            clearInterval(interval);
+                            setTimeout(() => {
+                                // Simulate completion - redirect or hide overlay
+                                loadingOverlay.innerHTML = '<div class="text-center"><span class="material-symbols-outlined text-display text-secondary mb-md">check_circle</span><h3 class="font-headline-md text-headline-md text-white">Itinerary Ready!</h3></div>';
+                            }, 1500);
+                        }
+                    }, 300); // Wait for slide out
+                }, 1800);
+            }
+        });
+    </script>
+</body></html>

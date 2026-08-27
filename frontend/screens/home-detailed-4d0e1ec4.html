@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Samastha Samanvayam - Discover India, Intelligently</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#4edea3",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-bright": "#393841",
+                        "surface-dim": "#13131b",
+                        "primary-container": "#8083ff",
+                        "on-primary-container": "#0d0096",
+                        "on-primary": "#1000a9",
+                        "surface-container-high": "#292932",
+                        "surface-container-lowest": "#0d0d15",
+                        "outline-variant": "#464554",
+                        "outline": "#908fa0",
+                        "primary-fixed": "#e1e0ff",
+                        "surface": "#13131b",
+                        "on-tertiary-fixed": "#301400",
+                        "background": "#13131b",
+                        "on-secondary-fixed": "#002113",
+                        "tertiary": "#ffb783",
+                        "on-tertiary": "#4f2500",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#e4e1ed",
+                        "error": "#ffb4ab",
+                        "primary": "#c0c1ff",
+                        "surface-container-low": "#1b1b23",
+                        "on-secondary-container": "#00311f",
+                        "on-tertiary-container": "#452000",
+                        "surface-variant": "#34343d",
+                        "secondary-container": "#00a572",
+                        "on-background": "#e4e1ed",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "surface-container-highest": "#34343d",
+                        "tertiary-fixed": "#ffdcc5",
+                        "error-container": "#93000a",
+                        "on-secondary": "#003824",
+                        "on-primary-fixed": "#07006c",
+                        "surface-tint": "#c0c1ff",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "tertiary-container": "#d97721",
+                        "secondary-fixed-dim": "#4edea3",
+                        "inverse-primary": "#494bd6",
+                        "inverse-surface": "#e4e1ed",
+                        "on-surface-variant": "#c7c4d7",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "surface-container": "#1f1f27",
+                        "inverse-on-surface": "#303038"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1.5rem"
+                    },
+                    "spacing": {
+                        "2xl": "48px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "3xl": "64px",
+                        "sm": "8px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(18, 18, 20, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid #27272A;
+        }
+        .ai-glow {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+            transition: box-shadow 0.3s ease;
+        }
+        .ai-glow:hover {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+        }
+        .glass-ai-panel {
+            background: rgba(18, 18, 20, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 dark:bg-surface/80 backdrop-blur-md docked full-width top-0 sticky border-b border-outline-variant flat no shadows z-50">
+<div class="flex justify-between items-center h-[72px] px-lg max-w-container-max mx-auto w-full">
+<div class="flex items-center gap-xl">
+<a class="text-headline-md font-headline-md font-bold text-primary dark:text-primary tracking-tight" href="#">Samastha Samanvayam</a>
+<div class="hidden md:flex items-center gap-lg">
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Home</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Explore</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Plan</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">My Trips</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Saved</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button aria-label="Language" class="text-on-surface-variant hover:text-primary transition-colors duration-200 p-sm rounded-full hover:bg-surface-variant">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</button>
+<button aria-label="AI Assistant" class="text-on-surface-variant hover:text-primary transition-colors duration-200 p-sm rounded-full hover:bg-surface-variant">
+<span class="material-symbols-outlined text-primary" data-icon="smart_toy">smart_toy</span>
+</button>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<button class="flex items-center gap-sm bg-surface-variant hover:bg-surface-container-highest text-on-surface font-label-md rounded-full pl-sm pr-md py-sm transition-colors border border-outline-variant">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-[10px] font-bold">U</div>
+                    Profile
+                </button>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[870px] flex items-center justify-center pt-2xl pb-3xl px-lg overflow-hidden">
+<!-- Cinematic Background -->
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center bg-no-repeat absolute inset-0" data-alt="A breathtaking, cinematic wide-angle photograph of Varanasi at dawn, viewed from the Ganges river. Soft, ethereal morning mist hovers over the water, catching the golden light of the rising sun. The ancient ghats rise majestically, illuminated by warm, glowing lamps and soft ambient light against the deep, cool indigo tones of the twilight sky. The image has a highly premium, modern cinematic feel, with deep blacks, rich indigo hues, and glowing warm accents, perfectly suited for a high-end AI travel platform." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDe7CkI3fUWzyBl94EAvSJaW1NDquOuyQmyEDkPxos2LctIwin8_mZBpeEmgNTHTAmygDZ_NIjwztLpS3MVzTfcL5vOJK2M5ACzjHus6S-Z9HjYr7-JD9GDNifRSds92inezuJk0DKcn9PerdvnUbsthf-NhJ8hTCjfZVJMIFZ48LydDkcnZXlpzP9vT0KqcuKi7E73afv3V1XPQAObVISjvMZKmzBG_wSWEz8PTT_7Y4TIsMFh4R8o')"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto w-full flex flex-col items-center text-center mt-xl">
+<div class="inline-flex items-center gap-sm px-4 py-2 rounded-full bg-primary-container/20 border border-primary/30 backdrop-blur-md mb-lg">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-primary font-label-md text-sm">Powered by Samastha Samanvayam</span>
+</div>
+<h1 class="text-display font-display text-on-surface max-w-4xl leading-tight mb-md">
+                    Discover India, <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Intelligently.</span>
+</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mb-2xl">
+                    Your AI-powered companion for safe, sustainable, and personalized travel experiences across the subcontinent.
+                </p>
+<!-- Search/Action Area -->
+<div class="glass-panel p-md rounded-2xl w-full max-w-3xl flex flex-col md:flex-row gap-md shadow-2xl ai-glow">
+<div class="relative flex-1 flex items-center">
+<span class="material-symbols-outlined absolute left-md text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface rounded-xl py-lg pl-3xl pr-md focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body-md placeholder:text-outline h-[60px]" placeholder="Where do you want to go?" type="text"/>
+</div>
+<div class="flex gap-sm">
+<button class="h-[60px] px-xl bg-surface-variant hover:bg-surface-container-highest text-on-surface border border-outline-variant rounded-xl font-label-md transition-colors flex items-center justify-center">
+                            Explore
+                        </button>
+<button class="h-[60px] px-xl bg-primary hover:bg-primary-fixed text-on-primary font-label-md rounded-xl transition-all shadow-lg hover:shadow-primary/25 flex items-center gap-sm justify-center">
+<span class="material-symbols-outlined text-on-primary" data-icon="route">route</span>
+                            Plan My Trip
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Intelligent Travel Cards (Features) -->
+<section class="py-2xl px-lg max-w-container-max mx-auto relative z-20 -mt-2xl">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-md">
+<!-- Feature 1 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md flex flex-col items-center text-center gap-sm hover:border-primary hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-secondary" data-icon="security">security</span>
+</div>
+<span class="font-label-md text-on-surface">Real-time Safety</span>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md flex flex-col items-center text-center gap-sm hover:border-primary hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-tertiary" data-icon="groups">groups</span>
+</div>
+<span class="font-label-md text-on-surface">Crowd Insights</span>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md flex flex-col items-center text-center gap-sm hover:border-primary hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="accessible">accessible</span>
+</div>
+<span class="font-label-md text-on-surface">Accessibility Check</span>
+</div>
+<!-- Feature 4 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md flex flex-col items-center text-center gap-sm hover:border-primary hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-secondary" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<span class="font-label-md text-on-surface">Budget Intelligence</span>
+</div>
+<!-- Feature 5 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md flex flex-col items-center text-center gap-sm hover:border-primary hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-tertiary" data-icon="routine">routine</span>
+</div>
+<span class="font-label-md text-on-surface">Weather Aware</span>
+</div>
+<!-- Feature 6 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md flex flex-col items-center text-center gap-sm hover:border-primary hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-secondary-fixed" data-icon="eco">eco</span>
+</div>
+<span class="font-label-md text-on-surface">Sustainable Choices</span>
+</div>
+</div>
+</section>
+<!-- AI Planner Section -->
+<section class="py-3xl px-lg">
+<div class="max-w-container-max mx-auto">
+<div class="glass-ai-panel rounded-[2rem] p-xl md:p-3xl relative overflow-hidden">
+<!-- Decorative Background Elements -->
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+<div class="relative z-10 grid md:grid-cols-2 gap-2xl items-center">
+<div>
+<div class="inline-flex items-center gap-sm px-3 py-1.5 rounded-md bg-primary/20 text-primary font-label-sm mb-lg">
+<span class="material-symbols-outlined text-sm" data-icon="magic_button">magic_button</span>
+                                AI Travel Architect
+                            </div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-md">Craft your perfect journey in seconds.</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mb-xl">
+                                Tell our intelligence engine what you desire. We analyze weather, crowds, local events, and your unique preferences to generate a mastercrafted itinerary.
+                            </p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-lg">
+<div class="space-y-md">
+<div>
+<label class="block text-label-sm font-label-sm text-outline mb-xs">Destination Idea</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline-variant" data-icon="location_on">location_on</span>
+<input class="w-full bg-surface border border-outline-variant rounded-lg py-sm pl-2xl pr-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary h-12" placeholder="e.g., A quiet mountain retreat" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div>
+<label class="block text-label-sm font-label-sm text-outline mb-xs">Duration</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline-variant" data-icon="calendar_month">calendar_month</span>
+<select class="w-full bg-surface border border-outline-variant rounded-lg py-sm pl-2xl pr-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary h-12 appearance-none">
+<option>3-5 Days</option>
+<option>1 Week</option>
+<option>2 Weeks+</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-label-sm font-label-sm text-outline mb-xs">Vibe</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline-variant" data-icon="mood">mood</span>
+<select class="w-full bg-surface border border-outline-variant rounded-lg py-sm pl-2xl pr-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary h-12 appearance-none">
+<option>Relaxing</option>
+<option>Adventurous</option>
+<option>Cultural</option>
+</select>
+</div>
+</div>
+</div>
+<button class="w-full mt-md bg-primary hover:bg-primary-fixed text-on-primary font-label-md rounded-lg py-md transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" data-icon="model_training">model_training</span>
+                                    Generate AI Itinerary
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest full-width mt-2xl border-t border-outline-variant flat">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg py-xl max-w-container-max mx-auto w-full gap-lg">
+<div class="text-lg font-bold text-on-surface">Samastha Samanvayam</div>
+<div class="flex flex-wrap items-center justify-center gap-lg">
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Safety Resources</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Sustainability Manifesto</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Govt Credits</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</div>
+<div class="text-body-md font-body-md text-on-surface-variant">© 2024 Samastha Samanvayam | Samastha Samanvayam | Smart India Hackathon</div>
+</div>
+</footer>
+</body></html>

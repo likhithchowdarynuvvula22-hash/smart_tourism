@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register - Samastha Samanvayam</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#00a572",
+                        "on-secondary-fixed-variant": "#005236",
+                        "inverse-on-surface": "#303038",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "primary-fixed": "#e1e0ff",
+                        "surface-tint": "#c0c1ff",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#452000",
+                        "on-primary-fixed": "#07006c",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "surface-bright": "#393841",
+                        "on-primary-container": "#0d0096",
+                        "secondary": "#4edea3",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-tertiary": "#4f2500",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-dim": "#13131b",
+                        "on-secondary": "#003824",
+                        "inverse-primary": "#494bd6",
+                        "tertiary-container": "#d97721",
+                        "inverse-surface": "#e4e1ed",
+                        "surface-container": "#1f1f27",
+                        "on-error": "#690005",
+                        "outline-variant": "#464554",
+                        "secondary-fixed": "#6ffbbe",
+                        "background": "#13131b",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "surface-container-high": "#292932",
+                        "surface-container-highest": "#34343d",
+                        "on-secondary-container": "#00311f",
+                        "primary": "#c0c1ff",
+                        "on-surface": "#e4e1ed",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "on-primary": "#1000a9",
+                        "primary-container": "#8083ff",
+                        "tertiary": "#ffb783",
+                        "surface": "#13131b",
+                        "error": "#ffb4ab",
+                        "outline": "#908fa0",
+                        "on-background": "#e4e1ed",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-container-lowest": "#0d0d15",
+                        "surface-variant": "#34343d",
+                        "on-secondary-fixed": "#002113",
+                        "surface-container-low": "#1b1b23"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "3xl": "64px",
+                        "xl": "32px",
+                        "container-max": "1280px",
+                        "2xl": "48px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .glass-panel {
+            background: rgba(18, 18, 20, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid theme('colors.outline-variant');
+        }
+        .ai-glow { box-shadow: 0 0 15px rgba(99, 102, 241, 0.2); }
+        .chip {
+            background-color: theme('colors.surface-container-highest');
+            border: 1px solid theme('colors.outline-variant');
+            color: theme('colors.on-surface');
+            transition: all 0.2s ease;
+        }
+        .chip:hover, .chip.selected {
+            border-color: theme('colors.primary');
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+        .segmented-control {
+            background-color: theme('colors.surface-container-low');
+            border-radius: theme('borderRadius.full');
+            padding: 4px;
+            display: flex;
+        }
+        .segment {
+            flex: 1;
+            text-align: center;
+            padding: 8px 16px;
+            border-radius: theme('borderRadius.full');
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: theme('colors.on-surface-variant');
+            font-family: theme('fontFamily.label-md');
+            font-size: theme('fontSize.label-md');
+        }
+        .segment.active {
+            background-color: theme('colors.primary-container');
+            color: theme('colors.on-primary-container');
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex items-center justify-center p-md lg:p-2xl">
+<div class="w-full max-w-container-max mx-auto flex flex-col lg:flex-row rounded-2xl overflow-hidden glass-panel ai-glow min-h-[800px]">
+<!-- Left Side: Imagery -->
+<div class="lg:w-5/12 relative hidden lg:block h-full">
+<div class="absolute inset-0 bg-cover bg-center h-full w-full" data-alt="A breathtaking view of the Taj Mahal at sunrise, enveloped in a soft, golden mist. The scene is majestic and serene, featuring the iconic marble mausoleum reflecting perfectly in the long pool leading up to it. The sky transitions from deep indigo to warm orange and pink hues. The image embodies a premium, high-end travel aesthetic, with rich contrasts suited for a dark theme interface, capturing the magic and intelligent discovery of modern tourism." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJxDi0fM3Y1xAXjxYF31qhrzbkfKX-IWhkCTmM0FkorxWWRBiwGf8LG6TxqPfDbrVbYTXyWsBpILgNZv2vZVtudOwbWs5AyJvaleS9snnWounfmo9gSRdrckUNCBAtyCJevAi3_pu7i4HtAGmr_ok-qQgEjqBk9GF6k7115nTk52RTw30PKUJ6szLLByUwfrGAKtxR-Hz0PUVSiJkAeqVC0X9IEbnBkwYZo_QVtB7e6SYpvmKw67rd')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-2xl w-full z-10">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary text-[32px]">flight_takeoff</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">Samastha Samanvayam</span>
+</div>
+<h2 class="font-display text-display text-on-surface mb-md">Begin Your<br/>Intelligent Journey.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">Unlock hyper-personalized itineraries, AI-driven concierge services, and seamless exploration across India's vibrant landscapes.</p>
+</div>
+</div>
+<!-- Right Side: Registration Form -->
+<div class="w-full lg:w-7/12 p-lg lg:p-2xl flex flex-col justify-center overflow-y-auto">
+<div class="max-w-xl mx-auto w-full">
+<!-- Mobile Logo Header (Hidden on Desktop) -->
+<div class="lg:hidden flex items-center justify-center gap-sm mb-xl">
+<span class="material-symbols-outlined text-primary text-[32px]">flight_takeoff</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Samastha Samanvayam</span>
+</div>
+<div class="mb-xl text-center lg:text-left">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Create Account</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Join the future of travel planning.</p>
+</div>
+<form class="space-y-xl">
+<!-- Basic Info Group -->
+<div class="space-y-md">
+<h3 class="font-label-md text-label-md text-primary uppercase tracking-wider">Account Details</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="name">Full Name</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-sm font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none placeholder:text-outline" id="name" placeholder="Enter your name" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="email">Email Address</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-sm font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none placeholder:text-outline" id="email" placeholder="name@example.com" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="password">Password</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-sm font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none placeholder:text-outline" id="password" placeholder="••••••••" type="password"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="confirm-password">Confirm Password</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-sm font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none placeholder:text-outline" id="confirm-password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="language">Preferred Language</label>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-sm font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" id="language">
+<option>English</option>
+<option>Hindi</option>
+<option>Tamil</option>
+<option>Telugu</option>
+<option>Bengali</option>
+</select>
+</div>
+</div>
+<hr class="border-outline-variant"/>
+<!-- Onboarding Preferences -->
+<div class="space-y-lg">
+<h3 class="font-label-md text-label-md text-primary uppercase tracking-wider">Travel Preferences</h3>
+<!-- Travel Interests -->
+<div>
+<span class="block font-label-md text-label-md text-on-surface-variant mb-sm">Travel Interests (Select multiple)</span>
+<div class="flex flex-wrap gap-sm">
+<button class="chip px-sm py-xs rounded-full font-label-sm text-label-sm flex items-center gap-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">account_balance</span> Heritage
+                                </button>
+<button class="chip px-sm py-xs rounded-full font-label-sm text-label-sm flex items-center gap-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">restaurant</span> Food
+                                </button>
+<button class="chip px-sm py-xs rounded-full font-label-sm text-label-sm flex items-center gap-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">hiking</span> Adventure
+                                </button>
+<button class="chip px-sm py-xs rounded-full font-label-sm text-label-sm flex items-center gap-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">park</span> Nature
+                                </button>
+<button class="chip px-sm py-xs rounded-full font-label-sm text-label-sm flex items-center gap-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">self_improvement</span> Spiritual
+                                </button>
+</div>
+</div>
+<!-- Budget -->
+<div>
+<span class="block font-label-md text-label-md text-on-surface-variant mb-sm">Budget Preference</span>
+<div class="segmented-control">
+<div class="segment">Budget</div>
+<div class="segment active">Mid-range</div>
+<div class="segment">Luxury</div>
+</div>
+</div>
+<!-- Travel Style -->
+<div>
+<span class="block font-label-md text-label-md text-on-surface-variant mb-sm">Typical Travel Style</span>
+<div class="flex flex-wrap gap-sm">
+<button class="chip px-sm py-xs rounded-full font-label-sm text-label-sm" type="button">Solo</button>
+<button class="chip px-sm py-xs rounded-full font-label-sm text-label-sm" type="button">Family</button>
+<button class="chip px-sm py-xs rounded-full font-label-sm text-label-sm" type="button">Group</button>
+<button class="chip px-sm py-xs rounded-full font-label-sm text-label-sm" type="button">Slow Travel</button>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="pt-md space-y-md">
+<button class="w-full bg-primary-container text-on-primary-container font-label-md text-label-md py-sm rounded-full hover:bg-primary transition-colors flex items-center justify-center gap-sm" type="submit">
+                            Create Account <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="w-full border border-outline-variant text-on-surface font-label-md text-label-md py-sm rounded-full hover:bg-surface-container-high transition-colors flex items-center justify-center gap-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">g_mobiledata</span> Continue with Google
+                        </button>
+</div>
+<div class="text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Already have an account? <a class="text-primary hover:underline" href="#">Login</a>
+</p>
+</div>
+</form>
+</div>
+</div>
+</div>
+<script>
+        // Simple interaction for chips and segmented control
+        document.querySelectorAll('.chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                chip.classList.toggle('selected');
+                chip.classList.toggle('border-primary');
+                chip.classList.toggle('bg-primary-container/10');
+            });
+        });
+
+        const segments = document.querySelectorAll('.segment');
+        segments.forEach(segment => {
+            segment.addEventListener('click', () => {
+                segments.forEach(s => s.classList.remove('active', 'bg-primary-container', 'text-on-primary-container'));
+                segment.classList.add('active', 'bg-primary-container', 'text-on-primary-container');
+            });
+        });
+    </script>
+</body></html>

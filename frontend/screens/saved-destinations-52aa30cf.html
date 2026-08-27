@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Saved Items - Samastha Samanvayam</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-tertiary-fixed": "#301400",
+                        "on-error": "#690005",
+                        "primary": "#c0c1ff",
+                        "on-secondary-container": "#00311f",
+                        "surface-bright": "#393841",
+                        "on-primary-fixed": "#07006c",
+                        "on-primary-container": "#0d0096",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "surface-variant": "#34343d",
+                        "outline": "#908fa0",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#34343d",
+                        "primary-container": "#8083ff",
+                        "outline-variant": "#464554",
+                        "surface": "#13131b",
+                        "tertiary": "#ffb783",
+                        "secondary-container": "#00a572",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "surface-tint": "#c0c1ff",
+                        "surface-container-high": "#292932",
+                        "on-primary": "#1000a9",
+                        "inverse-surface": "#e4e1ed",
+                        "on-background": "#e4e1ed",
+                        "inverse-primary": "#494bd6",
+                        "primary-fixed": "#e1e0ff",
+                        "surface-container-low": "#1b1b23",
+                        "surface-container-lowest": "#0d0d15",
+                        "on-surface": "#e4e1ed",
+                        "surface-container": "#1f1f27",
+                        "surface-dim": "#13131b",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffdcc5",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary-container": "#d97721",
+                        "background": "#13131b",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "on-tertiary": "#4f2500",
+                        "on-secondary": "#003824",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-tertiary-container": "#452000",
+                        "on-surface-variant": "#c7c4d7",
+                        "inverse-on-surface": "#303038",
+                        "secondary": "#4edea3",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#002113",
+                        "on-secondary-fixed-variant": "#005236"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "2xl": "48px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "container-max": "1280px",
+                        "md": "16px",
+                        "base": "4px",
+                        "3xl": "64px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Inter", "sans-serif"],
+                        "headline-lg": ["Inter", "sans-serif"],
+                        "headline-md": ["Inter", "sans-serif"],
+                        "display": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom Utilities */
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background-color: rgba(10, 10, 11, 0.8);
+        }
+        .ai-glow {
+            box-shadow: 0 0 15px rgba(192, 193, 255, 0.2);
+        }
+        .ai-glow:hover {
+            box-shadow: 0 0 20px rgba(192, 193, 255, 0.4);
+        }
+        
+        /* Hide scrollbar for cleaner look in tabs/filters */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Shared Component) -->
+<header class="flex justify-between items-center h-[72px] px-lg max-w-container-max mx-auto w-full bg-surface/80 dark:bg-surface/80 backdrop-blur-md text-primary dark:text-primary border-b border-outline-variant docked full-width top-0 sticky z-50">
+<!-- Brand -->
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">travel_explore</span>
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary tracking-tight">Samastha Samanvayam</span>
+</div>
+<!-- Navigation Links (Hidden on Mobile, flex on Desktop) -->
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Home</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Explore</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Plan</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">My Trips</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 active:scale-95 duration-150" href="#">Saved</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-sm rounded-full hover:bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined">language</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-sm rounded-full hover:bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</button>
+<button class="hidden md:flex items-center gap-xs font-label-md text-label-md text-on-surface bg-surface-container border border-outline-variant px-md py-sm rounded-full hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-xl">person</span>
+                Profile
+            </button>
+<!-- Mobile Menu Trigger -->
+<button class="md:hidden text-on-surface p-sm">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Layout Wrapper -->
+<div class="flex flex-1 max-w-container-max mx-auto w-full">
+<!-- SideNavBar (Shared Component) -->
+<aside class="hidden lg:flex flex-col p-md gap-sm bg-surface-container dark:bg-surface-container border-r border-outline-variant shadow-md docked left-0 h-[calc(100vh-72px)] w-64 sticky top-[72px] overflow-y-auto">
+<!-- Header Profile Area -->
+<div class="flex flex-col items-center p-md mb-md text-center border-b border-outline-variant pb-lg">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center mb-sm border-2 border-primary">
+<span class="material-symbols-outlined text-on-primary-container text-3xl" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</div>
+<h2 class="text-headline-sm font-headline-sm text-primary">Namaste, Traveler</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-xs">AI Assistant Ready</p>
+<button class="mt-lg w-full bg-primary text-on-primary font-label-md text-label-md py-sm rounded-full flex items-center justify-center gap-xs ai-glow hover:bg-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Start New AI Plan
+                </button>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex flex-col gap-xs flex-1">
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant rounded-xl p-md hover:bg-surface-variant transition-all font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">home</span>
+                    Home
+                </a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant rounded-xl p-md hover:bg-surface-variant transition-all font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">explore</span>
+                    Explore
+                </a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant rounded-xl p-md hover:bg-surface-variant transition-all font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                    AI Planner
+                </a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-variant rounded-xl p-md hover:bg-surface-variant transition-all font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">map</span>
+                    My Trips
+                </a>
+<a class="flex items-center gap-md bg-primary-container text-on-primary-container rounded-xl p-md translate-x-1 font-label-md text-label-md ai-glow" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+                    Saved
+                </a>
+<div class="mt-auto">
+<a class="flex items-center gap-md text-error hover:bg-error-container hover:text-on-error-container rounded-xl p-md transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">emergency</span>
+                        Emergency
+                    </a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area (Canvas) -->
+<main class="flex-1 px-md py-lg md:px-lg md:py-2xl overflow-x-hidden min-w-0">
+<!-- Page Header & Filters -->
+<div class="mb-xl flex flex-col gap-md">
+<h1 class="text-display font-display text-on-surface tracking-tight">Saved Items</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Your curated collection of AI-recommended destinations and experiences.</p>
+<!-- Action Bar: Search & Filters -->
+<div class="mt-md flex flex-col md:flex-row gap-md items-start md:items-center w-full">
+<!-- Search Input -->
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface rounded-full py-sm pl-2xl pr-md font-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Search your saved items..." type="text"/>
+</div>
+<!-- Filter Chips (Horizontal Scroll on Mobile) -->
+<div class="flex gap-sm overflow-x-auto w-full no-scrollbar pb-xs md:pb-0">
+<button class="whitespace-nowrap flex items-center gap-xs bg-surface-container-high border border-outline-variant text-on-surface px-md py-sm rounded-full font-label-sm hover:border-primary transition-colors flex-shrink-0">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+                            Woman Safe
+                        </button>
+<button class="whitespace-nowrap flex items-center gap-xs bg-surface-container border border-outline-variant text-on-surface px-md py-sm rounded-full font-label-sm hover:border-primary transition-colors flex-shrink-0">
+<span class="material-symbols-outlined text-[16px]">accessible</span>
+                            Accessible
+                        </button>
+<button class="whitespace-nowrap flex items-center gap-xs bg-surface-container border border-outline-variant text-on-surface px-md py-sm rounded-full font-label-sm hover:border-primary transition-colors flex-shrink-0">
+<span class="material-symbols-outlined text-[16px] text-secondary-fixed">forest</span>
+                            Nature
+                        </button>
+<button class="whitespace-nowrap flex items-center gap-xs bg-surface-container border border-outline-variant text-on-surface px-md py-sm rounded-full font-label-sm hover:border-primary transition-colors flex-shrink-0">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+                            More Filters
+                        </button>
+</div>
+</div>
+</div>
+<!-- Content Tabs -->
+<div class="border-b border-outline-variant mb-lg flex overflow-x-auto no-scrollbar gap-lg">
+<button class="whitespace-nowrap font-label-md text-label-md pb-sm border-b-2 border-primary text-primary transition-colors px-xs active-tab" id="btn-tab-destinations" onclick="switchTab('destinations')">Destinations</button>
+<button class="whitespace-nowrap font-label-md text-label-md pb-sm border-b-2 border-transparent text-on-surface-variant hover:text-on-surface transition-colors px-xs inactive-tab" id="btn-tab-attractions" onclick="switchTab('attractions')">Attractions</button>
+<button class="whitespace-nowrap font-label-md text-label-md pb-sm border-b-2 border-transparent text-on-surface-variant hover:text-on-surface transition-colors px-xs inactive-tab">Experiences</button>
+<button class="whitespace-nowrap font-label-md text-label-md pb-sm border-b-2 border-transparent text-on-surface-variant hover:text-on-surface transition-colors px-xs inactive-tab">Local Businesses</button>
+</div>
+<!-- Tab Content: Destinations (Populated Grid) -->
+<div class="block" id="tab-destinations">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-lg pt-sm">
+<!-- Card 1: Hampi -->
+<article class="bg-surface-container border border-outline-variant rounded-2xl overflow-hidden hover:border-primary hover:scale-[1.02] hover:shadow-[0_8px_30px_rgb(0,0,0,0.5)] transition-all duration-300 flex flex-col group">
+<!-- Cover Image with Badges -->
+<div class="relative h-56 w-full">
+<img class="w-full h-full object-cover group-hover:brightness-110 transition-all duration-500" data-alt="A breathtaking cinematic photograph of the ancient Virupaksha Temple in Hampi, India, bathed in golden hour sunlight. The intricate stone carvings are highlighted against a deep, moody twilight sky. The scene conveys a sense of timeless historical grandeur and peacefulness, perfectly suiting a premium dark-mode travel application aesthetic with high contrast and rich textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAuiUluRPOw4gOKGL7rxzag1vBBgkg16UqOofccaLkuvZw50tpIwkF_KvSb0cIVHihXWYYz7zEOgafiFluDOfsBM-5c_eNJLCUzVjHk-2UfVZSwGBjDrkLB7PxDqJHMsQb1W3JixMjqvu2EKTV2ef_iLDqT0q9ZewbDTFu59VjJ2yyT0pTg73ODWRMsLIdaebSlNvCToRGpxCHwZDnD0yRGY1Vo6LV5-mN5SO_DCtMKzGWGxsQ5Wof"/>
+<!-- Overlay Badges -->
+<div class="absolute top-md right-md flex flex-col items-end gap-sm">
+<div class="bg-surface-container-highest/90 backdrop-blur-md border border-outline-variant text-on-surface font-label-sm text-label-sm px-sm py-xs rounded-lg flex items-center gap-xs shadow-lg">
+<span class="material-symbols-outlined text-[14px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+                                    4.8 (1.2k)
+                                </div>
+<div class="bg-primary/20 backdrop-blur-md border border-primary/50 text-primary-fixed-dim font-label-sm text-label-sm px-sm py-xs rounded-lg shadow-lg">
+                                    UNESCO Heritage
+                                </div>
+</div>
+</div>
+<!-- Card Content -->
+<div class="p-lg flex flex-col flex-1">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs line-clamp-1 group-hover:text-primary transition-colors">Virupaksha Temple</h3>
+<p class="font-label-md text-label-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                        Hampi, Karnataka
+                                    </p>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors p-xs rounded-full hover:bg-surface-variant mt-1" title="Remove from Saved">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark_remove</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/80 mt-sm line-clamp-3 mb-lg flex-1">
+                                An iconic 7th-century Hindu temple dedicated to Lord Shiva. Experience breathtaking Dravidian architecture, towering gopurams, and the historic charm of the Vijayanagara Empire ruins scattered across a surreal boulder-strewn landscape.
+                            </p>
+<!-- Actions -->
+<div class="pt-sm border-t border-outline-variant flex items-center justify-between mt-auto">
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">eco</span> 98% AI Match
+                                </span>
+<button class="bg-inverse-surface text-inverse-on-surface hover:bg-primary hover:text-on-primary font-label-md text-label-md px-md py-sm rounded-full transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+                                    Add to Trip
+                                </button>
+</div>
+</div>
+</article>
+<!-- Card 2: Kerala Backwaters -->
+<article class="bg-surface-container border border-outline-variant rounded-2xl overflow-hidden hover:border-primary hover:scale-[1.02] hover:shadow-[0_8px_30px_rgb(0,0,0,0.5)] transition-all duration-300 flex flex-col group">
+<div class="relative h-56 w-full">
+<img class="w-full h-full object-cover group-hover:brightness-110 transition-all duration-500" data-alt="A serene, high-fidelity image of a traditional wooden houseboat gently navigating the lush green backwaters of Kerala, India. The water smoothly reflects the dense, tropical palm tree canopies under a soft, slightly overcast moody sky. The composition is calm and inviting, optimized for a modern dark-themed travel app with vibrant natural greens popping against deep charcoal background tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw-EjdGGakidtMHckUKksuurFNDIJXkFlBSzMrwT5mgBv18_uIaN_J7cB8lmm8leaHkvxZWVomX_X8LQ5yioUstINC2SfDn7r33jxq6kxK_xQGmylwQxW8Awe-do3hp-T9VqrBm3aPD_125kI_UjEnE6Rdl1E1iVtdgl4x6kaAS3LNtXNMWeJbn1ZJIgbB-lYZXBIg-1vsa-t_F5Mks1cBkSp9BtbR4zoA6S9pvBb2kkdDasDgt8Wn"/>
+<div class="absolute top-md right-md flex flex-col items-end gap-sm">
+<div class="bg-surface-container-highest/90 backdrop-blur-md border border-outline-variant text-on-surface font-label-sm text-label-sm px-sm py-xs rounded-lg flex items-center gap-xs shadow-lg">
+<span class="material-symbols-outlined text-[14px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+                                    4.9 (3.4k)
+                                </div>
+<div class="bg-secondary/20 backdrop-blur-md border border-secondary/50 text-secondary-fixed-dim font-label-sm text-label-sm px-sm py-xs rounded-lg shadow-lg">
+                                    Nature Retreat
+                                </div>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs line-clamp-1 group-hover:text-primary transition-colors">Alleppey Backwaters</h3>
+<p class="font-label-md text-label-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                        Alappuzha, Kerala
+                                    </p>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors p-xs rounded-full hover:bg-surface-variant mt-1" title="Remove from Saved">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark_remove</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/80 mt-sm line-clamp-3 mb-lg flex-1">
+                                Drift through serene, palm-fringed canals on a traditional Kettuvallam (houseboat). A perfect, slow-paced escape to experience local village life, authentic coastal cuisine, and unmatched tranquility.
+                            </p>
+<div class="pt-sm border-t border-outline-variant flex items-center justify-between mt-auto">
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">eco</span> 95% AI Match
+                                </span>
+<button class="bg-inverse-surface text-inverse-on-surface hover:bg-primary hover:text-on-primary font-label-md text-label-md px-md py-sm rounded-full transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+                                    Add to Trip
+                                </button>
+</div>
+</div>
+</article>
+<!-- Card 3: Jaipur Fort -->
+<article class="bg-surface-container border border-outline-variant rounded-2xl overflow-hidden hover:border-primary hover:scale-[1.02] hover:shadow-[0_8px_30px_rgb(0,0,0,0.5)] transition-all duration-300 flex flex-col group">
+<div class="relative h-56 w-full">
+<img class="w-full h-full object-cover group-hover:brightness-110 transition-all duration-500" data-alt="A dramatic, high-contrast twilight architectural photograph of the magnificent Amber Fort in Jaipur, Rajasthan. The massive sandstone and marble ramparts are warmly illuminated by dramatic uplighting, contrasting sharply against the deep, dark indigo night sky. The image exudes a premium, majestic aura suitable for a sophisticated travel booking interface, emphasizing grand historical scale." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8qxCxA8Y1afWtYmm4EtcWf3fsKhQA1i5CCz3R9EaneAAixqYhH1cpAqbv5j9pEcv9Cfz1GJXN4G6Ck6cWQvSmVMbOqcYQDvdkMJ9znvZSDi3qjWlHAadOX8N2FD104Hjkbdmm5Xf_y32HvabtCtEmH-sffpnMyr6PBVJcNmoH2SE8oBsFbM6JLl3YIOYVuYgd1mdJmVJ5A-neUFirF0MemRKOghBuH0VfZgviAo1XeU142LPMF9Rp"/>
+<div class="absolute top-md right-md flex flex-col items-end gap-sm">
+<div class="bg-surface-container-highest/90 backdrop-blur-md border border-outline-variant text-on-surface font-label-sm text-label-sm px-sm py-xs rounded-lg flex items-center gap-xs shadow-lg">
+<span class="material-symbols-outlined text-[14px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+                                    4.7 (5.1k)
+                                </div>
+<div class="bg-tertiary/20 backdrop-blur-md border border-tertiary/50 text-tertiary-fixed-dim font-label-sm text-label-sm px-sm py-xs rounded-lg shadow-lg">
+                                    Royal History
+                                </div>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs line-clamp-1 group-hover:text-primary transition-colors">Amer Fort</h3>
+<p class="font-label-md text-label-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                        Jaipur, Rajasthan
+                                    </p>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors p-xs rounded-full hover:bg-surface-variant mt-1" title="Remove from Saved">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark_remove</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/80 mt-sm line-clamp-3 mb-lg flex-1">
+                                An opulent 16th-century palace complex perched on a hill. Explore its stunning blend of Hindu and Rajput architecture, mirrored ceilings of Sheesh Mahal, and sweeping views of the Maota Lake below.
+                            </p>
+<div class="pt-sm border-t border-outline-variant flex items-center justify-between mt-auto">
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">eco</span> 88% AI Match
+                                </span>
+<button class="bg-inverse-surface text-inverse-on-surface hover:bg-primary hover:text-on-primary font-label-md text-label-md px-md py-sm rounded-full transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+                                    Add to Trip
+                                </button>
+</div>
+</div>
+</article>
+</div>
+</div>
+<!-- Tab Content: Attractions (Empty State Demo) -->
+<div class="hidden" id="tab-attractions">
+<div class="flex flex-col items-center justify-center py-3xl text-center max-w-lg mx-auto min-h-[512px]">
+<!-- Empty State Graphic -->
+<div class="w-32 h-32 bg-surface-container-high rounded-full flex items-center justify-center mb-lg border border-outline-variant shadow-inner">
+<span class="material-symbols-outlined text-[64px] text-outline" style="font-variation-settings: 'wght' 200;">attractions</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">No Attractions Saved Yet</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl leading-relaxed">
+                        Your itinerary is a blank canvas. Let our AI analyze your preferences and discover hidden gems, museums, and landmarks tailored just for you.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-md">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-xl py-md rounded-full ai-glow hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                            Ask AI to Recommend
+                        </button>
+<button class="bg-surface border border-outline-variant text-on-surface font-label-md text-label-md px-xl py-md rounded-full hover:border-primary transition-all flex items-center justify-center">
+                            Browse All Attractions
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant full-width mt-2xl flex flex-col md:flex-row justify-between items-center px-lg py-xl max-w-container-max mx-auto w-full">
+<div class="mb-lg md:mb-0 text-center md:text-left">
+<span class="text-lg font-bold text-on-surface block mb-xs">Samastha Samanvayam</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">© 2024 Samastha Samanvayam | Samastha Samanvayam | Smart India Hackathon</span>
+</div>
+<nav class="flex flex-wrap justify-center gap-lg text-body-md font-body-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Safety Resources</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Sustainability Manifesto</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Govt Credits</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</nav>
+</footer>
+<!-- Simple JS for Tab Switching Demo -->
+<script>
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.getElementById('tab-destinations').classList.add('hidden');
+            document.getElementById('tab-attractions').classList.add('hidden');
+            
+            // Reset button styles
+            const btns = [document.getElementById('btn-tab-destinations'), document.getElementById('btn-tab-attractions')];
+            btns.forEach(btn => {
+                if(btn) {
+                    btn.classList.remove('border-primary', 'text-primary');
+                    btn.classList.add('border-transparent', 'text-on-surface-variant');
+                }
+            });
+
+            // Show selected tab
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            
+            // Highlight selected button
+            const activeBtn = document.getElementById('btn-tab-' + tabName);
+            if(activeBtn) {
+                activeBtn.classList.remove('border-transparent', 'text-on-surface-variant');
+                activeBtn.classList.add('border-primary', 'text-primary');
+            }
+        }
+    </script>
+</body></html>

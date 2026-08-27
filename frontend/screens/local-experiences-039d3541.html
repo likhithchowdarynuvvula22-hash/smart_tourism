@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Samastha Samanvayam - Local Experiences</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c0c1ff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "primary-container": "#8083ff",
+                        "tertiary-container": "#d97721",
+                        "inverse-on-surface": "#303038",
+                        "surface-dim": "#13131b",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#07006c",
+                        "secondary": "#4edea3",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-primary": "#1000a9",
+                        "on-error": "#690005",
+                        "inverse-primary": "#494bd6",
+                        "surface-container-low": "#1b1b23",
+                        "secondary-container": "#00a572",
+                        "surface-variant": "#34343d",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#292932",
+                        "background": "#13131b",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-bright": "#393841",
+                        "outline": "#908fa0",
+                        "on-primary-container": "#0d0096",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-secondary": "#003824",
+                        "on-background": "#e4e1ed",
+                        "surface-container-highest": "#34343d",
+                        "on-tertiary-container": "#452000",
+                        "inverse-surface": "#e4e1ed",
+                        "on-surface-variant": "#c7c4d7",
+                        "error": "#ffb4ab",
+                        "tertiary": "#ffb783",
+                        "surface-container-lowest": "#0d0d15",
+                        "on-tertiary": "#4f2500",
+                        "on-secondary-container": "#00311f",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "outline-variant": "#464554",
+                        "surface": "#13131b",
+                        "on-secondary-fixed": "#002113",
+                        "primary": "#c0c1ff",
+                        "surface-container": "#1f1f27",
+                        "primary-fixed": "#e1e0ff",
+                        "on-surface": "#e4e1ed",
+                        "surface-tint": "#c0c1ff",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "secondary-fixed": "#6ffbbe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "2xl": "48px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "container-max": "1280px",
+                        "3xl": "64px",
+                        "gutter": "24px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .glass-panel { background: rgba(18, 18, 20, 0.7); backdrop-filter: blur(12px); border: 1px solid theme('colors.outline-variant'); }
+        .hover-card-effect:hover { border-color: theme('colors.primary'); transform: scale(1.02); box-shadow: 0 0 15px rgba(99, 102, 241, 0.1); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface/80 dark:bg-surface/80 backdrop-blur-md text-primary dark:text-primary font-headline-md text-headline-md font-label-md text-label-md docked full-width top-0 sticky border-b border-outline-variant flat no shadows z-50">
+<div class="flex justify-between items-center h-[72px] px-lg max-w-container-max mx-auto w-full">
+<div class="text-headline-md font-headline-md font-bold text-primary dark:text-primary">Samastha Samanvayam</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Home</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200 active:scale-95 duration-150" href="#">Explore</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Plan</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">My Trips</a>
+<a class="text-on-surface-variant font-label-md hover:text-on-surface hover:text-primary transition-colors duration-200" href="#">Saved</a>
+</nav>
+<div class="flex items-center gap-md">
+<button aria-label="language" class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</button>
+<button aria-label="smart_toy" class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+</button>
+<button class="ml-2 font-label-md text-label-md bg-surface-container border border-outline-variant px-4 py-2 rounded-full hover:bg-surface-variant transition-colors text-on-surface">
+                    Profile
+                </button>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col relative w-full h-full">
+<!-- Hero Section -->
+<section class="relative w-full min-h-[500px] flex items-center justify-center pt-2xl pb-2xl px-lg">
+<div class="absolute inset-0 z-0">
+<div class="bg-cover bg-center w-full h-full opacity-40" data-alt="A breathtaking, cinematic wide shot of a traditional Indian festival at dusk, featuring vibrant colors, warm golden lighting, and silhouettes of locals celebrating. The atmosphere is rich, authentic, and premium, with deep charcoal tones in the shadows and glowing warm orange accents, perfectly aligning with a sophisticated dark mode UI aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBzvtNhpeOhm0pSpBaVSBpNhGiLTZWxUZu0UdkaDGJNUHwBlEdFTQycAeTS9ksSz9hDGbdGEjBVOETUdesQnmkB8hjYhuJNcVXdbmQ3TNEIlFOnpmM115RQ7rH8KRQ_KS26dd-d_eIlD9u8QyaFC931K5m4mQv13JP7ov5iGrcms3oystRHOIbKEVhURKMDvcFoLI-L0-Eh85vUxH-YxBcXQB0AFMga9HTh-RF6Gymcmt52608EZZ8W')"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto w-full flex flex-col items-center text-center gap-xl mt-3xl">
+<div class="max-w-3xl">
+<h1 class="font-display text-display text-on-surface mb-md">Discover Authentic India</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Uncover hidden gems and immerse yourself in real local experiences, far from the crowds.</p>
+</div>
+<!-- Specialized Search -->
+<div class="w-full max-w-4xl glass-panel rounded-full p-2 flex items-center gap-sm mt-md shadow-lg shadow-black/50">
+<div class="flex-1 flex items-center px-4">
+<span class="material-symbols-outlined text-outline mr-2">search</span>
+<input class="w-full bg-transparent border-none text-on-surface focus:ring-0 font-body-md placeholder:text-outline h-12" placeholder="What kind of experience are you looking for?" type="text"/>
+</div>
+<div class="hidden md:flex items-center px-4 border-l border-outline-variant">
+<span class="material-symbols-outlined text-outline mr-2">location_on</span>
+<input class="w-full bg-transparent border-none text-on-surface focus:ring-0 font-body-md placeholder:text-outline w-32" placeholder="Anywhere" type="text"/>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-full hover:bg-primary-fixed transition-colors flex items-center gap-2">
+<span>Search</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Categories -->
+<section class="max-w-container-max mx-auto w-full px-lg py-xl">
+<div class="flex gap-md overflow-x-auto hide-scrollbar pb-4 items-center">
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-primary/20 border border-primary text-primary font-label-md text-label-md transition-colors">All Experiences</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-on-surface font-label-md text-label-md transition-colors">Local Food</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-on-surface font-label-md text-label-md transition-colors">Festivals</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-on-surface font-label-md text-label-md transition-colors">Culture</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-on-surface font-label-md text-label-md transition-colors">Handicrafts</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-on-surface font-label-md text-label-md transition-colors">Local Guides</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-on-surface font-label-md text-label-md transition-colors">Traditional Activities</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-on-surface font-label-md text-label-md transition-colors">Community</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-on-surface font-label-md text-label-md transition-colors">Nature</button>
+</div>
+</section>
+<!-- Experience Grid -->
+<section class="max-w-container-max mx-auto w-full px-lg pb-3xl flex-grow">
+<div class="flex justify-between items-end mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Curated Local Experiences</h2>
+<button class="text-primary font-label-md text-label-md hover:underline flex items-center gap-1">View Map <span class="material-symbols-outlined text-sm">map</span></button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg">
+<!-- Card 1 -->
+<article class="bg-[#121214] border border-outline-variant rounded-2xl overflow-hidden hover-card-effect transition-all duration-300 flex flex-col group cursor-pointer relative">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A highly detailed, immersive close-up of an Indian artisan's hands working on intricate Blue Pottery in Jaipur. Soft, natural daylight illuminates the vibrant cobalt blue patterns against a dark, moody workshop background. The scene exudes craftsmanship, authenticity, and premium cultural heritage, fitting a sophisticated dark mode interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw2d3kOKXhJvHl1H-u5cxnkCfWvDawun5FVK09GPRHSalh9xCe2dD61XUNb6yNOKi-DE8gbdaknkIjkp3rTFB_mJFXniRmGRhM5Eoc9kEyS1vonbv1Qt1dmA_-XMR96I1xWcjctdauG45LFL7fIAOa53UvCR9eWMVRdY7ck3P1wynFkWGvNkdBKi2Qv3OQk5jtc28ElRMJLVCrWDGDhvDB_AtSvrEfLi0WmJKm_MlU8cgng9wAA9Zs"/>
+<div class="absolute top-3 right-3 flex gap-2">
+<span class="bg-secondary/20 text-secondary font-label-sm text-label-sm px-2 py-1 rounded border border-secondary/30 flex items-center gap-1 backdrop-blur-md">
+<span class="material-symbols-outlined text-[14px]">eco</span> Eco
+                            </span>
+</div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-[18px] leading-snug text-on-surface font-semibold group-hover:text-primary transition-colors">Blue Pottery Workshop Heritage</h3>
+<button class="text-outline hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-lg">bookmark_border</span></button>
+</div>
+<div class="flex flex-wrap gap-y-1 gap-x-3 mb-3 text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">location_on</span> Jaipur</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 3 Hours</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">star</span> 4.9 (42)</span>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-sm">verified</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Local Artisan</span>
+</div>
+<div class="font-body-md text-body-md font-bold text-on-surface">₹₹</div>
+</div>
+</div>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors pointer-events-none"></div>
+</article>
+<!-- Card 2 -->
+<article class="bg-[#121214] border border-outline-variant rounded-2xl overflow-hidden hover-card-effect transition-all duration-300 flex flex-col group cursor-pointer relative">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A captivating shot of a traditional weaving loom in Varanasi, illuminated by warm, directional light filtering through a window. The rich textures of silk threads in deep maroon and gold are in sharp focus, set against a dark, atmospheric background. The aesthetic is premium, moody, and deeply cultural." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa_7_TvPFN7SKfRu3S87i-JcIrZiRLqWDdlTOwNjR_yuZhfalIF6pALLLhZrT-yge_We6Yt67LScSwXnn7ad9613lipDaX7d3NvBbMz4q2FChoNX5kHmnhM1XJAnd2FdUjiFCePTMrTI9t6pz745828aRkZEhxCKpWYrtvvUz6tYU0iZKRw0m8rLlcsQ_ZJFfNh_2U_yRfQpjSt5ux9lzI3GMmmKNNJ95Js9i-hBim76ZA-iw76F7-"/>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-[18px] leading-snug text-on-surface font-semibold group-hover:text-primary transition-colors">Varanasi Weaving Heritage Walk</h3>
+<button class="text-outline hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-lg">bookmark_border</span></button>
+</div>
+<div class="flex flex-wrap gap-y-1 gap-x-3 mb-3 text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">location_on</span> Varanasi</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 4 Hours</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">star</span> 4.8 (128)</span>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-sm">verified</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Master Weaver</span>
+</div>
+<div class="font-body-md text-body-md font-bold text-on-surface">₹₹₹</div>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-[#121214] border border-outline-variant rounded-2xl overflow-hidden hover-card-effect transition-all duration-300 flex flex-col group cursor-pointer relative">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A serene, high-quality image of a traditional Kerala houseboat gliding on calm backwaters at twilight. The scene is lit by soft lanterns on the boat reflecting on the dark water, surrounded by silhouettes of palm trees. The mood is tranquil, luxurious, and perfectly suited for a dark mode travel UI with deep indigo tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMU0RxWXA8d-Jhre1tbpVMCIxO5VMQrqlimF09UwR96B1hosWx580n-gUTsVfuqDMgQIX4iYZ76L1PRlHsw3vwovKrtiHqeZytDyk-Z7m9O88JNbn5seJgH385an6Rbjk46Dd-JTCHFh7aJWtnE_myl_9X2ZPkzRebYzuxcODgwelWK_XPnlwSXg_MNcjIAeJapMHABrGvl-zVgtAM9TqEicB8h-IB5Tgq_tg0bgoJH0Kh9xuuE2Fr"/>
+<div class="absolute top-3 right-3 flex gap-2">
+<span class="bg-secondary/20 text-secondary font-label-sm text-label-sm px-2 py-1 rounded border border-secondary/30 flex items-center gap-1 backdrop-blur-md">
+<span class="material-symbols-outlined text-[14px]">eco</span> Eco
+                            </span>
+</div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-[18px] leading-snug text-on-surface font-semibold group-hover:text-primary transition-colors">Silent Backwaters Night Stay</h3>
+<button class="text-outline hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-lg">bookmark_border</span></button>
+</div>
+<div class="flex flex-wrap gap-y-1 gap-x-3 mb-3 text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">location_on</span> Alleppey</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 1 Night</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">star</span> 5.0 (65)</span>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-sm">verified</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Local Family</span>
+</div>
+<div class="font-body-md text-body-md font-bold text-on-surface">₹₹₹₹</div>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="bg-[#121214] border border-outline-variant rounded-2xl overflow-hidden hover-card-effect transition-all duration-300 flex flex-col group cursor-pointer relative">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An energetic, vibrant shot of traditional folk dancers in Rajasthan by a campfire at night. The firelight casts dramatic, warm shadows against a dark desert background, capturing the movement of colorful skirts and authentic cultural expression in a premium, high-contrast visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBig5o06ZlLNqKbbzd4piIkv3qlF8C10ISn7PzTNKW-uCvHFxGN7Q3xcB_GOV7xjsGDzclKcQkG5N1EHj3DfsaXr910rlqmvjOLIXsGnHg6EseduHl-5VyNsmQJYaq5Z0sz16_G28OUVPhaaRhwyZyUAojNyHmnt3wVKUnA2L3epFCLi3UNrrSaPH0UiJxmndxr5yKeNruatZMMWgDgL9uaokf_A3tUQ7RjKz5aV9aqqPIKU5lis_FX"/>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-[18px] leading-snug text-on-surface font-semibold group-hover:text-primary transition-colors">Desert Campfire Folk Arts</h3>
+<button class="text-outline hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-lg">bookmark_border</span></button>
+</div>
+<div class="flex flex-wrap gap-y-1 gap-x-3 mb-3 text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">location_on</span> Jaisalmer</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 5 Hours</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">star</span> 4.7 (89)</span>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-sm">verified</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Community Led</span>
+</div>
+<div class="font-body-md text-body-md font-bold text-on-surface">₹₹</div>
+</div>
+</div>
+</article>
+</div>
+<div class="w-full flex justify-center mt-xl">
+<button class="bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md px-8 py-3 rounded-full hover:bg-surface-variant transition-colors flex items-center gap-2">
+                    Load More Experiences
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest text-secondary dark:text-secondary text-label-sm font-label-sm text-body-md font-body-md full-width mt-2xl border-t border-outline-variant flat">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg py-xl max-w-container-max mx-auto w-full gap-md">
+<div class="text-lg font-bold text-on-surface">Samastha Samanvayam</div>
+<div class="text-on-surface-variant">© 2024 Samastha Samanvayam | Samastha Samanvayam | Smart India Hackathon</div>
+<nav class="flex gap-lg flex-wrap justify-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Safety Resources</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Sustainability Manifesto</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Govt Credits</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</nav>
+</div>
+</footer>
+</body></html>

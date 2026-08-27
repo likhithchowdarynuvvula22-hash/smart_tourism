@@ -1,0 +1,47 @@
+name: CI Quality Gates & Release Validation
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Build, Lint, Test & Release Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies (clean install)
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Check code formatting (Prettier)
+        run: npm run format:check
+
+      - name: Run automated test suite
+        run: npm test
+        env:
+          NODE_ENV: test
+          LOG_LEVEL: fatal
+
+      - name: Build TypeScript release bundle
+        run: npm run build
+
+      - name: Verify release candidate integrity
+        run: npm run release:check
