@@ -4,11 +4,11 @@ import { logger } from "../lib/logger";
 
 export interface DestinationReviewRow {
   id: string;
-  destination_id: string;
+  destination_id: string | null;
   user_name: string;
   rating: number;
   comment: string;
-  created_at: string;
+  created_at: string | null;
 }
 
 export class ReviewsRepository {
