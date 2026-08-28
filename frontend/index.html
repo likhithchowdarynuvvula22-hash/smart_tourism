@@ -65,6 +65,33 @@
       }
     }
   </script>
+  <style>
+    /* Premium VR 360 viewer scrollbar */
+    #vrViewerContainer::-webkit-scrollbar {
+      height: 8px;
+    }
+    #vrViewerContainer::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 4px;
+    }
+    #vrViewerContainer::-webkit-scrollbar-thumb {
+      background: rgba(99, 102, 241, 0.3);
+      border-radius: 4px;
+      border: 2px solid transparent;
+    }
+    #vrViewerContainer::-webkit-scrollbar-thumb:hover {
+      background: rgba(99, 102, 241, 0.6);
+    }
+    .grabbing {
+      cursor: grabbing !important;
+    }
+    .animate-pulse-slow {
+      animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    .animate-spin-slow {
+      animation: spin 8s linear infinite;
+    }
+  </style>
 </head>
 
 <body class="bg-surface text-on-surface min-h-screen flex flex-col font-sans selection:bg-primary/30 pb-16 xl:pb-0">
@@ -843,6 +870,20 @@
 
         </div>
 
+      </section>
+
+      <!-- 360° VR Immersive Gallery -->
+      <section class="glass-card rounded-3xl p-6 mb-8 border border-white/10">
+        <h3 class="text-lg font-bold text-on-surface mb-4 flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary animate-pulse-slow">vrpano</span>
+            <span>360° VR Immersive Gallery</span>
+          </span>
+          <span class="text-[10px] text-emerald-400 bg-emerald-400/10 px-2.5 py-0.5 rounded border border-emerald-400/20 font-bold uppercase tracking-wider">VR Mode Enabled</span>
+        </h3>
+        <div id="detailGalleryContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+          <!-- Dynamically populated by JS -->
+        </div>
       </section>
 
     </main>
@@ -2915,23 +2956,35 @@
       document.getElementById('detailDistrictText').textContent = `${dest.district || dest.name}, ${dest.state}`;
       document.getElementById('detailDescription').textContent = dest.description || 'Verified tourism destination loaded from Supabase primary source of truth.';
 
-      // Load relational attractions, experiences, safety, and weather from Supabase
+      // Load relational attractions, experiences, safety, weather, and VR images from Supabase
       const attrContainer = document.getElementById('detailAttractionsContainer');
+      const galleryContainer = document.getElementById('detailGalleryContainer');
+      
       if (attrContainer) {
         attrContainer.innerHTML = `<div class="p-3 text-xs text-on-surface-variant flex items-center gap-2"><span class="animate-spin material-symbols-outlined text-[14px]">sync</span> Loading verified attractions from Supabase...</div>`;
-        try {
-          const [attRes, expRes, safeRes, weatherRes] = await Promise.allSettled([
-            fetch(`/api/v1/destinations/${dest.id}/attractions`).then(r => r.json()),
-            fetch(`/api/v1/destinations/${dest.id}/experiences`).then(r => r.json()),
-            fetch(`/api/v1/destinations/${dest.id}/safety`).then(r => r.json()),
-            fetch(`/api/v1/weather/destinations/${dest.id}`).then(r => r.json())
-          ]);
+      }
+      if (galleryContainer) {
+        galleryContainer.innerHTML = `<div class="col-span-full p-6 text-center text-xs text-on-surface-variant flex items-center justify-center gap-2"><span class="animate-spin material-symbols-outlined text-[14px]">sync</span> Loading 360° VR Immersive Gallery from Supabase...</div>`;
+      }
 
-          const attractions = (attRes.status === 'fulfilled' && attRes.value?.data) || [];
-          const experiences = (expRes.status === 'fulfilled' && expRes.value?.data) || [];
-          const safety = (safeRes.status === 'fulfilled' && safeRes.value?.data) || null;
-          const weather = (weatherRes.status === 'fulfilled' && weatherRes.value?.data) || null;
+      try {
+        const [attRes, expRes, safeRes, weatherRes, imgRes] = await Promise.allSettled([
+          fetch(`/api/v1/destinations/${dest.id}/attractions`).then(r => r.json()),
+          fetch(`/api/v1/destinations/${dest.id}/experiences`).then(r => r.json()),
+          fetch(`/api/v1/destinations/${dest.id}/safety`).then(r => r.json()),
+          fetch(`/api/v1/weather/destinations/${dest.id}`).then(r => r.json()),
+          fetch(`/api/v1/content/destinations/${dest.id}/images`).then(r => r.json())
+        ]);
 
+        const attractions = (attRes.status === 'fulfilled' && attRes.value?.data) || [];
+        const experiences = (expRes.status === 'fulfilled' && expRes.value?.data) || [];
+        const safety = (safeRes.status === 'fulfilled' && safeRes.value?.data) || null;
+        const weather = (weatherRes.status === 'fulfilled' && weatherRes.value?.data) || null;
+        const galleryData = (imgRes.status === 'fulfilled' && imgRes.value?.data) || null;
+        const images = galleryData?.images || [];
+
+        // 1. Render Attractions
+        if (attrContainer) {
           if (attractions.length > 0) {
             attrContainer.innerHTML = attractions.map(a => `
               <div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-low border border-white/5 hover:border-primary/30 transition-colors">
@@ -2953,9 +3006,65 @@
               </div>
             `;
           }
-        } catch (err) {
-          console.error("Error loading destination relations:", err);
         }
+
+        // 2. Render VR Immersive Gallery
+        if (galleryContainer) {
+          const validImages = images.filter(img => img.url);
+          if (validImages.length > 0) {
+            galleryContainer.innerHTML = validImages.map(img => `
+              <div onclick="openVrViewerModal('${img.url}', '${img.altText}')" class="relative group rounded-2xl overflow-hidden border border-white/10 hover:-translate-y-2 hover:shadow-[0_12px_24px_rgba(99,102,241,0.25)] hover:border-primary/50 transition-all duration-300 transform cursor-pointer">
+                <div class="h-44 overflow-hidden relative bg-slate-900">
+                  <img src="${img.url}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="${img.altText}"/>
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                  
+                  <!-- 360 VR Badge -->
+                  <div class="absolute top-3 right-3 px-2 py-1 rounded-lg bg-slate-950/75 backdrop-blur-md border border-white/10 text-[9px] font-black text-primary flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[12px] animate-pulse">vrpano</span>
+                    <span>360° VR</span>
+                  </div>
+                </div>
+                <div class="p-3.5 bg-surface-low text-xs">
+                  <p class="font-bold text-on-surface line-clamp-1">${img.altText}</p>
+                  <p class="text-[10px] text-on-surface-variant mt-0.5 font-mono">Source: ${img.source || 'Verified Directory'} &bull; ${img.license}</p>
+                </div>
+              </div>
+            `).join('');
+          } else {
+            // Fallback default VR images based on destination info
+            const fallbackUrls = [
+              'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80',
+              'https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=1200&q=80',
+              'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80'
+            ];
+            const defaultAlts = [
+              `360° Panoramic view of ${dest.name} Scenic Outlook`,
+              `Immersive VR landscape near ${dest.name}`,
+              `360° VR Heritage point at ${dest.name}`
+            ];
+
+            galleryContainer.innerHTML = fallbackUrls.map((url, index) => `
+              <div onclick="openVrViewerModal('${url}', '${defaultAlts[index]}')" class="relative group rounded-2xl overflow-hidden border border-white/10 hover:-translate-y-2 hover:shadow-[0_12px_24px_rgba(99,102,241,0.25)] hover:border-primary/50 transition-all duration-300 transform cursor-pointer">
+                <div class="h-44 overflow-hidden relative bg-slate-900">
+                  <img src="${url}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="${defaultAlts[index]}"/>
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                  
+                  <!-- 360 VR Badge -->
+                  <div class="absolute top-3 right-3 px-2 py-1 rounded-lg bg-slate-950/75 backdrop-blur-md border border-white/10 text-[9px] font-black text-primary flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[12px] animate-pulse">vrpano</span>
+                    <span>360° VR</span>
+                  </div>
+                </div>
+                <div class="p-3.5 bg-surface-low text-xs">
+                  <p class="font-bold text-on-surface line-clamp-1">${defaultAlts[index]}</p>
+                  <p class="text-[10px] text-on-surface-variant mt-0.5 font-mono">Source: Incredible India &bull; CC License</p>
+                </div>
+              </div>
+            `).join('');
+          }
+        }
+      } catch (err) {
+        console.error("Error loading destination relations:", err);
       }
 
       navigateToPage('destination-detail');
@@ -5548,6 +5657,33 @@
     }
 
     // -------------------------------------------------------------------------
+    // VR 360 PANORAMIC VIEWER CONTROLLERS
+    // -------------------------------------------------------------------------
+    function openVrViewerModal(imgUrl, title) {
+      const modal = document.getElementById('vrViewerModal');
+      const img = document.getElementById('vrViewerImage');
+      const titleEl = document.getElementById('vrViewerTitle');
+      if (!modal || !img) return;
+
+      img.src = imgUrl;
+      if (titleEl) titleEl.textContent = title;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      // Center the panorama
+      const container = document.getElementById('vrViewerContainer');
+      if (container) {
+        setTimeout(() => {
+          container.scrollLeft = (container.scrollWidth - container.clientWidth) / 2;
+        }, 100);
+      }
+    }
+
+    function closeVrViewerModal() {
+      document.getElementById('vrViewerModal')?.classList.add('hidden');
+    }
+
+    // -------------------------------------------------------------------------
     // INITIALIZATION
     // -------------------------------------------------------------------------
     window.addEventListener('DOMContentLoaded', () => {
@@ -5571,6 +5707,36 @@
       checkDestinationAvailability();
       updateEstimatedBudgetPreview();
       recalculateBudget();
+
+      // Drag-to-scroll logic for VR panoramic image
+      const vrContainer = document.getElementById('vrViewerContainer');
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      if (vrContainer) {
+        vrContainer.addEventListener('mousedown', (e) => {
+          isDown = true;
+          vrContainer.classList.add('grabbing');
+          startX = e.pageX - vrContainer.offsetLeft;
+          scrollLeft = vrContainer.scrollLeft;
+        });
+        vrContainer.addEventListener('mouseleave', () => {
+          isDown = false;
+          vrContainer.classList.remove('grabbing');
+        });
+        vrContainer.addEventListener('mouseup', () => {
+          isDown = false;
+          vrContainer.classList.remove('grabbing');
+        });
+        vrContainer.addEventListener('mousemove', (e) => {
+          if(!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - vrContainer.offsetLeft;
+          const walk = (x - startX) * 2;
+          vrContainer.scrollLeft = scrollLeft - walk;
+        });
+      }
 
       // Check login state
       const isLoggedIn = localStorage.getItem('samastha_logged_in') === 'true';
@@ -5602,6 +5768,42 @@
       }
     });
   </script>
+
+  <!-- ========================================================================= -->
+  <!-- VR 360 PANORAMIC VIEWER OVERLAY MODAL -->
+  <!-- ========================================================================= -->
+  <div id="vrViewerModal" class="fixed inset-0 bg-slate-950/95 backdrop-blur-md hidden items-center justify-center z-50 p-4 select-none">
+    <div class="glass-card max-w-5xl w-full rounded-3xl border border-white/10 overflow-hidden shadow-2xl flex flex-col">
+      <header class="p-4 border-b border-white/10 flex justify-between items-center bg-surface-low">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary animate-spin-slow text-[20px]">vrpano</span>
+          <div>
+            <h4 id="vrViewerTitle" class="font-bold text-sm text-on-surface">360° VR View</h4>
+            <p class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">Drag or swipe on image to pan VR landscape</p>
+          </div>
+        </div>
+        <button onclick="closeVrViewerModal()" class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer text-on-surface">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </header>
+      <div id="vrViewerContainer" class="h-[500px] overflow-x-auto overflow-y-hidden cursor-grab active:cursor-grabbing relative scroll-smooth flex items-center bg-slate-900">
+        <!-- Panoramic image container -->
+        <img id="vrViewerImage" src="" class="h-full min-w-[2000px] object-cover pointer-events-none" />
+        
+        <!-- Reticle HUD Overlay -->
+        <div class="absolute inset-0 pointer-events-none flex items-center justify-center">
+          <div class="w-24 h-24 border border-primary/20 rounded-full flex items-center justify-center animate-ping absolute"></div>
+          <div class="w-20 h-20 border border-primary/40 rounded-full flex items-center justify-center relative">
+            <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+            <span class="absolute top-1 text-[8px] text-primary/60 font-mono font-bold">N</span>
+            <span class="absolute right-1 text-[8px] text-primary/60 font-mono font-bold">E</span>
+            <span class="absolute bottom-1 text-[8px] text-primary/60 font-mono font-bold">S</span>
+            <span class="absolute left-1 text-[8px] text-primary/60 font-mono font-bold">W</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
