@@ -49,6 +49,11 @@ export const createApp = (): Application => {
   // API Routes
   app.use(routes);
 
+  // Silently handle favicon.ico requests to avoid 404 logs
+  app.get("/favicon.ico", (_req, res) => {
+    res.status(204).end();
+  });
+
   // Static frontend portal files (UI showcase)
   const frontendDir = path.resolve(__dirname, "../frontend");
   app.use(express.static(frontendDir));
