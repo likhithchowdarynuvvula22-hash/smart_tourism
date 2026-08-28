@@ -29,7 +29,7 @@ import { BadRequestError, NotFoundError } from "../utils/appError";
 import { logger } from "../lib/logger";
 
 export interface PaginatedDestinationsResult {
-  destinations: DestinationRow[];
+  destinations: (DestinationRow & { image_url?: string | null })[];
   pagination: PaginationMeta;
 }
 

@@ -8,7 +8,7 @@ import { BadRequestError, NotFoundError } from "../utils/appError";
 import { logger } from "../lib/logger";
 
 export interface GetDestinationsResult {
-  destinations: DestinationRow[];
+  destinations: (DestinationRow & { image_url?: string | null })[];
   total: number;
   limit: number;
   offset: number;

@@ -15,7 +15,7 @@ export class DestinationRepository {
    */
   async findMany(
     options: DestinationFilterOptions & { offset?: number; limit?: number } = {}
-  ): Promise<DestinationRow[]> {
+  ): Promise<(DestinationRow & { image_url?: string | null })[]> {
     const {
       offset = 0,
       limit = 10,
@@ -26,7 +26,12 @@ export class DestinationRepository {
       sortOrder = "asc"
     } = options;
 
-    let query = supabase.from("destinations").select("*");
+    let query = supabase.from("destinations").select(`
+      *,
+      images (
+        image_url
+      )
+    `);
 
     if (search && search.trim().length > 0) {
       const sanitized = search
@@ -64,7 +69,16 @@ export class DestinationRepository {
       throw new InternalServerError("Failed to query destinations from database");
     }
 
-    return data || [];
+    const rows = (data || []) as unknown as (DestinationRow & {
+      images: { image_url: string | null }[];
+    })[];
+    return rows.map((row) => {
+      const { images, ...rest } = row;
+      return {
+        ...rest,
+        image_url: images && images.length > 0 ? images[0].image_url : null
+      };
+    });
   }
 
   /**
