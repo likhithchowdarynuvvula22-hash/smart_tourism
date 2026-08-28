@@ -2891,7 +2891,13 @@
     }
 
     function getDestinationImage(d) {
-      if (d.image_url) return d.image_url;
+      if (d.image_url) {
+        const ytId = getYoutubeVideoId(d.image_url);
+        if (ytId) {
+          return `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`;
+        }
+        return d.image_url;
+      }
       const seed = d.id || d.name || 'default';
       return `https://picsum.photos/seed/${encodeURIComponent(seed)}/600/400`;
     }
@@ -3067,7 +3073,7 @@
       if (!dest) return;
       AppState.currentDetailDestination = dest;
 
-      document.getElementById('detailHeroImage').src = dest.image_url || 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80';
+      document.getElementById('detailHeroImage').src = getDestinationImage(dest);
       document.getElementById('detailTitle').textContent = dest.name;
       document.getElementById('detailStateBadge').textContent = dest.state;
       document.getElementById('detailCategoryBadge').textContent = dest.category || 'Heritage & Nature';
