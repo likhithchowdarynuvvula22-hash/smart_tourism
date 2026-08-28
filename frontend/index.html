@@ -2892,32 +2892,8 @@
 
     function getDestinationImage(d) {
       if (d.image_url) return d.image_url;
-      const state = d.state ? d.state.trim().toLowerCase() : '';
-      if (state.includes('kerala')) {
-        return 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=600&q=80';
-      }
-      if (state.includes('rajasthan')) {
-        return 'https://images.unsplash.com/photo-1477584322811-5768569b5944?auto=format&fit=crop&w=600&q=80';
-      }
-      if (state.includes('karnataka')) {
-        return 'https://images.unsplash.com/photo-1600100397608-f010e9619985?auto=format&fit=crop&w=600&q=80';
-      }
-      if (state.includes('goa')) {
-        return 'https://images.unsplash.com/photo-1512480133894-3a5f8220fbf5?auto=format&fit=crop&w=600&q=80';
-      }
-      if (state.includes('himachal') || state.includes('jammu') || state.includes('uttarakhand') || state.includes('sikkim')) {
-        return 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&q=80';
-      }
-      if (state.includes('tamil nadu')) {
-        return 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80';
-      }
-      if (state.includes('maharashtra')) {
-        return 'https://images.unsplash.com/photo-1562158074-b523f71e2c3e?auto=format&fit=crop&w=600&q=80';
-      }
-      if (state.includes('madhya pradesh')) {
-        return 'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=600&q=80';
-      }
-      return 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=600&q=80';
+      const seed = d.id || d.name || 'default';
+      return `https://picsum.photos/seed/${encodeURIComponent(seed)}/600/400`;
     }
 
     function renderFeaturedDestinations(items) {
