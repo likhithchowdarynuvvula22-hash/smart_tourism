@@ -244,6 +244,16 @@
           <span>Eco-Tourism AI</span>
         </a>
 
+        <a href="#insurance" onclick="navigateToPage('insurance')" class="nav-sidebar-link flex items-center gap-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-xl p-2.5 transition-all duration-200" id="sideNav-insurance">
+          <span class="material-symbols-outlined text-[19px] text-pink-400">shield_with_heart</span>
+          <span>Travel Insurance</span>
+        </a>
+
+        <a href="#reviews-hub" onclick="navigateToPage('reviews-hub')" class="nav-sidebar-link flex items-center gap-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-xl p-2.5 transition-all duration-200" id="sideNav-reviews-hub">
+          <span class="material-symbols-outlined text-[19px] text-yellow-400">rate_review</span>
+          <span>Reviews Hub</span>
+        </a>
+
         <a href="#my-trips" onclick="navigateToPage('my-trips')" class="nav-sidebar-link flex items-center gap-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-xl p-2.5 transition-all duration-200" id="sideNav-my-trips">
           <span class="material-symbols-outlined text-[19px] text-indigo-300">card_travel</span>
           <span data-i18n="nav_my_trips">My Journeys</span>
@@ -2208,6 +2218,516 @@
 
     </main>
 
+    <!-- ========================================================================= -->
+    <!-- TRAVEL INSURANCE AI SHIELD PAGE -->
+    <!-- ========================================================================= -->
+    <main id="page-insurance" class="app-page-view flex-1 p-4 md:p-8 max-w-7xl mx-auto w-full">
+      <!-- Header -->
+      <header class="mb-8">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 text-xs font-bold mb-3 border border-pink-500/30">
+          <span class="material-symbols-outlined text-[16px] animate-pulse">shield_with_heart</span>
+          <span>AI Insure Shield</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-on-surface font-display">
+          Travel Insurance AI Shield
+        </h2>
+        <p class="text-sm text-on-surface-variant mt-1">
+          Calculate smart, real-time quotes, compare policies, and purchase certified travel coverages for your Indian journeys.
+        </p>
+      </header>
+
+      <!-- Grid layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Input parameters and Active Policies list -->
+        <div class="lg:col-span-1 space-y-6">
+          <!-- Quote Form -->
+          <div class="glass-card rounded-3xl p-6 border border-white/10">
+            <h4 class="font-bold text-sm text-on-surface mb-4 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-pink-400">calculate</span>
+              <span>Calculate Quote</span>
+            </h4>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-on-surface mb-2">Destination Area</label>
+                <select id="insuranceDestSelect" class="w-full bg-surface-low border border-white/15 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary focus:outline-none">
+                  <!-- Will populate dynamically -->
+                </select>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-on-surface mb-2">Start Date</label>
+                  <input type="date" id="insuranceStartDate" class="w-full bg-surface-low border border-white/15 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-on-surface mb-2">End Date</label>
+                  <input type="date" id="insuranceEndDate" class="w-full bg-surface-low border border-white/15 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary focus:outline-none" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-on-surface mb-2">Primary Traveler Age</label>
+                <input type="number" id="insuranceAge" min="1" max="120" value="28" class="w-full bg-surface-low border border-white/15 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-on-surface mb-2">Estimated Trip Budget (₹)</label>
+                <input type="number" id="insuranceBudget" min="1000" max="1000000" value="25000" class="w-full bg-surface-low border border-white/15 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary focus:outline-none" />
+              </div>
+              <button onclick="calculateInsuranceQuotes()" class="w-full py-3 rounded-xl bg-pink-500 hover:bg-pink-600 text-slate-950 font-bold text-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-lg">
+                <span class="material-symbols-outlined text-[16px]">bolt</span>
+                <span>Get Instant Quote</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Active Coverages -->
+          <div class="glass-card rounded-3xl p-6 border border-white/10">
+            <h4 class="font-bold text-sm text-on-surface mb-4 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-emerald-400">verified_user</span>
+              <span>Active Coverages</span>
+            </h4>
+            <div id="activePoliciesContainer" class="space-y-3 max-h-[300px] overflow-y-auto pr-1">
+              <!-- Will load policies from localStorage -->
+              <p class="text-xs text-on-surface-variant italic">No active travel policies found. Get a quote and purchase below!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparative plans and checkout cards -->
+        <div class="lg:col-span-2 space-y-8">
+          <!-- Quote results - Compare plans (Initially Hidden/Interactive) -->
+          <div id="insurancePlansSection" class="hidden space-y-6">
+            <div class="flex items-center justify-between">
+              <h3 class="font-bold text-base text-on-surface">Select Travel Protection Plan</h3>
+              <span class="text-[10px] text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded border border-emerald-400/20 font-bold uppercase tracking-wider">Dynamic AI Pricing</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <!-- Plan 1: Basic -->
+              <div class="glass-card rounded-3xl p-5 border border-white/10 hover:border-pink-500/40 transition-all flex flex-col justify-between">
+                <div>
+                  <h4 class="font-bold text-sm text-on-surface">Basic Explorer</h4>
+                  <p class="text-[10px] text-on-surface-variant mt-1">Core coverage for budget travelers</p>
+                  
+                  <div class="my-5 flex items-baseline gap-1">
+                    <span class="text-2xl font-black text-on-surface" id="planBasicPremium">₹249</span>
+                    <span class="text-[10px] text-on-surface-variant">total premium</span>
+                  </div>
+
+                  <!-- Radial gauge simulated in SVG -->
+                  <div class="flex items-center gap-3 my-4">
+                    <svg class="w-10 h-10 transform -rotate-90">
+                      <circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.05)" stroke-width="3" fill="transparent" />
+                      <circle cx="20" cy="20" r="16" stroke="#ec4899" stroke-width="3" fill="transparent" stroke-dasharray="100" stroke-dashoffset="40" />
+                    </svg>
+                    <div>
+                      <p class="text-[10px] font-bold text-on-surface">60% Protection</p>
+                      <p class="text-[8px] text-on-surface-variant">Basic medical & trip delay</p>
+                    </div>
+                  </div>
+
+                  <ul class="text-[10px] space-y-2 mt-4 border-t border-white/5 pt-3">
+                    <li class="flex items-center gap-1.5 text-on-surface-variant">
+                      <span class="material-symbols-outlined text-[12px] text-emerald-400">check</span>
+                      Medical Cover: up to ₹2 Lakhs
+                    </li>
+                    <li class="flex items-center gap-1.5 text-on-surface-variant">
+                      <span class="material-symbols-outlined text-[12px] text-emerald-400">check</span>
+                      Baggage Loss: None
+                    </li>
+                    <li class="flex items-center gap-1.5 text-on-surface-variant">
+                      <span class="material-symbols-outlined text-[12px] text-red-400">close</span>
+                      Adventure Sports: Excluded
+                    </li>
+                  </ul>
+                </div>
+                <button onclick="selectInsurancePlan('basic')" class="w-full mt-6 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-pink-500 hover:text-slate-950 hover:border-pink-500 text-on-surface font-bold text-xs transition-all cursor-pointer">
+                  Choose Basic
+                </button>
+              </div>
+
+              <!-- Plan 2: Nomad (Nomad theme) -->
+              <div class="glass-card rounded-3xl p-5 border-2 border-pink-500/50 relative hover:border-pink-500/80 transition-all flex flex-col justify-between shadow-[0_4px_20px_rgba(236,72,153,0.15)] bg-slate-950/40">
+                <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-pink-500 text-slate-950 font-black text-[8px] uppercase tracking-wider">Most Popular</span>
+                <div>
+                  <h4 class="font-bold text-sm text-on-surface">Secure Nomad</h4>
+                  <p class="text-[10px] text-on-surface-variant mt-1">Full medical & delay protection</p>
+                  
+                  <div class="my-5 flex items-baseline gap-1">
+                    <span class="text-2xl font-black text-on-surface" id="planNomadPremium">₹599</span>
+                    <span class="text-[10px] text-on-surface-variant">total premium</span>
+                  </div>
+
+                  <!-- Radial gauge simulated in SVG -->
+                  <div class="flex items-center gap-3 my-4">
+                    <svg class="w-10 h-10 transform -rotate-90">
+                      <circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.05)" stroke-width="3" fill="transparent" />
+                      <circle cx="20" cy="20" r="16" stroke="#ec4899" stroke-width="3" fill="transparent" stroke-dasharray="100" stroke-dashoffset="15" />
+                    </svg>
+                    <div>
+                      <p class="text-[10px] font-bold text-on-surface">85% Protection</p>
+                      <p class="text-[8px] text-on-surface-variant">Full medical, baggage & loss</p>
+                    </div>
+                  </div>
+
+                  <ul class="text-[10px] space-y-2 mt-4 border-t border-white/5 pt-3">
+                    <li class="flex items-center gap-1.5 text-on-surface-variant">
+                      <span class="material-symbols-outlined text-[12px] text-emerald-400">check</span>
+                      Medical Cover: up to ₹5 Lakhs
+                    </li>
+                    <li class="flex items-center gap-1.5 text-on-surface-variant">
+                      <span class="material-symbols-outlined text-[12px] text-emerald-400">check</span>
+                      Baggage Loss: up to ₹25,000
+                    </li>
+                    <li class="flex items-center gap-1.5 text-on-surface-variant">
+                      <span class="material-symbols-outlined text-[12px] text-emerald-400">check</span>
+                      Trip Cancellation: Covered
+                    </li>
+                  </ul>
+                </div>
+                <button onclick="selectInsurancePlan('nomad')" class="w-full mt-6 py-2.5 rounded-xl bg-pink-500 text-slate-950 font-bold text-xs transition-colors cursor-pointer hover:bg-pink-600">
+                  Choose Nomad
+                </button>
+              </div>
+
+              <!-- Plan 3: Elite -->
+              <div class="glass-card rounded-3xl p-5 border border-white/10 hover:border-pink-500/40 transition-all flex flex-col justify-between">
+                <div>
+                  <h4 class="font-bold text-sm text-on-surface">Elite Shield</h4>
+                  <p class="text-[10px] text-on-surface-variant mt-1">Extreme adventure & maximum cover</p>
+                  
+                  <div class="my-5 flex items-baseline gap-1">
+                    <span class="text-2xl font-black text-on-surface" id="planElitePremium">₹999</span>
+                    <span class="text-[10px] text-on-surface-variant">total premium</span>
+                  </div>
+
+                  <!-- Radial gauge simulated in SVG -->
+                  <div class="flex items-center gap-3 my-4">
+                    <svg class="w-10 h-10 transform -rotate-90">
+                      <circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,0.05)" stroke-width="3" fill="transparent" />
+                      <circle cx="20" cy="20" r="16" stroke="#ec4899" stroke-width="3" fill="transparent" stroke-dasharray="100" stroke-dashoffset="2" />
+                    </svg>
+                    <div>
+                      <p class="text-[10px] font-bold text-on-surface">98% Protection</p>
+                      <p class="text-[8px] text-on-surface-variant">Adventure cover & evacuation</p>
+                    </div>
+                  </div>
+
+                  <ul class="text-[10px] space-y-2 mt-4 border-t border-white/5 pt-3">
+                    <li class="flex items-center gap-1.5 text-on-surface-variant">
+                      <span class="material-symbols-outlined text-[12px] text-emerald-400">check</span>
+                      Medical Cover: up to ₹15 Lakhs
+                    </li>
+                    <li class="flex items-center gap-1.5 text-on-surface-variant">
+                      <span class="material-symbols-outlined text-[12px] text-emerald-400">check</span>
+                      Adventure Sports: Included
+                    </li>
+                    <li class="flex items-center gap-1.5 text-on-surface-variant">
+                      <span class="material-symbols-outlined text-[12px] text-emerald-400">check</span>
+                      Emergency Evac: Full Coverage
+                    </li>
+                  </ul>
+                </div>
+                <button onclick="selectInsurancePlan('elite')" class="w-full mt-6 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-pink-500 hover:text-slate-950 hover:border-pink-500 text-on-surface font-bold text-xs transition-all cursor-pointer">
+                  Choose Elite
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Checkout Flow Section (Initially Hidden) -->
+          <div id="insuranceCheckoutSection" class="hidden glass-card rounded-3xl p-6 border border-white/10 space-y-6">
+            <div class="flex items-center gap-2 border-b border-white/10 pb-4">
+              <button onclick="cancelInsuranceCheckout()" class="w-7 h-7 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center border border-white/10 cursor-pointer">
+                <span class="material-symbols-outlined text-[16px] text-on-surface">arrow_back</span>
+              </button>
+              <h3 class="font-bold text-base text-on-surface">Premium Checkout</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Summary Details -->
+              <div class="space-y-4">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-pink-400">Policy Summary</h4>
+                <div class="p-4 rounded-2xl bg-surface-low border border-white/5 space-y-3 text-xs">
+                  <div class="flex justify-between">
+                    <span class="text-on-surface-variant">Destination Coverage</span>
+                    <span class="font-bold text-on-surface" id="checkoutDest">Araku Valley</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-on-surface-variant">Selected Plan</span>
+                    <span class="font-bold text-pink-300" id="checkoutPlanName">Secure Nomad</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-on-surface-variant">Trip Duration</span>
+                    <span class="font-bold text-on-surface" id="checkoutDuration">3 Days</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-on-surface-variant">Coverage Limits</span>
+                    <span class="font-bold text-emerald-400" id="checkoutLimit">₹5,00,000</span>
+                  </div>
+                  <div class="flex justify-between border-t border-white/5 pt-3 text-sm">
+                    <span class="font-bold text-on-surface">Premium Amount</span>
+                    <span class="font-black text-on-surface" id="checkoutPremium">₹599</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Simulated Payment -->
+              <div class="space-y-4">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-pink-400">Scan &amp; Mock Pay via UPI</h4>
+                <div class="flex flex-col items-center p-6 rounded-2xl bg-white border border-white/15 shadow-xl text-slate-950">
+                  <!-- Dynamic QR code generator using picsum or standard API -->
+                  <div class="w-36 h-36 bg-slate-100 flex items-center justify-center p-2 rounded-xl border border-slate-200">
+                    <img id="checkoutQrImage" src="https://picsum.photos/seed/insqr/200/200" class="w-full h-full object-cover" />
+                  </div>
+                  <p class="text-[10px] font-bold text-slate-500 mt-3 text-center uppercase tracking-wider">Simulated Merchant: SAMASTHA SHIELD</p>
+                  
+                  <button onclick="simulatePaymentSuccess()" class="w-full mt-4 py-3 rounded-xl bg-pink-500 hover:bg-pink-600 text-slate-950 font-black text-xs transition-colors cursor-pointer shadow-lg flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[16px]">qr_code_scanner</span>
+                    <span>Click to Mock Pay</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Policy Success & Certificate Section (Initially Hidden) -->
+          <div id="insuranceSuccessSection" class="hidden glass-card rounded-3xl p-8 border border-emerald-500/20 relative overflow-hidden bg-slate-950/40 text-center space-y-6">
+            <div class="absolute -top-12 -right-12 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl"></div>
+            <div class="absolute -bottom-12 -left-12 w-36 h-36 bg-pink-500/10 rounded-full blur-2xl"></div>
+
+            <div class="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto animate-bounce">
+              <span class="material-symbols-outlined text-[36px]">verified</span>
+            </div>
+
+            <div class="space-y-2">
+              <h3 class="text-xl font-bold text-on-surface">Payment Successful!</h3>
+              <p class="text-xs text-on-surface-variant">Your travel insurance policy is active immediately. Certificate details listed below.</p>
+            </div>
+
+            <!-- Certified Policy Layout -->
+            <div class="max-w-md mx-auto p-6 rounded-3xl border border-emerald-500/30 bg-surface-low text-left space-y-4 shadow-xl">
+              <div class="flex justify-between items-center border-b border-white/5 pb-3">
+                <span class="text-[10px] font-bold tracking-wider text-emerald-400 uppercase">Government of India AI Insure</span>
+                <span class="text-[10px] text-on-surface-variant font-mono" id="certPolicyId">INS-2026-894723</span>
+              </div>
+
+              <div class="space-y-2 text-xs">
+                <div class="flex justify-between">
+                  <span class="text-on-surface-variant">Holder Profile</span>
+                  <span class="font-bold text-on-surface" id="certUser">Tourist Traveler</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-on-surface-variant">Destination</span>
+                  <span class="font-bold text-on-surface" id="certDest">Araku Valley</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-on-surface-variant">Insurance Tier</span>
+                  <span class="font-bold text-pink-300" id="certPlan">Secure Nomad</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-on-surface-variant">Active Coverage</span>
+                  <span class="font-bold text-emerald-400" id="certLimit">₹5,00,000</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-on-surface-variant">Duration active</span>
+                  <span class="font-bold text-on-surface" id="certDuration">3 Days</span>
+                </div>
+              </div>
+
+              <div class="border-t border-white/5 pt-3 flex justify-between items-center">
+                <div>
+                  <p class="text-[8px] text-on-surface-variant uppercase font-mono">Verified Policy</p>
+                  <p class="text-[10px] text-emerald-400 font-bold font-display">Active &amp; Insured</p>
+                </div>
+                <div class="w-12 h-12 bg-white p-0.5 rounded border border-white/10">
+                  <img src="https://picsum.photos/seed/certqr/100/100" class="w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
+
+            <div class="flex gap-4 justify-center">
+              <button onclick="resetInsurancePlanner()" class="px-6 py-2.5 rounded-xl border border-white/10 hover:bg-white/5 text-on-surface font-bold text-xs transition-colors cursor-pointer">
+                Get Another Quote
+              </button>
+              <button onclick="navigateToPage('my-trips')" class="px-6 py-2.5 rounded-xl bg-emerald-500 text-slate-950 font-bold text-xs transition-colors cursor-pointer hover:bg-emerald-600">
+                View in Wishlist
+              </button>
+            </div>
+          </div>
+
+          <!-- Default fallback introduction -->
+          <div id="insuranceIntroSection" class="glass-card rounded-3xl p-8 border border-white/10 text-center space-y-6">
+            <div class="w-20 h-20 bg-pink-500/10 text-pink-300 rounded-full flex items-center justify-center mx-auto border border-pink-500/20">
+              <span class="material-symbols-outlined text-[36px]">verified_user</span>
+            </div>
+            <div class="space-y-2 max-w-md mx-auto">
+              <h3 class="text-lg font-bold text-on-surface">Secure Your Journey Instantly</h3>
+              <p class="text-xs text-on-surface-variant">Enter your destination, dates, and traveler profiles in the calculator panel to view personalized AI travel protection coverage tiers.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left border-t border-white/10 pt-6">
+              <div class="p-4 rounded-2xl bg-surface-low border border-white/5">
+                <span class="material-symbols-outlined text-pink-400 text-[20px] mb-2">medical_services</span>
+                <h5 class="font-bold text-xs text-on-surface">Medical Protection</h5>
+                <p class="text-[10px] text-on-surface-variant mt-1">Coverage for unexpected medical and evacuation events during your travels.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-surface-low border border-white/5">
+                <span class="material-symbols-outlined text-emerald-400 text-[20px] mb-2">event_busy</span>
+                <h5 class="font-bold text-xs text-on-surface">Delay &amp; Cancel</h5>
+                <p class="text-[10px] text-on-surface-variant mt-1">Reimbursements for travel delays, flight cancellations, and baggage loss.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-surface-low border border-white/5">
+                <span class="material-symbols-outlined text-blue-400 text-[20px] mb-2">sports_gymnastics</span>
+                <h5 class="font-bold text-xs text-on-surface">Adventure Add-on</h5>
+                <p class="text-[10px] text-on-surface-variant mt-1">Exclusive add-on coverages for active sports, hikes, and river rafting.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ========================================================================= -->
+    <!-- REVIEWS HUB PAGE -->
+    <!-- ========================================================================= -->
+    <main id="page-reviews-hub" class="app-page-view flex-1 p-4 md:p-8 max-w-7xl mx-auto w-full">
+      <!-- Header -->
+      <header class="mb-8">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-xs font-bold mb-3 border border-yellow-500/30">
+          <span class="material-symbols-outlined text-[16px] animate-pulse">rate_review</span>
+          <span>Tourist Feedback Feed</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-on-surface font-display">
+          Tourists Place Reviews Hub
+        </h2>
+        <p class="text-sm text-on-surface-variant mt-1">
+          Explore global visitor reviews, query feedback by specific destinations, and post your travel experiences.
+        </p>
+      </header>
+
+      <!-- Dashboard Statistics -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div class="glass-card rounded-2xl p-4 border border-white/10 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-yellow-500/10 text-yellow-300 flex items-center justify-center border border-yellow-500/20">
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <div>
+            <h5 class="text-[10px] font-bold text-on-surface-variant uppercase">Global Rating</h5>
+            <p class="text-base font-extrabold text-on-surface mt-0.5">4.6 / 5.0</p>
+          </div>
+        </div>
+        <div class="glass-card rounded-2xl p-4 border border-white/10 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20">
+            <span class="material-symbols-outlined">forum</span>
+          </div>
+          <div>
+            <h5 class="text-[10px] font-bold text-on-surface-variant uppercase">Total Reviews</h5>
+            <p class="text-base font-extrabold text-on-surface mt-0.5">14,829</p>
+          </div>
+        </div>
+        <div class="glass-card rounded-2xl p-4 border border-white/10 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center border border-blue-500/20">
+            <span class="material-symbols-outlined">sentiment_satisfied</span>
+          </div>
+          <div>
+            <h5 class="text-[10px] font-bold text-on-surface-variant uppercase">Positive Sentiment</h5>
+            <p class="text-base font-extrabold text-on-surface mt-0.5">92.4%</p>
+          </div>
+        </div>
+        <div class="glass-card rounded-2xl p-4 border border-white/10 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-300 flex items-center justify-center border border-pink-500/20">
+            <span class="material-symbols-outlined">verified</span>
+          </div>
+          <div>
+            <h5 class="text-[10px] font-bold text-on-surface-variant uppercase">First Party Verified</h5>
+            <p class="text-base font-extrabold text-on-surface mt-0.5">100% Legit</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Layout Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Input Form and Search Query Filters -->
+        <div class="lg:col-span-1 space-y-6">
+          <!-- Search filter card -->
+          <div class="glass-card rounded-3xl p-6 border border-white/10 space-y-4">
+            <h4 class="font-bold text-sm text-on-surface flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-yellow-400">search</span>
+              <span>Filter Reviews</span>
+            </h4>
+            <div>
+              <label class="block text-xs font-bold text-on-surface mb-2">Select Destination</label>
+              <select id="reviewsHubFilterSelect" onchange="filterReviewsHubFeed()" class="w-full bg-surface-low border border-white/15 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary focus:outline-none">
+                <!-- Dropdown options populated dynamically -->
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-on-surface mb-2">Rating Tier</label>
+              <select id="reviewsHubRatingFilter" onchange="filterReviewsHubFeed()" class="w-full bg-surface-low border border-white/15 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary focus:outline-none">
+                <option value="all">Show All Ratings</option>
+                <option value="5">5 Stars only</option>
+                <option value="4">4 Stars &amp; above</option>
+                <option value="3">3 Stars &amp; above</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Write Review Form -->
+          <div class="glass-card rounded-3xl p-6 border border-white/10 space-y-4">
+            <h4 class="font-bold text-sm text-on-surface flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-yellow-400">edit_note</span>
+              <span>Write a Place Review</span>
+            </h4>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-on-surface mb-2">Destination</label>
+                <select id="reviewsHubWriteSelect" class="w-full bg-surface-low border border-white/15 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary focus:outline-none">
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-on-surface mb-2">Your Display Name</label>
+                <input type="text" id="reviewsHubWriteName" value="Gopi Chand" class="w-full bg-surface-low border border-white/15 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-on-surface mb-2">Star Rating</label>
+                <div class="flex items-center gap-2 text-white/30" id="reviewsHubWriteStars">
+                  <span onclick="setReviewsHubWriteRating(1)" class="material-symbols-outlined cursor-pointer hover:text-yellow-400 transition-colors text-[24px]">star</span>
+                  <span onclick="setReviewsHubWriteRating(2)" class="material-symbols-outlined cursor-pointer hover:text-yellow-400 transition-colors text-[24px]">star</span>
+                  <span onclick="setReviewsHubWriteRating(3)" class="material-symbols-outlined cursor-pointer hover:text-yellow-400 transition-colors text-[24px]">star</span>
+                  <span onclick="setReviewsHubWriteRating(4)" class="material-symbols-outlined cursor-pointer hover:text-yellow-400 transition-colors text-[24px]">star</span>
+                  <span onclick="setReviewsHubWriteRating(5)" class="material-symbols-outlined cursor-pointer hover:text-yellow-400 transition-colors text-[24px]">star</span>
+                </div>
+                <input type="hidden" id="reviewsHubWriteRatingVal" value="5" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-on-surface mb-2">Your Experience</label>
+                <textarea id="reviewsHubWriteComment" rows="4" placeholder="How was the crowd, accessibility, and local safety?..." class="w-full bg-surface-low border border-white/15 rounded-xl px-4 py-2.5 text-xs text-on-surface focus:border-primary focus:outline-none resize-none"></textarea>
+              </div>
+              <button onclick="submitReviewsHubReview()" class="w-full py-3 rounded-xl bg-yellow-500 hover:bg-yellow-600 text-slate-950 font-bold text-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-lg">
+                <span class="material-symbols-outlined text-[16px]">send</span>
+                <span>Publish Review</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Global Reviews Feed list -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold text-base text-on-surface" id="reviewsFeedHeader">Recent Visitor Feedback</h3>
+            <span class="text-[10px] text-yellow-400 bg-yellow-400/10 px-2 py-0.5 rounded border border-yellow-400/20 font-bold uppercase tracking-wider">Live Feed</span>
+          </div>
+
+          <div id="reviewsHubFeedContainer" class="space-y-4">
+            <!-- Dynamic feed loading -->
+            <div class="p-8 text-center text-xs text-on-surface-variant flex items-center justify-center gap-2 bg-surface-low rounded-2xl border border-white/5">
+              <span class="animate-spin material-symbols-outlined text-[16px]">sync</span>
+              Loading feedback feed...
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
   </div>
 </div>
 
@@ -2589,6 +3109,8 @@
       accessibility: "Accessibility & Elderly Hub",
       experiences: "Local Experiences & Artisans",
       sustainability: "Eco-Tourism & Carbon Awareness",
+      insurance: "Travel Insurance AI Shield",
+      'reviews-hub': "Destination Reviews Hub & Feed",
       'my-trips': "My Journeys & Wishlist",
       profile: "Traveler Profile & Preferences",
       screens: "27 Screens Mockup Catalog"
@@ -2762,6 +3284,14 @@
           if (select) select.value = defaultId;
           loadDestinationExperiencesAssessment(defaultId);
         }
+      }
+      if (pageId === 'insurance') {
+        initInsuranceDropdowns();
+        loadActivePoliciesList();
+      }
+      if (pageId === 'reviews-hub') {
+        initReviewsHubSelectors();
+        loadReviewsHubFeed();
       }
     }
 
@@ -6142,6 +6672,335 @@
         }
       }
     });
+
+    // -------------------------------------------------------------------------
+    // TRAVEL INSURANCE AI ACTIONS
+    // -------------------------------------------------------------------------
+    function initInsuranceDropdowns() {
+      const select = document.getElementById('insuranceDestSelect');
+      if (!select || !AppState.destinations.length) return;
+      select.innerHTML = AppState.destinations.map(d => `<option value="${d.name}">${d.name}, ${d.state}</option>`).join('');
+    }
+
+    let insuranceCurrentQuote = null;
+
+    function calculateInsuranceQuotes() {
+      const destName = document.getElementById('insuranceDestSelect').value;
+      const startDateVal = document.getElementById('insuranceStartDate').value;
+      const endDateVal = document.getElementById('insuranceEndDate').value;
+      const ageVal = parseInt(document.getElementById('insuranceAge').value) || 28;
+      const budgetVal = parseInt(document.getElementById('insuranceBudget').value) || 25000;
+
+      if (!startDateVal || !endDateVal) {
+        alert("Please select both start and end travel dates.");
+        return;
+      }
+
+      const start = new Date(startDateVal);
+      const end = new Date(endDateVal);
+      const days = Math.max(1, Math.ceil((end - start) / (1000 * 60 * 60 * 24)));
+
+      if (days < 1) {
+        alert("End date must be after start date.");
+        return;
+      }
+
+      const factor = 1 + (ageVal > 60 ? (ageVal - 60) * 0.02 : 0) + (days * 0.05);
+      const basePremium = Math.round(budgetVal * 0.01 * factor);
+
+      const basicPremium = Math.max(149, Math.round(basePremium));
+      const nomadPremium = Math.max(349, Math.round(basePremium * 2.2));
+      const elitePremium = Math.max(799, Math.round(basePremium * 4.0));
+
+      document.getElementById('planBasicPremium').textContent = `₹${basicPremium}`;
+      document.getElementById('planNomadPremium').textContent = `₹${nomadPremium}`;
+      document.getElementById('planElitePremium').textContent = `₹${elitePremium}`;
+
+      insuranceCurrentQuote = {
+        destination: destName,
+        days: days,
+        budget: budgetVal,
+        age: ageVal,
+        premiums: {
+          basic: basicPremium,
+          nomad: nomadPremium,
+          elite: elitePremium
+        }
+      };
+
+      document.getElementById('insuranceIntroSection').classList.add('hidden');
+      document.getElementById('insurancePlansSection').classList.remove('hidden');
+      document.getElementById('insuranceCheckoutSection').classList.add('hidden');
+      document.getElementById('insuranceSuccessSection').classList.add('hidden');
+    }
+
+    let insuranceSelectedPlan = null;
+
+    function selectInsurancePlan(planKey) {
+      if (!insuranceCurrentQuote) return;
+
+      const planNames = { basic: "Basic Explorer", nomad: "Secure Nomad", elite: "Elite Shield" };
+      const planLimits = { basic: "₹2,0,000", nomad: "₹5,0,000", elite: "₹15,0,000" };
+      const premium = insuranceCurrentQuote.premiums[planKey];
+
+      insuranceSelectedPlan = {
+        ...insuranceCurrentQuote,
+        planKey: planKey,
+        planName: planNames[planKey],
+        premium: premium,
+        limit: planLimits[planKey]
+      };
+
+      document.getElementById('checkoutDest').textContent = insuranceSelectedPlan.destination;
+      document.getElementById('checkoutPlanName').textContent = insuranceSelectedPlan.planName;
+      document.getElementById('checkoutDuration').textContent = `${insuranceSelectedPlan.days} Days`;
+      document.getElementById('checkoutLimit').textContent = insuranceSelectedPlan.limit;
+      document.getElementById('checkoutPremium').textContent = `₹${premium}`;
+      document.getElementById('checkoutQrImage').src = `https://picsum.photos/seed/qr-${premium}/200/200`;
+
+      document.getElementById('insurancePlansSection').classList.add('hidden');
+      document.getElementById('insuranceCheckoutSection').classList.remove('hidden');
+    }
+
+    function cancelInsuranceCheckout() {
+      document.getElementById('insurancePlansSection').classList.remove('hidden');
+      document.getElementById('insuranceCheckoutSection').classList.add('hidden');
+    }
+
+    function simulatePaymentSuccess() {
+      if (!insuranceSelectedPlan) return;
+
+      const policyNum = `INS-2026-${Math.floor(100000 + Math.random() * 900000)}`;
+      const holderName = AppState.userProfile.name || "Gopi Chand";
+
+      const policy = {
+        policyNumber: policyNum,
+        holderName: holderName,
+        destination: insuranceSelectedPlan.destination,
+        planName: insuranceSelectedPlan.planName,
+        limit: insuranceSelectedPlan.limit,
+        duration: `${insuranceSelectedPlan.days} Days`,
+        premium: insuranceSelectedPlan.premium,
+        createdAt: new Date().toISOString()
+      };
+
+      let policies = JSON.parse(localStorage.getItem('samastha_insurance_policies') || '[]');
+      policies.unshift(policy);
+      localStorage.setItem('samastha_insurance_policies', JSON.stringify(policies));
+
+      document.getElementById('certPolicyId').textContent = policy.policyNumber;
+      document.getElementById('certUser').textContent = policy.holderName;
+      document.getElementById('certDest').textContent = policy.destination;
+      document.getElementById('certPlan').textContent = policy.planName;
+      document.getElementById('certLimit').textContent = policy.limit;
+      document.getElementById('certDuration').textContent = policy.duration;
+
+      document.getElementById('insuranceCheckoutSection').classList.add('hidden');
+      document.getElementById('insuranceSuccessSection').classList.remove('hidden');
+
+      loadActivePoliciesList();
+    }
+
+    function loadActivePoliciesList() {
+      const container = document.getElementById('activePoliciesContainer');
+      if (!container) return;
+
+      const policies = JSON.parse(localStorage.getItem('samastha_insurance_policies') || '[]');
+
+      if (policies.length === 0) {
+        container.innerHTML = `<p class="text-xs text-on-surface-variant italic">No active travel policies found. Get a quote and purchase below!</p>`;
+        return;
+      }
+
+      container.innerHTML = policies.map(p => `
+        <div class="p-3.5 rounded-2xl bg-surface-low border border-white/5 space-y-2 relative overflow-hidden group hover:border-pink-500/30 transition-all">
+          <div class="flex justify-between items-center">
+            <span class="text-[10px] font-mono text-pink-300 font-bold">${p.policyNumber}</span>
+            <span class="px-2 py-0.5 rounded text-[8px] bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/20">ACTIVE</span>
+          </div>
+          <div>
+            <h5 class="font-bold text-xs text-on-surface">${p.destination}</h5>
+            <p class="text-[9px] text-on-surface-variant mt-0.5">${p.planName} • ${p.duration} • Limit ${p.limit}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function resetInsurancePlanner() {
+      document.getElementById('insurancePlansSection').classList.add('hidden');
+      document.getElementById('insuranceCheckoutSection').classList.add('hidden');
+      document.getElementById('insuranceSuccessSection').classList.add('hidden');
+      document.getElementById('insuranceIntroSection').classList.remove('hidden');
+    }
+
+    // -------------------------------------------------------------------------
+    // REVIEWS HUB ACTIONS
+    // -------------------------------------------------------------------------
+    function initReviewsHubSelectors() {
+      const filterSelect = document.getElementById('reviewsHubFilterSelect');
+      const writeSelect = document.getElementById('reviewsHubWriteSelect');
+      if (!AppState.destinations.length) return;
+
+      const options = AppState.destinations.map(d => `<option value="${d.id}">${d.name}, ${d.state}</option>`);
+      
+      if (filterSelect) {
+        filterSelect.innerHTML = `<option value="all">All Destinations</option>` + options.join('');
+      }
+      if (writeSelect) {
+        writeSelect.innerHTML = options.join('');
+      }
+    }
+
+    let reviewsHubWriteRating = 5;
+
+    function setReviewsHubWriteRating(rating) {
+      reviewsHubWriteRating = rating;
+      document.getElementById('reviewsHubWriteRatingVal').value = rating;
+
+      const starSpans = document.querySelectorAll('#reviewsHubWriteStars span');
+      starSpans.forEach((span, idx) => {
+        if (idx < rating) {
+          span.classList.remove('text-white/30');
+          span.classList.add('text-yellow-400');
+        } else {
+          span.classList.add('text-white/30');
+          span.classList.remove('text-yellow-400');
+        }
+      });
+    }
+
+    async function loadReviewsHubFeed() {
+      const container = document.getElementById('reviewsHubFeedContainer');
+      if (!container) return;
+
+      container.innerHTML = `<div class="p-8 text-center text-xs text-on-surface-variant flex items-center justify-center gap-2 bg-surface-low rounded-2xl border border-white/5"><span class="animate-spin material-symbols-outlined text-[16px]">sync</span> Fetching review feed...</div>`;
+
+      const popularDests = AppState.destinations.slice(0, 10);
+      let combinedReviews = [];
+
+      try {
+        const fetchPromises = popularDests.map(async d => {
+          try {
+            const res = await fetch(`/api/v1/destinations/${d.id}/reviews`);
+            const json = await res.json();
+            if (json.data && Array.isArray(json.data)) {
+              return json.data.map(r => ({
+                ...r,
+                destinationName: d.name,
+                destinationState: d.state
+              }));
+            }
+          } catch (e) {
+            console.error("Failed to load reviews for " + d.name, e);
+          }
+          return [];
+        });
+
+        const results = await Promise.all(fetchPromises);
+        results.forEach(arr => {
+          combinedReviews = combinedReviews.concat(arr);
+        });
+
+        combinedReviews.sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+        
+        AppState.reviewsHubAllReviews = combinedReviews;
+        filterReviewsHubFeed();
+
+      } catch (e) {
+        container.innerHTML = `<div class="p-8 text-center text-xs text-red-400 bg-red-500/10 rounded-2xl border border-red-500/20">Failed to load verified reviews feed. Please check backend connection.</div>`;
+      }
+    }
+
+    function filterReviewsHubFeed() {
+      const container = document.getElementById('reviewsHubFeedContainer');
+      if (!container || !AppState.reviewsHubAllReviews) return;
+
+      const selectedDestId = document.getElementById('reviewsHubFilterSelect').value;
+      const ratingTier = document.getElementById('reviewsHubRatingFilter').value;
+
+      let filtered = AppState.reviewsHubAllReviews;
+
+      if (selectedDestId !== 'all') {
+        filtered = filtered.filter(r => r.destination_id === selectedDestId);
+      }
+
+      if (ratingTier !== 'all') {
+        const tierNum = parseInt(ratingTier);
+        if (ratingTier === '5') {
+          filtered = filtered.filter(r => r.rating === 5);
+        } else {
+          filtered = filtered.filter(r => r.rating >= tierNum);
+        }
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="p-12 text-center text-xs text-on-surface-variant italic bg-surface-low rounded-3xl border border-white/5">No reviews matching the filter criteria. Be the first to write a review!</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map(r => {
+        const initials = (r.user_name || 'T').split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+        const starsHtml = '<span class="material-symbols-outlined text-[14px] text-yellow-400">star</span>'.repeat(r.rating) + 
+                          '<span class="material-symbols-outlined text-[14px] text-white/10">star</span>'.repeat(5 - r.rating);
+        const dateStr = new Date(r.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+
+        return `
+          <div class="glass-card rounded-2xl p-5 border border-white/5 space-y-3 hover:border-yellow-500/20 transition-all">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-yellow-500/10 text-yellow-300 border border-yellow-500/20 flex items-center justify-center font-bold text-xs font-mono">
+                  ${initials}
+                </div>
+                <div>
+                  <h5 class="font-bold text-xs text-on-surface">${r.user_name}</h5>
+                  <p class="text-[9px] text-on-surface-variant mt-0.5">${dateStr} • Verified Tourist</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="text-[9px] text-yellow-400 bg-yellow-400/10 px-2 py-0.5 rounded border border-yellow-400/20 font-bold uppercase">${r.destinationName}</span>
+                <div class="flex items-center justify-end gap-0.5 mt-1.5">${starsHtml}</div>
+              </div>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed pl-1">${r.comment}</p>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function submitReviewsHubReview() {
+      const destSelect = document.getElementById('reviewsHubWriteSelect');
+      const destId = destSelect.value;
+      const destName = destSelect.options[destSelect.selectedIndex].text.split(',')[0];
+      const userName = document.getElementById('reviewsHubWriteName').value.trim();
+      const comment = document.getElementById('reviewsHubWriteComment').value.trim();
+
+      if (!userName || !comment) {
+        alert("Please enter both your display name and review experience comment.");
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/v1/destinations/${destId}/reviews`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            userName: userName,
+            rating: reviewsHubWriteRating,
+            comment: comment
+          })
+        });
+
+        if (!res.ok) throw new Error("Failed to post review");
+
+        document.getElementById('reviewsHubWriteComment').value = '';
+        alert("Thank you! Your review for " + destName + " has been published successfully.");
+
+        loadReviewsHubFeed();
+
+      } catch (e) {
+        alert("Error publishing review. Please try again.");
+      }
+    }
   </script>
 
   <!-- ========================================================================= -->
