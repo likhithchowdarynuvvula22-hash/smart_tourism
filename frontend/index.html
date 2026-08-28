@@ -3132,24 +3132,34 @@
         if (galleryContainer) {
           const validImages = images.filter(img => img.url);
           if (validImages.length > 0) {
-            galleryContainer.innerHTML = validImages.map(img => `
-              <div onclick="openVrViewerModal('${img.url}', '${img.altText}')" class="relative group rounded-2xl overflow-hidden border border-white/10 hover:-translate-y-2 hover:shadow-[0_12px_24px_rgba(99,102,241,0.25)] hover:border-primary/50 transition-all duration-300 transform cursor-pointer">
-                <div class="h-44 overflow-hidden relative bg-slate-900">
-                  <img src="${img.url}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="${img.altText}"/>
-                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-                  
-                  <!-- 360 VR Badge -->
-                  <div class="absolute top-3 right-3 px-2 py-1 rounded-lg bg-slate-950/75 backdrop-blur-md border border-white/10 text-[9px] font-black text-primary flex items-center gap-1">
-                    <span class="material-symbols-outlined text-[12px] animate-pulse">vrpano</span>
-                    <span>360° VR</span>
+            galleryContainer.innerHTML = validImages.map(img => {
+              const ytId = getYoutubeVideoId(img.url);
+              const isVideo = !!ytId;
+              const thumbUrl = isVideo ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : img.url;
+              const iconName = isVideo ? 'play_circle' : 'vrpano';
+              const badgeText = isVideo ? '360° VIDEO' : '360° VR';
+              const cleanAlt = img.altText || (isVideo ? '360° Video' : '360° VR View');
+              const escapedAlt = cleanAlt.replace(/'/g, "\\'");
+
+              return `
+                <div onclick="openVrViewerModal('${img.url}', '${escapedAlt}')" class="relative group rounded-2xl overflow-hidden border border-white/10 hover:-translate-y-2 hover:shadow-[0_12px_24px_rgba(99,102,241,0.25)] hover:border-primary/50 transition-all duration-300 transform cursor-pointer">
+                  <div class="h-44 overflow-hidden relative bg-slate-900">
+                    <img src="${thumbUrl}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="${cleanAlt}"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                    
+                    <!-- 360 VR Badge -->
+                    <div class="absolute top-3 right-3 px-2 py-1 rounded-lg bg-slate-950/75 backdrop-blur-md border border-white/10 text-[9px] font-black text-primary flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[12px] animate-pulse">${iconName}</span>
+                      <span>${badgeText}</span>
+                    </div>
+                  </div>
+                  <div class="p-3.5 bg-surface-low text-xs">
+                    <p class="font-bold text-on-surface line-clamp-1">${cleanAlt}</p>
+                    <p class="text-[10px] text-on-surface-variant mt-0.5 font-mono">Source: ${img.source || 'YouTube Creator'} &bull; ${img.license || 'Standard YouTube License'}</p>
                   </div>
                 </div>
-                <div class="p-3.5 bg-surface-low text-xs">
-                  <p class="font-bold text-on-surface line-clamp-1">${img.altText}</p>
-                  <p class="text-[10px] text-on-surface-variant mt-0.5 font-mono">Source: ${img.source || 'Verified Directory'} &bull; ${img.license}</p>
-                </div>
-              </div>
-            `).join('');
+              `;
+            }).join('');
           } else {
             // Fallback default VR images based on destination info
             const fallbackUrls = [
@@ -5970,28 +5980,76 @@
     // -------------------------------------------------------------------------
     // VR 360 PANORAMIC VIEWER CONTROLLERS
     // -------------------------------------------------------------------------
+    function getYoutubeVideoId(url) {
+      if (!url) return null;
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|shorts\/|live\/)([^#\&\?]*).*/;
+      const match = url.match(regExp);
+      return (match && match[2].length === 11) ? match[2] : null;
+    }
+
     function openVrViewerModal(imgUrl, title) {
       const modal = document.getElementById('vrViewerModal');
       const img = document.getElementById('vrViewerImage');
       const titleEl = document.getElementById('vrViewerTitle');
-      if (!modal || !img) return;
+      const container = document.getElementById('vrViewerContainer');
+      const videoContainer = document.getElementById('vrViewerVideoContainer');
+      const hud = document.getElementById('vrViewerHUD');
+      const instructionEl = document.getElementById('vrViewerInstruction');
+      if (!modal) return;
 
-      img.src = imgUrl;
       if (titleEl) titleEl.textContent = title;
+      
+      const ytId = getYoutubeVideoId(imgUrl);
+      if (ytId) {
+        // YouTube 360 Video Player
+        if (img) img.classList.add('hidden');
+        if (hud) hud.classList.add('hidden');
+        if (videoContainer) {
+          videoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0" class="w-full h-full border-none rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+          videoContainer.classList.remove('hidden');
+        }
+        if (container) {
+          container.classList.remove('cursor-grab', 'active:cursor-grabbing');
+        }
+        if (instructionEl) {
+          instructionEl.textContent = 'Use video controls to pan and play in 360° VR';
+        }
+      } else {
+        // Standard VR Image
+        if (videoContainer) {
+          videoContainer.innerHTML = '';
+          videoContainer.classList.add('hidden');
+        }
+        if (img) {
+          img.src = imgUrl;
+          img.classList.remove('hidden');
+        }
+        if (hud) hud.classList.remove('hidden');
+        if (container) {
+          container.classList.add('cursor-grab', 'active:cursor-grabbing');
+        }
+        if (instructionEl) {
+          instructionEl.textContent = 'Drag or swipe on image to pan VR landscape';
+        }
+        
+        // Center the panorama
+        if (container) {
+          setTimeout(() => {
+            container.scrollLeft = (container.scrollWidth - container.clientWidth) / 2;
+          }, 100);
+        }
+      }
+
       modal.classList.remove('hidden');
       modal.classList.add('flex');
-
-      // Center the panorama
-      const container = document.getElementById('vrViewerContainer');
-      if (container) {
-        setTimeout(() => {
-          container.scrollLeft = (container.scrollWidth - container.clientWidth) / 2;
-        }, 100);
-      }
     }
 
     function closeVrViewerModal() {
       document.getElementById('vrViewerModal')?.classList.add('hidden');
+      const videoContainer = document.getElementById('vrViewerVideoContainer');
+      if (videoContainer) {
+        videoContainer.innerHTML = '';
+      }
     }
 
     // -------------------------------------------------------------------------
@@ -6090,7 +6148,7 @@
           <span class="material-symbols-outlined text-primary animate-spin-slow text-[20px]">vrpano</span>
           <div>
             <h4 id="vrViewerTitle" class="font-bold text-sm text-on-surface">360° VR View</h4>
-            <p class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">Drag or swipe on image to pan VR landscape</p>
+            <p id="vrViewerInstruction" class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">Drag or swipe on image to pan VR landscape</p>
           </div>
         </div>
         <button onclick="closeVrViewerModal()" class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer text-on-surface">
@@ -6100,9 +6158,10 @@
       <div id="vrViewerContainer" class="h-[500px] overflow-x-auto overflow-y-hidden cursor-grab active:cursor-grabbing relative scroll-smooth flex items-center bg-slate-900">
         <!-- Panoramic image container -->
         <img id="vrViewerImage" src="" class="h-full min-w-[2000px] object-cover pointer-events-none" />
+        <div id="vrViewerVideoContainer" class="w-full h-full hidden"></div>
         
         <!-- Reticle HUD Overlay -->
-        <div class="absolute inset-0 pointer-events-none flex items-center justify-center">
+        <div id="vrViewerHUD" class="absolute inset-0 pointer-events-none flex items-center justify-center">
           <div class="w-24 h-24 border border-primary/20 rounded-full flex items-center justify-center animate-ping absolute"></div>
           <div class="w-20 h-20 border border-primary/40 rounded-full flex items-center justify-center relative">
             <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
