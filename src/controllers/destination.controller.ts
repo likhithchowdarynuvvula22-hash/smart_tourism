@@ -255,6 +255,33 @@ export class DestinationController {
       next(err);
     }
   };
+
+  /**
+   * GET /api/v1/destinations/:id/reviews
+   */
+  getReviews = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const id = req.params.id as string;
+      const reviews = await this.service.getReviews(id);
+      sendSuccess(res, reviews, 200, "Reviews retrieved successfully");
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  /**
+   * POST /api/v1/destinations/:id/reviews
+   */
+  createReview = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const id = req.params.id as string;
+      const { userName, rating, comment } = req.body;
+      const review = await this.service.createReview(id, userName, Number(rating), comment);
+      sendSuccess(res, review, 201, "Review submitted successfully");
+    } catch (err) {
+      next(err);
+    }
+  };
 }
 
 export const destinationController = new DestinationController();

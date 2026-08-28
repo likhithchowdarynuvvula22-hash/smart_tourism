@@ -30,4 +30,8 @@ router.get("/:id/emergency-resources", destinationController.getEmergencyResourc
 router.get("/:id/businesses", destinationController.getLocalBusinesses);
 router.get("/:id/local-businesses", destinationController.getLocalBusinesses);
 
+// Reviews
+router.get("/:id/reviews", destinationController.getReviews);
+router.post("/:id/reviews", destinationController.createReview);
+
 export default router;

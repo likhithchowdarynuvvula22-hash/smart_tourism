@@ -4,18 +4,63 @@ import { NormalizedTranslationDto } from "../../../types/external";
 import { BadRequestError } from "../../../utils/appError";
 
 const LANGUAGE_ALIASES: Record<string, string> = {
-  hindi: "hi",
+  // English
   english: "en",
+  
+  // Hindi
+  hindi: "hi",
+  "हिन्दी": "hi",
+  "हिंदी": "hi",
+  
+  // Tamil
   tamil: "ta",
+  tamizh: "ta",
+  "தமிழ்": "ta",
+  
+  // Telugu
   telugu: "te",
+  telgu: "te",
+  "తెలుగు": "te",
+  
+  // Bengali
   bengali: "bn",
+  bangla: "bn",
+  "বাংলা": "bn",
+  
+  // Marathi
   marathi: "mr",
+  "मराठी": "mr",
+  
+  // Gujarati
   gujarati: "gu",
+  gujrati: "gu",
+  "ગુજરાતી": "gu",
+  
+  // Kannada
   kannada: "kn",
+  kanada: "kn",
+  "ಕನ್ನಡ": "kn",
+  
+  // Malayalam
   malayalam: "ml",
+  malayali: "ml",
+  "മലയാളം": "ml",
+  
+  // Punjabi
   punjabi: "pa",
+  panjabi: "pa",
+  "ਪੰਜਾਬੀ": "pa",
+  
+  // Odia
   odia: "or",
+  oriya: "or",
+  "ଓଡ଼ିଆ": "or",
+  
+  // Urdu
   urdu: "ur",
+  "اردو": "ur",
+  
+  // Foreign
   french: "fr",
   spanish: "es",
   german: "de",

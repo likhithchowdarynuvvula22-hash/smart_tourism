@@ -2,6 +2,7 @@ import {
   destinationRepository,
   DestinationRepository
 } from "../repositories/destination.repository";
+import { reviewsRepository, DestinationReviewRow } from "../repositories/reviews.repository";
 import { tourismRepository, TourismRepository } from "../repositories/tourism.repository";
 import { safetyRepository, SafetyRepository } from "../repositories/safety.repository";
 import {
@@ -221,6 +222,56 @@ export class TourismService {
   async getLocalBusinesses(destinationId: string, limit?: number): Promise<LocalBusinessRow[]> {
     await this.ensureDestinationExists(destinationId);
     return this.tourRepo.findLocalBusinessesByDestinationId(destinationId, limit || 20);
+  }
+
+  /**
+   * Retrieves reviews for a destination, falling back to mock ones if none exist.
+   */
+  async getReviews(destinationId: string): Promise<DestinationReviewRow[]> {
+    await this.ensureDestinationExists(destinationId);
+    const dbReviews = await reviewsRepository.findByDestinationId(destinationId);
+    if (dbReviews.length > 0) {
+      return dbReviews;
+    }
+    
+    // Fallback static data if database has no reviews yet
+    return [
+      {
+        id: "default-1",
+        destination_id: destinationId,
+        user_name: "Aarav Patel",
+        rating: 5,
+        comment: "An incredible place to visit. The local food is amazing, and the people welcoming. Very clean and well-maintained.",
+        created_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString()
+      },
+      {
+        id: "default-2",
+        destination_id: destinationId,
+        user_name: "Priya Nair",
+        rating: 4,
+        comment: "Beautiful scenery and great cultural experience. Facilities were decent, though restroom accessibility could be slightly improved. Recommended!",
+        created_at: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString()
+      }
+    ];
+  }
+
+  /**
+   * Creates a new review for a destination.
+   */
+  async createReview(destinationId: string, userName: string, rating: number, comment: string): Promise<DestinationReviewRow> {
+    await this.ensureDestinationExists(destinationId);
+    
+    if (!userName || userName.trim().length === 0) {
+      throw new BadRequestError("User name is required");
+    }
+    if (rating < 1 || rating > 5) {
+      throw new BadRequestError("Rating must be between 1 and 5");
+    }
+    if (!comment || comment.trim().length === 0) {
+      throw new BadRequestError("Comment is required");
+    }
+
+    return reviewsRepository.create(destinationId, userName, rating, comment);
   }
 }
 

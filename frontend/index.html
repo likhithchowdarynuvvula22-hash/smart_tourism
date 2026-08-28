@@ -91,6 +91,9 @@
     .animate-spin-slow {
       animation: spin 8s linear infinite;
     }
+    .fill-1 {
+      font-variation-settings: 'FILL' 1;
+    }
   </style>
 </head>
 
@@ -883,6 +886,110 @@
         </h3>
         <div id="detailGalleryContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
           <!-- Dynamically populated by JS -->
+        </div>
+      </section>
+
+      <!-- Visitor Reviews & Ratings Section -->
+      <section class="glass-card rounded-3xl p-6 mb-8 border border-white/10">
+        <h3 class="text-lg font-bold text-on-surface mb-6 flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary">rate_review</span>
+          <span>Visitor Reviews &amp; Ratings</span>
+        </h3>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Left Column: Ratings Summary & Form (Span 5) -->
+          <div class="lg:col-span-5 space-y-6">
+            <!-- Review Summary Stats -->
+            <div class="bg-surface-low p-5 rounded-2xl border border-white/5 flex items-center gap-6">
+              <div class="text-center">
+                <p id="reviewSummaryAvg" class="text-4xl font-black text-primary font-display">0.0</p>
+                <div class="flex items-center justify-center gap-0.5 text-amber-400 my-1 text-sm">
+                  <span class="material-symbols-outlined fill-1">star</span>
+                  <span class="material-symbols-outlined fill-1">star</span>
+                  <span class="material-symbols-outlined fill-1">star</span>
+                  <span class="material-symbols-outlined fill-1">star</span>
+                  <span class="material-symbols-outlined fill-1">star</span>
+                </div>
+                <p id="reviewSummaryCount" class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">0 Reviews</p>
+              </div>
+              <div class="flex-1 space-y-1.5 text-xs text-on-surface-variant">
+                <div class="flex items-center gap-2">
+                  <span class="w-8">5 star</span>
+                  <div class="flex-1 h-2 bg-slate-900 rounded-full overflow-hidden">
+                    <div id="bar-5star" class="h-full bg-primary rounded-full" style="width: 0%"></div>
+                  </div>
+                  <span id="pct-5star" class="w-8 text-right">0%</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-8">4 star</span>
+                  <div class="flex-1 h-2 bg-slate-900 rounded-full overflow-hidden">
+                    <div id="bar-4star" class="h-full bg-primary rounded-full" style="width: 0%"></div>
+                  </div>
+                  <span id="pct-4star" class="w-8 text-right">0%</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-8">3 star</span>
+                  <div class="flex-1 h-2 bg-slate-900 rounded-full overflow-hidden">
+                    <div id="bar-3star" class="h-full bg-primary rounded-full" style="width: 0%"></div>
+                  </div>
+                  <span id="pct-3star" class="w-8 text-right">0%</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-8">2 star</span>
+                  <div class="flex-1 h-2 bg-slate-900 rounded-full overflow-hidden">
+                    <div id="bar-2star" class="h-full bg-primary rounded-full" style="width: 0%"></div>
+                  </div>
+                  <span id="pct-2star" class="w-8 text-right">0%</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-8">1 star</span>
+                  <div class="flex-1 h-2 bg-slate-900 rounded-full overflow-hidden">
+                    <div id="bar-1star" class="h-full bg-primary rounded-full" style="width: 0%"></div>
+                  </div>
+                  <span id="pct-1star" class="w-8 text-right">0%</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Write a Review Form -->
+            <div class="bg-surface-low p-5 rounded-2xl border border-white/5 space-y-4">
+              <h4 class="font-bold text-xs text-on-surface uppercase tracking-wider">Share Your Experience</h4>
+              <form id="destinationReviewForm" onsubmit="submitDestinationReview(event)" class="space-y-3.5">
+                <div>
+                  <label class="block text-[10px] font-bold text-on-surface-variant uppercase mb-1">Your Name</label>
+                  <input type="text" id="reviewAuthorInput" required placeholder="Enter your display name" class="w-full bg-surface-high border border-white/10 rounded-xl px-3.5 py-2 text-xs text-on-surface placeholder:text-on-surface-variant/40 focus:border-primary outline-none" />
+                </div>
+                
+                <div>
+                  <label class="block text-[10px] font-bold text-on-surface-variant uppercase mb-1">Your Rating</label>
+                  <div class="flex items-center gap-1.5 text-slate-500" id="reviewRatingStars">
+                    <button type="button" onclick="setFormReviewRating(1)" class="material-symbols-outlined text-[24px] cursor-pointer hover:text-amber-400 transition-colors">star</button>
+                    <button type="button" onclick="setFormReviewRating(2)" class="material-symbols-outlined text-[24px] cursor-pointer hover:text-amber-400 transition-colors">star</button>
+                    <button type="button" onclick="setFormReviewRating(3)" class="material-symbols-outlined text-[24px] cursor-pointer hover:text-amber-400 transition-colors">star</button>
+                    <button type="button" onclick="setFormReviewRating(4)" class="material-symbols-outlined text-[24px] cursor-pointer hover:text-amber-400 transition-colors">star</button>
+                    <button type="button" onclick="setFormReviewRating(5)" class="material-symbols-outlined text-[24px] cursor-pointer hover:text-amber-400 transition-colors text-amber-400 fill-1">star</button>
+                  </div>
+                  <input type="hidden" id="reviewRatingValue" value="5" />
+                </div>
+
+                <div>
+                  <label class="block text-[10px] font-bold text-on-surface-variant uppercase mb-1">Review Comment</label>
+                  <textarea id="reviewCommentInput" required rows="3" placeholder="Tell other travellers about the safety, accessibility, local food, and sights..." class="w-full bg-surface-high border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-on-surface placeholder:text-on-surface-variant/40 focus:border-primary outline-none resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-2.5 rounded-xl bg-primary text-slate-950 text-xs font-bold shadow-md cursor-pointer hover:opacity-90 transition-opacity">
+                  Submit Review
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Right Column: Reviews List (Span 7) -->
+          <div class="lg:col-span-7 flex flex-col">
+            <div id="reviewsListContainer" class="flex-1 space-y-4 max-h-[480px] overflow-y-auto pr-2">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
         </div>
       </section>
 
@@ -2124,9 +2231,14 @@
           </p>
         </div>
       </div>
-      <button onclick="toggleAiChatDrawer()" class="p-1.5 rounded-lg hover:bg-surface-high text-on-surface-variant hover:text-on-surface cursor-pointer">
-        <span class="material-symbols-outlined text-xl">close</span>
-      </button>
+      <div class="flex items-center gap-1">
+        <button onclick="clearChat()" title="Clear Chat History" class="p-1.5 rounded-lg hover:bg-surface-high text-on-surface-variant hover:text-on-surface cursor-pointer flex items-center justify-center">
+          <span class="material-symbols-outlined text-[18px]">delete_sweep</span>
+        </button>
+        <button onclick="toggleAiChatDrawer()" class="p-1.5 rounded-lg hover:bg-surface-high text-on-surface-variant hover:text-on-surface cursor-pointer flex items-center justify-center">
+          <span class="material-symbols-outlined text-xl">close</span>
+        </button>
+      </div>
     </header>
 
     <!-- Chat Messages Stream Container -->
@@ -2968,12 +3080,13 @@
       }
 
       try {
-        const [attRes, expRes, safeRes, weatherRes, imgRes] = await Promise.allSettled([
+        const [attRes, expRes, safeRes, weatherRes, imgRes, reviewsRes] = await Promise.allSettled([
           fetch(`/api/v1/destinations/${dest.id}/attractions`).then(r => r.json()),
           fetch(`/api/v1/destinations/${dest.id}/experiences`).then(r => r.json()),
           fetch(`/api/v1/destinations/${dest.id}/safety`).then(r => r.json()),
           fetch(`/api/v1/weather/destinations/${dest.id}`).then(r => r.json()),
-          fetch(`/api/v1/content/destinations/${dest.id}/images`).then(r => r.json())
+          fetch(`/api/v1/content/destinations/${dest.id}/images`).then(r => r.json()),
+          fetch(`/api/v1/destinations/${dest.id}/reviews`).then(r => r.json())
         ]);
 
         const attractions = (attRes.status === 'fulfilled' && attRes.value?.data) || [];
@@ -2982,6 +3095,7 @@
         const weather = (weatherRes.status === 'fulfilled' && weatherRes.value?.data) || null;
         const galleryData = (imgRes.status === 'fulfilled' && imgRes.value?.data) || null;
         const images = galleryData?.images || [];
+        const reviews = (reviewsRes.status === 'fulfilled' && reviewsRes.value?.data) || [];
 
         // 1. Render Attractions
         if (attrContainer) {
@@ -3063,6 +3177,10 @@
             `).join('');
           }
         }
+        // 3. Render reviews
+        renderDestinationReviews(reviews);
+        setFormReviewRating(5);
+
       } catch (err) {
         console.error("Error loading destination relations:", err);
       }
@@ -3854,6 +3972,193 @@
       const input = document.getElementById('chatTextInput');
       if (input) input.value = promptText;
       handleChatSubmit();
+    }
+
+    function clearChat() {
+      const container = document.getElementById('chatMessagesContainer');
+      if (!container) return;
+      container.innerHTML = `
+      <!-- Welcome Message -->
+      <div class="flex gap-2.5">
+        <div class="w-7 h-7 rounded-lg bg-primary-container text-slate-950 flex items-center justify-center flex-shrink-0 font-bold text-xs">
+          AI
+        </div>
+        <div class="glass-card p-3.5 rounded-2xl rounded-tl-none max-w-[85%] space-y-2">
+          <p class="text-on-surface">
+            Namaste! I am your <strong>Samastha Samanvayam AI Copilot</strong>. I provide grounded answers for all 31 Indian States, 698 destinations, entry fees, women''s safety, weather, and barrier-free routes directly from our database.
+          </p>
+          <div class="text-[10px] text-primary bg-primary/10 p-2 rounded-lg border border-primary/20">
+            💡 <em>Ask me in English, हिन्दी, తెలుగు, தமிழ், or any of our 11 supported Indic languages!</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Prompt Pills -->
+      <div class="space-y-1.5 pt-2">
+        <p class="text-[11px] text-on-surface-variant font-bold">Suggested Inquiries:</p>
+        <div class="flex flex-wrap gap-1.5">
+          <button type="button" onclick="sendQuickPrompt('Tell me about Araku.')" class="px-2.5 py-1 rounded-lg bg-surface-container hover:bg-surface-high text-[11px] text-on-surface border border-white/10 cursor-pointer">
+            Tell me about Araku
+          </button>
+          <button type="button" onclick="sendQuickPrompt('Is Araku safe for a solo woman?')" class="px-2.5 py-1 rounded-lg bg-surface-container hover:bg-surface-high text-[11px] text-on-surface border border-white/10 cursor-pointer">
+            Is Araku safe for solo women?
+          </button>
+          <button type="button" onclick="sendQuickPrompt('What are the entry fees for Hampi?')" class="px-2.5 py-1 rounded-lg bg-surface-container hover:bg-surface-high text-[11px] text-on-surface border border-white/10 cursor-pointer">
+            Hampi entry fees
+          </button>
+          <button type="button" onclick="sendQuickPrompt('What is the weather tomorrow in Araku?')" class="px-2.5 py-1 rounded-lg bg-surface-container hover:bg-surface-high text-[11px] text-on-surface border border-white/10 cursor-pointer">
+            Araku live weather
+          </button>
+          <button type="button" onclick="sendQuickPrompt('Explain Araku in Telugu.')" class="px-2.5 py-1 rounded-lg bg-surface-container hover:bg-surface-high text-[11px] text-on-surface border border-white/10 cursor-pointer">
+            Araku in Telugu (తెలుగు)
+          </button>
+        </div>
+      </div>
+      `;
+    }
+
+    function renderDestinationReviews(reviews) {
+      const listContainer = document.getElementById('reviewsListContainer');
+      if (!listContainer) return;
+
+      if (reviews.length === 0) {
+        listContainer.innerHTML = \`<div class="p-6 text-center text-xs text-on-surface-variant bg-surface-low rounded-2xl border border-white/5">No visitor reviews yet. Be the first to share your experience!</div>\`;
+        updateReviewsSummary(0, [0, 0, 0, 0, 0], 0);
+        return;
+      }
+
+      // Render reviews list
+      listContainer.innerHTML = reviews.map(rev => {
+        const rating = Number(rev.rating) || 5;
+        const dateStr = rev.created_at ? new Date(rev.created_at).toLocaleDateString(\'en-IN\', {
+          year: \'numeric\', month: \'short\', day: \'numeric\'
+        }) : \'Recent\';
+        
+        // Generate stars markup
+        let starsMarkup = \'\';
+        for (let i = 1; i <= 5; i++) {
+          starsMarkup += \`<span class="material-symbols-outlined text-[14px] \${i <= rating ? \'text-amber-400 fill-1\' : \'text-slate-600\'}">star</span>\`;
+        }
+
+        // Get initials for avatar
+        const initials = (rev.user_name || \'V\').split(\' \').map(n => n[0]).join(\'\').substring(0, 2).toUpperCase();
+
+        return \`
+          <div class="p-4 rounded-2xl bg-surface-low border border-white/5 hover:border-white/10 transition-colors flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-primary/20 text-primary border border-primary/30 flex items-center justify-center font-bold text-xs flex-shrink-0">
+              \${initials}
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-2">
+                <h5 class="font-bold text-xs text-on-surface truncate">\${rev.user_name}</h5>
+                <span class="text-[10px] text-on-surface-variant font-mono">\${dateStr}</span>
+              </div>
+              <div class="flex items-center gap-0.5 my-1">
+                \${starsMarkup}
+              </div>
+              <p class="text-xs text-on-surface-variant leading-relaxed mt-1.5">\${rev.comment}</p>
+            </div>
+          </div>
+        \`;
+      }).join(\'\');
+
+      // Calculate statistics
+      const total = reviews.length;
+      let sum = 0;
+      const counts = [0, 0, 0, 0, 0]; // Index 0 is 1 star, Index 4 is 5 star
+      
+      reviews.forEach(r => {
+        const rating = Math.max(1, Math.min(5, Math.round(Number(r.rating) || 5)));
+        sum += rating;
+        counts[rating - 1]++;
+      });
+
+      const avg = (sum / total).toFixed(1);
+      updateReviewsSummary(avg, counts, total);
+    }
+
+    function updateReviewsSummary(avg, counts, total) {
+      const avgEl = document.getElementById(\'reviewSummaryAvg\');
+      const countEl = document.getElementById(\'reviewSummaryCount\');
+      if (avgEl) avgEl.textContent = avg > 0 ? avg : \'0.0\';
+      if (countEl) countEl.textContent = \`\${total} \${total === 1 ? \'Review\' : \'Reviews\'}\`;
+
+      const stars = [1, 2, 3, 4, 5];
+      stars.forEach(star => {
+        const count = counts[star - 1] || 0;
+        const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+        
+        const bar = document.getElementById(\`bar-\${star}star\`);
+        const pctEl = document.getElementById(\`pct-\${star}star\`);
+        if (bar) bar.style.width = \`\${pct}%\`;
+        if (pctEl) pctEl.textContent = \`\${pct}%\`;
+      });
+    }
+
+    let formRatingValue = 5;
+    function setFormReviewRating(rating) {
+      formRatingValue = rating;
+      const valInput = document.getElementById(\'reviewRatingValue\');
+      if (valInput) valInput.value = rating;
+
+      const starContainer = document.getElementById(\'reviewRatingStars\');
+      if (!starContainer) return;
+
+      const buttons = starContainer.querySelectorAll(\'button\');
+      buttons.forEach((btn, index) => {
+        if (index < rating) {
+          btn.classList.remove(\'text-slate-500\');
+          btn.classList.add(\'text-amber-400\', \'fill-1\');
+        } else {
+          btn.classList.remove(\'text-amber-400\', \'fill-1\');
+          btn.classList.add(\'text-slate-500\');
+        }
+      });
+    }
+
+    async function submitDestinationReview(event) {
+      if (event) event.preventDefault();
+      if (!AppState.currentDetailDestination) return;
+
+      const nameInput = document.getElementById(\'reviewAuthorInput\');
+      const commentInput = document.getElementById(\'reviewCommentInput\');
+      const ratingVal = Number(document.getElementById(\'reviewRatingValue\')?.value) || 5;
+
+      const name = nameInput?.value?.trim();
+      const comment = commentInput?.value?.trim();
+      if (!name || !comment) return;
+
+      try {
+        const res = await fetch(\`/api/v1/destinations/\${AppState.currentDetailDestination.id}/reviews\`, {
+          method: \'POST\',
+          headers: { \'Content-Type\': \'application/json\' },
+          body: JSON.stringify({
+            userName: name,
+            rating: ratingVal,
+            comment: comment
+          })
+        });
+
+        const json = await res.json();
+        if (res.ok && json.data) {
+          // Re-fetch all reviews to update list & summary
+          const reviewsRes = await fetch(\`/api/v1/destinations/\${AppState.currentDetailDestination.id}/reviews\`);
+          const reviewsJson = await reviewsRes.json();
+          renderDestinationReviews(reviewsJson.data || []);
+          
+          // Clear inputs
+          if (nameInput) nameInput.value = \'\';
+          if (commentInput) commentInput.value = \'\';
+          setFormReviewRating(5);
+          
+          alert("Thank you! Your review has been submitted successfully.");
+        } else {
+          alert(\`Submission failed: \${json.message || \'Unknown error\'}\`);
+        }
+      } catch (err) {
+        console.error("Error submitting review:", err);
+        alert("Network error: Could not submit review. Please try again.");
+      }
     }
 
     function appendChatMessage(text, role, structuredData = null) {
